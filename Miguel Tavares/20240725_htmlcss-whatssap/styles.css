@@ -1,0 +1,38 @@
+styles.css 
+ 
+body {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 100vh;
+   margin: 0;
+   background-color: #f0f0f0;
+}
+
+.profile-box {
+   width: 400px;
+   padding: 30px;
+   border: 1px solid #CCC;
+   border-radius: 50px;
+   text-align: center;
+   background-color: #fff;
+}
+
+.profile-pic {
+   width: 80px;
+   height: 80px;
+   border-radius: 50%;
+   margin-bottom: 10px;
+}
+
+.user-name {
+   font-size: 26px;
+   font-weight: bold;
+   margin: 15px 0;
+}
+
+.date {
+   font-size: 25px;
+   font-weight: bold;
+   color: #4b4b4b;
+}

@@ -1,0 +1,249 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    height: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #dadbd5;
+}
+
+.main-container {
+    display: flex;
+    flex-grow: 1;
+    height: 90%;
+    max-width: 1000px;
+    background-color: #FFFFFF;
+    box-shadow: 8px 8px 12px -5px rgba(0, 0, 0, 1);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.main-container .mc-left {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 380px;
+    background-color: red;
+}
+
+.main-container .mc-left header {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    background-color: #eeeeee;
+
+}
+
+.main-container .mc-left header img {
+    width: 50px;
+    border-radius: 50px;
+}
+
+.main-container .mc-left header .icons {
+    display: flex;
+    font-size: 35px;
+    align-items: center;
+    column-gap: 15px;
+    color: #767676;
+}
+
+.main-container .mc-left .search {
+    display: flex;
+    column-gap: 15px;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px solid #eeeeee;
+    background-color: #FFFFFF;
+}
+
+.main-container .mc-left .search input {
+    flex: 1;
+    padding: 8px;
+    border: 0;
+    outline: 0;
+}
+
+.main-container .mc-left .users-container {
+    flex: 1;
+    background-color: #fff;
+}
+
+.main-container .mc-left .users-container .user {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    cursor: pointer;
+}
+
+.main-container .mc-left .users-container .user:hover {
+    background-color: #f1f1f1;
+}
+
+.main-container .mc-left .users-container .user .image-infos {
+    display: flex;
+    align-items: center;
+    column-gap: 8px;
+}
+
+.main-container .mc-left .users-container .user .image-infos img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+
+}
+
+.main-container .mc-left .users-container .user .image-infos .infos .name {
+    font-weight: bold;
+}
+
+.main-container .mc-left .users-container .user .image-infos .infos .message {
+    font-size: 14px;
+    color: #666;
+}
+
+.main-container .mc-left .users-container .user .date {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: #666
+}
+
+.main-container .mc-right {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    height: 100%;
+    background-color: green
+}
+
+.main-container .mc-right header {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    background-color: #eeeeee;
+
+}
+
+.main-container .mc-right header .image-infos {
+    display: flex;
+    align-items: center;
+    column-gap: 8px;
+}
+
+.main-container .mc-right header .image-infos img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+
+
+}
+
+.main-container .mc-right header .image-infos .infos .name {
+    font-weight: bold;
+}
+
+.main-container .mc-right header .image-infos .infos .message {
+    font-size: 14px;
+    color: #666;
+}
+
+.main-container .mc-right header .icons {
+    display: flex;
+    font-size: 35px;
+    align-items: center;
+    column-gap: 15px;
+    color: #767676;
+}
+
+.main-container .mc-right .message-container {
+    padding: 15px;
+    background-color: #e3ebd8;
+    flex: 1;
+
+}
+
+.main-container .mc-right .message-container .date {
+
+    display: flex;
+    justify-content: center;
+}
+
+.main-container .mc-right .message-container .date span {
+    padding: 10px;
+    border-radius: 5px;
+    display: inline-block;
+    background-color: #e8f1f9;
+}
+
+.main-container .mc-right .message-container .message {
+    display: flex;
+    margin-top: 10px;
+}
+
+
+
+
+
+
+.main-container .mc-right .message-container .message span {
+    display: inline-block;
+    padding: 10px 10px 22px 10px;
+    max-width: 280px;
+    min-width: 100px;
+    word-break: break-word;
+    border-radius: 5px;
+    display: inline-block;
+    background-color: white;
+    position: relative;
+
+}
+
+.main-container .mc-right .message-container .message span::after {
+    content: attr(data-time);
+    font-size: 13px;
+    color: #777;
+     content: "22:30";
+     position: absolute;
+     bottom: 4px;
+     right: 10px;
+    
+}
+
+.main-container .mc-right .message-container .message-right {
+    justify-content: end;
+
+}
+
+.main-container .mc-right .message-container .message-right span {
+    background-color: #e1ffc4;
+
+
+}
+
+.main-container .mc-right footer{
+    column-gap: 10px;
+    justify-content: space-between;
+    padding: 15px;
+    align-items: center;
+    background-color: #eeeeee;
+    display: flex;
+
+}
+
+.main-container .mc-right footer input{
+    flex: 1;
+    padding: 8px;
+    border: 0;
+    outline: 0;
+
+
+}

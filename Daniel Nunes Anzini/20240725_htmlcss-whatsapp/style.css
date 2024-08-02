@@ -1,0 +1,42 @@
+*{
+    margin: 0;
+    padding:0;
+}
+
+html, body{
+    height: 100%;
+
+}
+
+body {
+    background-color: #dadbd5;
+    
+}
+
+.main-container{
+    display: flex;
+    height: 90%;
+    max-width: 1000px;
+    background-color: #ffffff;
+}
+
+.main-container .mc-left{
+    height: 100%;
+    width: 320px;
+background-color: red;
+}
+
+.main-container .mc-left header img{
+
+width: 100px;
+
+}
+
+
+
+
+.main-container .mc-right{
+    flex: 1;
+    height: 100%;
+    background-color: green;
+    }
