@@ -13,6 +13,7 @@ body {
     justify-content: center;
 }
 
+
 .main-container {
     width: 400px;
     padding: 30px;
@@ -28,7 +29,7 @@ body {
 .main-container .mc-left {
     display: flex;
     align-items: center;
-column-gap: 10px;
+    column-gap: 10px;
 }
 
 .main-container .mc-left img {
@@ -36,12 +37,30 @@ column-gap: 10px;
     border-radius: 50px;
     height: 80px;
 }
-.main-container .mc-left .infos{
+
+.main-container .mc-left .infos {}
+
+.main-container .mc-left .infos .name {
+    font-size: 26px;
+}
+.main-container .mc-left .infos .name .data{
+    font-size: 16px;
+    color:#4b4b4b
+}
+
+.main-container .mc-rigth {
+    font-size: 26px;
 
 }
-.main-container .mc-left .infos .name{
-    font-size: 26px;
-}
-.main-container .mc-rigth{
-    font-size: 26px;
+
+.main-container .mc-rigth {}
+
+.main-container .mc-rigth .icon {
+
+    display: flex;
+    align-self: center;
+    font-size: 25px;
+    font-weight: 700;
+    padding: 20px;
+    
 }
