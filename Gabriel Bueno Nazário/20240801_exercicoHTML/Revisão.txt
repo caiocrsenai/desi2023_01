@@ -1,0 +1,12 @@
+Largura(width) Mínima(min): 400px -------------{}
+Espaçamento interno: 30px ---------------------{}
+Largura da borda: 1px -------------------------{}
+Estilo da borda: solid ------------------------{}
+Cor da borda: #CCC ----------------------------{}
+Largura da imagem: 80px -----------------------{}
+Tamanho da fonte do nome: 26px (negrito) ------{}
+Tamanho da fonte da data: 16px ----------------{}
+Cor da fonte da data: #4b4b4b -----------------{}
+Tamanho da fonte do emoji: 25px (negrito) -----{}
+Espaço entre a imagem e as infos: 10px --------{}
+Espaço entre as infos e o emoji: 30px ---------{}
