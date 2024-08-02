@@ -1,0 +1,54 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    height: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background-color: #dadbd5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-container .mc-left {
+    height: 100%;
+    width: 400px;
+    background-color: red;
+    display: flex;
+    flex-direction: column;
+    border-radius: 15px;
+}
+
+.main-container .mc-left header {
+    display: flex;
+    background-color: #eeeeee;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.main-container .mc-left header .date {
+    display: flex;
+    background-color: #CCC;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.main-container .mc-left header img {
+    width: 80px;
+    border-radius: 60px;
+}
+
+.main-container .mc-left header .icons {
+    display: flex;
+    align-items: center;
+    font-size: 26px;
+    color: black;
+    column-gap: 30px;
+    font-weight: bold
+}
