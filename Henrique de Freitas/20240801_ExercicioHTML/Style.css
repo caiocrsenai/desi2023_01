@@ -1,0 +1,48 @@
+* {
+    margin: 5px;
+    padding: 0px;
+}
+
+html,
+body {
+    background-color: white;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Main-container {
+    display: flex;
+    flex-grow: 1;
+    height: 30%;
+    max-width: 400px;
+    background-color: #FFFFFF;
+    border: ;
+    border-radius: 1px;
+    overflow: hidden;
+}
+
+.Main-container .Mc-left{
+    height: 100%;
+    width: 380px;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.Main-container .Mc-left header {
+    display: flex;
+    justify-content: space-between;
+    background-color: #eeeeee;
+    padding: 15px;
+}
+
+.Main-container .Mc-left .header .Infos{
+    width: 80px;
+    border-radius: 50px;
+}
+
+.Main-container .Mc-left .header .Infos .Name{
+
+}
+
