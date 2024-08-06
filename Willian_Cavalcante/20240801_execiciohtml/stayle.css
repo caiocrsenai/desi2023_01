@@ -1,0 +1,60 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+html,
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+.main {
+
+    display: flex;
+    align-items: center;
+    width: 400px;
+    min-width: 400px;
+    padding: 30px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    justify-content: space-between;
+}
+
+.main .user {
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+    cursor: pointer;
+
+}
+
+.main .user img {
+    width: 80px;
+    border-radius: 80px;
+    height: 80px;
+
+}
+
+.main .user .infos .name {
+    font-size: 26px;
+    font-weight: 700px;
+}
+
+.main .user .infos .date {
+    font-size: 16px;
+    color: #4b4b4b;
+
+}
+
+.user .emogi {
+    font-size: 25px;
+    justify-content: space-between;
+    display: flex;
+    font-weight: 700;
+}
