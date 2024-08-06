@@ -1,48 +1,60 @@
 * {
-    margin: 5px;
+    margin: 0px;
     padding: 0px;
 }
 
 html,
 body {
-    background-color: white;
-    display:flex;
-    justify-content: center;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
     align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #eaeaea;
+
 }
 
 .Main-container {
-    display: flex;
-    flex-grow: 1;
-    height: 30%;
-    max-width: 400px;
-    background-color: #FFFFFF;
-    border: ;
-    border-radius: 1px;
-    overflow: hidden;
+    background-color: #f5f5f5;
+    padding: 30px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    min-width: 400px;
+
 }
 
-.Main-container .Mc-left{
-    height: 100%;
-    width: 380px;
+
+.Main-container header {
+    width: 100%;
     display: flex;
-    flex-direction: column;
-    
+    align-items: center;
+
 }
 
-.Main-container .Mc-left header {
-    display: flex;
-    justify-content: space-between;
-    background-color: #eeeeee;
-    padding: 15px;
-}
-
-.Main-container .Mc-left .header .Infos{
+.Main-container header img {
+    border-radius: 50%;
     width: 80px;
-    border-radius: 50px;
-}
-
-.Main-container .Mc-left .header .Infos .Name{
+    height: 80px;
 
 }
 
+.Main-container header .Info {
+    margin-left: 10px;
+    flex-grow: 1;
+}
+
+.Main-container header .Info .Name {
+    font-size: 26px;
+    font-weight: bold;
+}
+
+.Main-container header .Info .Data {
+    font-size: 16px;
+    color: #4b4b4b;
+}
+
+.Main-container header .emoji {
+    font-size: 25px;
+    font-weight: bold;
+    margin-left: 30px;
+}

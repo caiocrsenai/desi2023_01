@@ -1,0 +1,278 @@
+* {
+  margin: 0;
+  padding: 0;
+
+}
+
+html,
+body {
+  height: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+body {
+  background-color: #dadbd5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.main-container {
+  display: flex;
+  flex-grow: 1;
+  height: 90%;
+  max-width: 1000px;
+  background-color: #FFFFFF;
+  box-shadow: 0px 0px 12px -5px rgba(0, 0, 0, 1);
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.main-container .mc-left {
+  height: 100%;
+  width: 380px;
+  background-color: red;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-container .mc-left header {
+  display: flex;
+  justify-content: space-between;
+  background-color: #eeeeee;
+  padding: 15px;
+}
+
+.main-container .mc-left header img {
+  width: 50px;
+  border-radius: 20px;
+}
+
+.main-container .mc-left header .icons {
+  display: flex;
+  align-items: center;
+  font-size: 35px;
+  color: #767676;
+  column-gap: 15px;
+}
+
+.main-container .mc-left .search {
+  display: flex;
+  column-gap: 15px;
+  padding: 15px;
+  background-color: #FFFFFF;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+
+
+}
+
+.main-container .mc-left .search input {
+  flex: 1;
+  padding: 8px;
+  border: 0;
+  outline: 0;
+}
+
+.main-container .mc-left .users-contanier {
+  flex: 1;
+  background-color: #FFFFFF;
+
+
+}
+
+.main-container .mc-left .users-contanier .user {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+  cursor: pointer;
+}
+
+
+
+.main-container .mc-left .users-contanier .user:hover {
+  background-color: #f1f1f1;
+
+}
+
+
+
+.main-container .mc-left .users-contanier .user .image-infos {
+  display: flex;
+  align-items: center;
+  column-gap: 8px;
+
+}
+
+.main-container .mc-left .users-contanier .user .image-infos img {
+  width: 50px;
+  border-radius: 50px;
+  height: 50px;
+}
+
+
+
+.main-container .mc-left .users-contanier .user .image-infos .infos .name {
+  font-weight: bold;
+
+}
+
+
+.main-container .mc-left .users-contanier .user .image-infos .infos .message {
+  font-size: 14px;
+  color: #666;
+
+
+}
+
+
+.main-container .mc-left .users-contanier .user .date {
+  display: flex;
+  align-items: center;
+  color: #666;
+  font-size: 14px;
+}
+
+
+
+
+.main-container .mc-right {
+  flex: 1;
+  height: 100%;
+  background-color: green;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.main-container .mc-right header {
+  display: flex;
+  justify-content: space-between;
+  background-color: #eeeeee;
+  padding: 15px;
+}
+
+.main-container .mc-right header .image-infos {
+  display: flex;
+  align-items: center;
+  column-gap: 8px;
+
+}
+
+.main-container .mc-right header .image-infos img {
+  width: 50px;
+  border-radius: 50px;
+  height: 50px;
+}
+
+
+
+.main-container .mc-right header .image-infos .infos .name {
+  font-weight: bold;
+
+}
+
+
+.main-container .mc-right header .image-infos .infos .message {
+  font-size: 14px;
+  color: #666;
+
+
+}
+
+
+.main-container .mc-right header .icons {
+  display: flex;
+  align-items: center;
+  font-size: 35px;
+  color: #767676;
+  column-gap: 15px;
+}
+
+
+.main-container .mc-right .messages-contanier {
+  background-color: #e3dbd8;
+  padding: 15px;
+   flex: 1;
+}
+
+
+.main-container .mc-right .messages-contanier .date {
+  display: flex;
+  justify-content: center;
+
+}
+
+.main-container .mc-right .messages-contanier .date span {
+  background-color: #e8f1f9;
+  padding: 10px;
+  display: inline-block;
+  border-radius: 5px;
+
+}
+
+
+.main-container .mc-right .messages-contanier .message {
+  display: flex;
+  margin-top: 10px;
+
+
+}
+
+
+
+.main-container .mc-right .messages-contanier .message span {
+  background-color: #fff;
+  position: relative;
+  padding: 10px 10px 22px 10px;
+  display: inline-block;
+  border-radius: 5px;
+  max-width: 280px;
+  min-width: 100px;
+  word-break: break-word;
+
+}
+
+.main-container .mc-right .messages-contanier .message span::after {
+  content: attr(data-time);
+   font-size: 10px;
+   color: #777;
+   position: absolute;
+   bottom: 4px;
+   right: 10px;
+   
+}
+
+      
+    
+
+.main-container .mc-right .messages-contanier .message.message-rigth {
+  justify-content: flex-end;
+
+
+}
+
+.main-container .mc-right .messages-contanier .message.message-rigth span {
+  background-color: #e1ffc4;
+
+}
+
+.main-container .mc-right footer {
+  padding: 15px;
+  background-color: #eeeeee;
+  justify-content: space-between;
+   display: flex;
+   align-items: center;
+   column-gap: 10px;
+}
+
+
+.main-container .mc-right footer input {
+    flex: 1;
+    padding: 8px;
+    border: 0;
+    outline: 0;
+  }
+  
