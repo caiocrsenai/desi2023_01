@@ -1,0 +1,42 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+.main-container {
+    header {
+        &.mc-top {
+            display: flex;
+            align-items: center;
+            background-color: #283142;
+
+            .header-logo {
+                width: 250px;
+                padding-left: 16px;
+                padding-right: 16px;
+            }
+
+            .header-content {
+                .hc-search {
+                    .search-container {
+                        width: 300px;
+                        height: 40px;
+                        border: solid 1px #4d5b75;
+                        border-radius: 10px;
+                        background-color: #1b2531;
+                        input {
+                            
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+}
