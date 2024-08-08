@@ -1,4 +1,4 @@
-* {
+*{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
@@ -10,6 +10,7 @@ body {
 }
 
 .main-container {
+    height: 100%;
     header {
 
         &.mc-top {
@@ -34,16 +35,25 @@ body {
                         border: 1px solid #4d5b75;
                         border-radius: 10px;
                         background-color: #1b2531;
+                        display: flex;
+                        align-items: center;
+                        padding-left: 10px;
+                        padding-right: 10px;
+                        column-gap: 10px;
                         
-
-
-
-                        input {
-                            
+                        input{
+                            background-color: #1b2531;
+                            border: none;
+                            outline: none;
+                            flex: 1;
+                            height: 100%;
                         }
+
+
                     }
                     
                 }
+                
             }
         }
     }
