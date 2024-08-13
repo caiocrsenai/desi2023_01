@@ -8,10 +8,13 @@ body {
     height: 100%;
 }
 
+
 header {
     border: 1px solid #ccc;
-    width: 1px;
+    width: 400px;
     font-style: solid;
+    min-width: 400px;
+    border-radius: 10px;
 }
 
 body {
