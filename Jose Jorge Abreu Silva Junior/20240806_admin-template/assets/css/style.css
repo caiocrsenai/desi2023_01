@@ -5,10 +5,10 @@
 
 html,
 body {
-  height: 100%; }
+  height: 100%;
+  font-family: "Roboto", sans-serif; }
 
 body {
-  font-family: "Roboto", sans-serif;
   color: #b4bed2; }
 
 .main-container {
@@ -113,24 +113,24 @@ body {
         width: 100%;
         height: 100%;
         overflow: auto; }
-        .main-container .mc-bottom .main-content .main-content-inside .initial-container-top {
-          display: flex; }
-          .main-container .mc-bottom .main-content .main-content-inside .initial-container-top .ict-left {
-            flex: 1; }
-            .main-container .mc-bottom .main-content .main-content-inside .initial-container-top .ict-left .ict-line-container .container-box .ic-cb-infos {
-              display: flex;
-              align-items: center;
-              column-gap: 16px; }
-              .main-container .mc-bottom .main-content .main-content-inside .initial-container-top .ict-left .ict-line-container .container-box .ic-cb-infos .value-big {
-                font-size: 30px;
-                font-weight: 700;
-                color: #d6d7dc; }
-              .main-container .mc-bottom .main-content .main-content-inside .initial-container-top .ict-left .ict-line-container .container-box .ic-cb-infos .value-small {
-                font-size: 17px;
-                font-weight: 700; }
-          .main-container .mc-bottom .main-content .main-content-inside .initial-container-top .ict-right {
-            width: 250px;
-            background-color: greenyellow; }
+      .main-container .mc-bottom .main-content .initial-container-top {
+        display: flex; }
+        .main-container .mc-bottom .main-content .initial-container-top .ict-left {
+          flex: 1; }
+          .main-container .mc-bottom .main-content .initial-container-top .ict-left .ict-line-container .container-box .lc-cb-infos {
+            display: flex;
+            align-items: center;
+            column-gap: 16px; }
+            .main-container .mc-bottom .main-content .initial-container-top .ict-left .ict-line-container .container-box .lc-cb-infos .value-big {
+              font-size: 30px;
+              font-weight: 700;
+              color: #d6d7dc; }
+            .main-container .mc-bottom .main-content .initial-container-top .ict-left .ict-line-container .container-box .lc-cb-infos .value-small {
+              font-size: 17px;
+              font-weight: 700; }
+        .main-container .mc-bottom .main-content .initial-container-top .ict-right {
+          width: 250px;
+          background-color: greenyellow; }
 
 .container-box {
   display: flex;
