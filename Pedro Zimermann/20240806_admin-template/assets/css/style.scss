@@ -10,8 +10,8 @@ body {
 }
 
 body {
-	color: #b4bed2;
 	font-family: "Roboto", sans-serif;
+	color: #b4bed2;
 }
 
 .main-container {
@@ -174,16 +174,16 @@ body {
 
 					.ict-left {
 						flex: 1;
-						
 
 						.ict-line-container {
+
 							.container-box {
 
 								.lc-cb-infos {
+
 									display: flex;
 									align-items: center;
 									column-gap: 16px;
-
 
 									.value-big {
 										font-size: 30px;
@@ -192,19 +192,19 @@ body {
 									}
 
 									.value-small {
-										font-size: 17px;
+										font-size: 17 px;
 										font-weight: 700;
-
-
 									}
 								}
 							}
 						}
+
+					
 					}
 
 					.ict-right {
 						width: 250px;
-						
+						background-color: greenyellow;
 					}
 				}
 
