@@ -1,29 +1,65 @@
+
+<?php
+var_dump($_POST);
+if(!empty($_POST)){
+
+	$sql ="
+	INSERT INTO user 
+	( pass, usename, email, name, birthdate, photo, cep, id_city, id_state) 
+	VALUES 
+	( '".$_POST['pass']."', '".$_POST['username']."', '".$_POST['email']."', '".$_POST['name']."', '".$_POST['birthdate']."', '".$_POST[' photo']."', '".$_POST['cep']."', '".$_POST['id_city']."', '".$_POST['id_state']."')";
+	$result = $con->query($sql);
+}
+?>
+
+
 <div class="container-box cb-form-max-width align-center flex-1">
-						<div class="cb-header">
-							<div class="cb-title">Formulário</div>
-						</div>
-						<div class="cb-body">
-							<form>
-								<label>
-									<div class="lbl">Nome</div>
-									<input type="text">
-								</label>
+	<div class="cb-header">
+		<div class="cb-title">Formulário</div>
+	</div>
+	<div class="cb-body">
+		<form method="POST" action="">
+			<label>
+				<div class="lbl">foto</div>
+				<input type="file" name="photo">
+			</label>
+			<label>
+				<div class="lbl">Nome</div>
+				<input type="text" name="name">
+			</label>
+			<label>
+				<div class="lbl">usuario</div>
+				<input type="text" name="usename">
+			</label>
+			<label>
+				<div class="lbl">senha</div>
+				<input type="text" name="pass">
+			</label>
+			<label>
+				<div class="lbl">email</div>
+				<input type="text" name="email">
+			</label>
+			<label>
+				<div class="lbl">data de nascimento</div>
+				<input type="date" name="birthdate">
+			</label>
+			<label>
+				<div class="lbl">cep</div>
+				<input type="text" name="cep">
+			</label>
+			<label>
+				<div class="lbl">estado</div>
+				<input type="text" name="id_state">
+			</label>
+			<label>
+				<div class="lbl">cidade</div>
+				<input type="text" name="id_city">
+			</label>
 
-								<label>
-									<div class="lbl">Data</div>
-									<input type="date">
-								</label>
+			<div class="form-actions">
+				<button type="submit">Enviar</button>
+			</div>
 
-								<label>
-									<div class="lbl">Status</div>
-									<select>
-										<option disabled selected style="display: none;">Selecione</option>
-										<option value="1">Aprovado</option>
-										<option value="2">Pendente</option>
-										<option value="3">Reprovado</option>
-										<option value="4">Em análise</option>
-									</select>
-								</label>
-							</form>
-						</div>
-					</div>
+		</form>
+	</div>
+</div>
