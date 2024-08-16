@@ -1,29 +1,83 @@
+<?php
+   var_dump($_POST);
+   if(!empty($_POST)){
+    $sql = "
+    INSERT INTO user 
+    (pass, username, email, name, birthdate, photo, cep, id_city, id_state) 
+    VALUES 
+    (
+    '".$_POST['pass']."', 
+    '".$_POST['username']."', 
+    '".$_POST['email']."', 
+    '".$_POST['name']."', 
+    '".$_POST['birthdate']."', 
+    '".$_POST['photo']."', 
+    '".$_POST['cep']."', 
+    '".$_POST['id_city']."', 
+    '".$_POST['id_state']."'
+    )
+    ";
+    $result = $con->query($sql);
+   }
+    
+?>
+
+
 <div class="container-box cb-form-max-width align-center flex-1">
     <div class="cb-header">
         <div class="cb-title">Formulário</div>
     </div>
     <div class="cb-body">
-        <form>
+        <form method="POST" action="">
+
+            <label>
+                <div class="lbl">Foto</div>
+                <input type="file"name="photo">
+            </label>
+
             <label>
                 <div class="lbl">Nome</div>
-                <input type="text">
+                <input type="text"name="name">
             </label>
 
             <label>
-                <div class="lbl">Data</div>
-                <input type="date">
+                <div class="lbl">Usuario</div>
+                <input type="text"name="username">
             </label>
 
             <label>
-                <div class="lbl">Status</div>
-                <select>
-                    <option disabled selected style="display: none;">Selecione</option>
-                    <option value="1">Aprovado</option>
-                    <option value="2">Pendente</option>
-                    <option value="3">Reprovado</option>
-                    <option value="4">Em análise</option>
-                </select>
+                <div class="lbl">senha</div>
+                <input type="text"name="pass">
             </label>
+
+            <label>
+                <div class="lbl">email</div>
+                <input type="text"name="email">
+            </label>
+
+            <label>
+                <div class="lbl">Data de nascimento</div>
+                <input type="date"name="birthdate">
+            </label>
+
+            <label>
+                <div class="lbl">Cep</div>
+                <input type="text"name="cep">
+            </label>
+
+            <label>
+                <div class="lbl">Estado</div>
+                <input type="text"name="id_state">
+            </label>
+
+            <label>
+                <div class="lbl">Cidade</div>
+                <input type="text"name="id_city">
+            </label>
+
+            <div class="form-actions">
+                <button type="submit">enviar</button>
+            </div>
         </form>
     </div>
 </div>
