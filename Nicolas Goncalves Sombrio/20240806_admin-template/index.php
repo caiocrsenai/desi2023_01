@@ -34,7 +34,7 @@ include_once('includes/connect.php');
 					$page = $page_default;
 					if (!empty($_GET['page'])) {
 						$page = $_GET['page'];
-						echo 'seila qualquer ocisa';
+						echo '';
 					}
 					$page_url = 'pages/' . $page . '.php';
 					if (file_exists($page_url)) {
