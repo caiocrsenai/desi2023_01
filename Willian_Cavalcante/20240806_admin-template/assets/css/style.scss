@@ -386,5 +386,28 @@ body {
 				color-scheme: dark;
 			}
 		}
+		.form-actions{
+			margin-top: 15px;
+			display: flex;
+			justify-content: flex-end;
+
+			button{
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				min-width: 80px;
+				font-size: 14px;
+				height: 40px;
+				padding-left: 15px;
+				padding-right: 15px;
+				border-radius: 10px;
+				background-color: #3e79f7;
+				border: 0;
+				color: #fff;
+				cursor: pointer;
+			}
+
+			
+		}
 	}
 }
