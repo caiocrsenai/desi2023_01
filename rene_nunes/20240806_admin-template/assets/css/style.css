@@ -182,6 +182,8 @@ body {
     .container-box .table-container .tbl-status {
       display: inline-flex;
       border: 1px solid #CCC;
+      align-items: center;
+      justify-content: center;
       min-width: 84px;
       padding: 8px 12px;
       border-radius: 8px;
@@ -245,5 +247,23 @@ body {
       border-radius: 6px;
       outline: 0;
       color-scheme: dark; }
+  .container-box form .form-actions {
+    margin-top: 15px;
+    display: flex;
+    justify-content: flex-end; }
+    .container-box form .form-actions button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 50px;
+      font-size: 14px;
+      height: 40px;
+      padding-left: 15px;
+      padding-right: 15px;
+      border-radius: 10px;
+      background-color: #3e79f7;
+      color: #fff;
+      border: 0;
+      cursor: pointer; }
 
 /*# sourceMappingURL=style.css.map */
