@@ -8,14 +8,20 @@
 								Inicial
 							</a>
 						</li>
-						<li><a href="?page=form"><i class="fa-solid fa-gauge"></i>
+						<li><a href="?page=form">
+							<i class="fa-solid fa-gauge"></i> 
                         Formulário
-
+                          
                      </a>
 
                   </li>
-
-				 </ul>
+                 
+				  <li><a href="?page=usuarios">
+				  <i class="fa-solid fa-gauge"></i> 
+                   Usuários
+                   </a>
+                   </li>
+				 </ul> 
 
 				</div>
 			</nav>

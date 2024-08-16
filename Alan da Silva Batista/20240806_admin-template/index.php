@@ -25,7 +25,7 @@ include_once('includes/connect.php');
 		<?php
 		include_once('includes/header.php')
 		?>
-		<div class="mc-bottom">
+		<div class="mc-bottom"> 
 			<?php
 			include_once('includes/menu.php');
 			?>

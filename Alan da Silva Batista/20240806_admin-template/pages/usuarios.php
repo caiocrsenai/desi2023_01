@@ -1,23 +1,4 @@
-<div class="initial-container-top">
-						<div class="ict-left">
-							<div class="ict-line-container">
-								<div class="container-box">
-									<div class="cb-title">Titulo</div>
-									<div class="lc-cb-infos">
-										<div class="value-big">R$2500</div>
-										<div class="value-small">-11.4%</div>
-									</div>
-									<div class="cb-text">Texto</div>
-								</div>
-							</div>
-						</div>
-						<div class="ict-right">
-							123
-						</div>
-					</div>
-					<div class="initial-container-bottom">
-						<div class="ict-line-container">
-							<div class="container-box flex-1">
+<div class="container-box flex-1">
 								<div class="cb-header">
 									<div class="cb-title">Vendas</div>
 								</div>
@@ -82,7 +63,7 @@
 																style="background-color: #1890ff;">SW</span>
 															Stacey Ward
 														</div>
-													</td> 
+													</td>
 													<td>12 Agosto 2024</td>
 													<td>R$126,35</td>
 													<td>
@@ -93,9 +74,4 @@
 										</table>
 									</div>
 								</div>
-							</div>
-						</div>
-					</div>
-
-					
-					
+							</div> 
