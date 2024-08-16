@@ -3,12 +3,17 @@
         <div class="title">Dashboard</div>
         <ul>
             <li>
-                <a href="">
+                <a href="?page=inicial">
                     <i class="fa-solid fa-gauge"></i>
                     Inicial
                 </a>
             </li>
-            <li><a href=""><i class="fa-solid fa-gauge"></i>Inicial</a></li>
+            <li>
+                <a href="?page=form">
+                    <i class="fa-solid fa-gauge"></i>
+                    Formulário
+                </a>
+            </li>
         </ul>
     </div>
 </nav>
