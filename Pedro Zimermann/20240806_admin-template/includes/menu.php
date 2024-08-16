@@ -13,7 +13,14 @@
                     <i class="fa-solid fa-gauge"></i>
                     Formulário
                 </a>
+                <li>
+                <a href="?page=usuarios">
+                    <i class="fa-solid fa-gauge"></i>
+                    Usuários
+                </a>
             </li>
+            </li>
+            
         </ul>
     </div>
 </nav>
