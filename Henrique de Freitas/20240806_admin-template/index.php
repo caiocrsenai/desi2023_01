@@ -41,7 +41,7 @@
 					if(file_exists($page_url)){
 						include_once($page_url);
 					}else{
-						include_once('pages/' .$page_default.'.php');
+						include_once('pages/' .$page_default. '.php');
 					}
 					 ?>
 				</div>
