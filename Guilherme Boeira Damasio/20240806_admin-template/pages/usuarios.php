@@ -15,8 +15,8 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <thead>
                     <tr>
                         <th>Cliente</th>
-                        <th>Data</th>
-                        <th>Valor</th>
+                        <th>Data de nascimento</th>
+                        <th>Email</th>
                         <th>Status</th>
                     </tr>
                 </thead>
@@ -31,7 +31,7 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                     </div>
                                 </td>
                                 <td>' . $row['birthdate'] . '</td>
-                                <td>R$200,50</td>
+                                <td>' . $row['email'] . '</td>
                                 <td>
                                     <div class="tbl-status color-green">Aprovado</div>
                                 </td>
@@ -42,4 +42,4 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
             </table>
         </div>
     </div>
-</div>;
+</div>
