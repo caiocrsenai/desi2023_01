@@ -13,6 +13,12 @@
 					<i class="fa-solid fa-gauge"></i>
 					formulário
 				</a>
+			</li>
+			<li>
+				<a href="?page=usuarios">
+					<i class="fa-solid fa-gauge"></i>
+					usuarios
+				</a>
 			</li>		
 		</ul>
 	</div>
