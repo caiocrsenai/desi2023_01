@@ -11,7 +11,13 @@
             <li>
                 <a href="?page=form">
                     <i class="fa-solid fa-gauge"></i>
-                    Formulario
+                    Formulário
+                </a>
+            </li>
+            <li>
+                <a href="?page=usuarios">
+                    <i class="fa-solid fa-gauge"></i>
+                    Usuários
                 </a>
             </li>
         </ul>
