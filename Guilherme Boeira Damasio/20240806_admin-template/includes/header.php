@@ -26,7 +26,7 @@
                     </div>
                     <div class="infos-ct">
                         <div class="name">Guilherme Boeira Damasio</div>
-                        <div class="info">Desenvolvedor Full-Stack</div>
+                        <div class="info">Developer</div>
                     </div>
                 </div>
             </div>
