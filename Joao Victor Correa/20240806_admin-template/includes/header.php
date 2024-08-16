@@ -22,10 +22,10 @@
             <div class="option-item menu">
                 <div class="menu-container">
                     <div class="image"
-                        style="background-image: url(https://upload.wikimedia.org/wikipedia/commons/2/22/Neymar_%28cropped%29.jpg);">
+                        style="background-image: url(https://upload.wikimedia.org/wikipedia/commons/e/e8/Ronaldinho_in_2019.jpg);">
                     </div>
                     <div class="infos-ct">
-                        <div class="name">João Corrêa</div>
+                        <div class="name">João Victor Corrêa</div>
                         <div class="info">Consultor de vendas</div>
                     </div>
                 </div>
