@@ -18,6 +18,10 @@ if(!empty($_POST)){
     )
     ";
     $result = $con->query($sql);
+
+    if ($result) {
+        echo "<script>alert('Usuário ".$_POST['username']." cadastrado com sucesso!')</script>";
+    }
 }
 ?>
 
