@@ -12,5 +12,12 @@ html, body{
 }
 
 footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: fixed;
+    background-color: grey;
+    font-size: 50px;
+    width: 100%;
+
 }
