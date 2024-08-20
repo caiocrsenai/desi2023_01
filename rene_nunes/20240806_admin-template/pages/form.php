@@ -1,20 +1,23 @@
 <?php
-var_dump($_POST);
-if(!empty($_POST )){
+//var_dump($_POST);
+if(!empty($_POST)){
     $sql = "
-    INSERT INTO user (pass, username, email, name, birthdate, photo, cep, id_city, id_state) 
-    VALUES 
-    ('".$_POST['pass']."', 
-    '".$_POST['username']."', 
-    '".$_POST['email']."', 
-    '".$_POST['name']."', 
-    '".$_POST['birthdate']."', 
-    '".$_POST['photo']."', 
-    '".$_POST['cep']."', 
+    INSERT INTO user
+    (pass, username, email, name, birthdate, photo, cep, id_city, id_state)
+    VALUES
+    (
+    '".$_POST['pass']."',
+    '".$_POST['username']."',
+    '".$_POST['email']."',
+    '".$_POST['name']."',
+    '".$_POST['birthdate']."',
+    '".$_POST['photo']."',
+    '".$_POST['cep']."',
     '".$_POST['id_city']."',
-     '".$_POST['id_state']."')
+    '".$_POST['id_state']."'
+    )
     ";
-    $result = $con-> query($sql);
+    $result = $con->query($sql);
 }
 ?>
 
@@ -24,27 +27,31 @@ if(!empty($_POST )){
     </div>
     <div class="cb-body">
         <form method="POST" action="">
-
             <label>
-                <div class="foto">Foto</div>
+                <div class="lbl">Foto</div>
                 <input type="file" name="photo">
             </label>
+
             <label>
                 <div class="lbl">Nome</div>
                 <input type="text" name="name">
             </label>
+
             <label>
                 <div class="lbl">Usuário</div>
                 <input type="text" name="username">
             </label>
+
             <label>
                 <div class="lbl">Senha</div>
                 <input type="text" name="pass">
             </label>
+
             <label>
                 <div class="lbl">Email</div>
                 <input type="text" name="email">
             </label>
+
             <label>
                 <div class="lbl">Data de Nascimento</div>
                 <input type="date" name="birthdate">
@@ -68,9 +75,6 @@ if(!empty($_POST )){
             <div class="form-actions">
                 <button type="submit">Enviar</button>
             </div>
-
-
-
 
         </form>
     </div>

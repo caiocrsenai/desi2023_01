@@ -86,11 +86,7 @@
                                 <td>12 Agosto 2024</td>
                                 <td>R$126,35</td>
                                 <td>
-                                    <div class="tbl-status color-yellow">
-
-                                        Em análise
-
-                                    </div>
+                                    <div class="tbl-status color-yellow">Em análise</div>
                                 </td>
                             </tr>
                         </tbody>
