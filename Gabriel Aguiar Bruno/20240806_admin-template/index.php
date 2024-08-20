@@ -1,9 +1,8 @@
 <?php
-	include('includes/connect.php')
+include_once('includes/connect.php');
 ?>
-
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 
 <head>
 	<meta charset="UTF-8">
@@ -21,26 +20,22 @@
 <body>
 
 	<div class="main-container">
-		<?php 
-		include_once('includes/header.php'); 
-		?>
+		<?php include_once('includes/header.php'); ?>
 		<div class="mc-bottom">
-			<?php 
-			include_once('includes/menu.php'); 
-			?>
+			<?php include_once('includes/menu.php'); ?>
 			<section class="main-content">
 				<div class="main-content-inside">
-					<?php 
+					<?php
 					$page_default = 'inicial';
 					$page = $page_default;
-					if(!empty($_GET['page'])){
+					if (!empty($_GET['page'])) {
 						$page = $_GET['page'];
 					}
-					$page_url = 'pages/'.$page.'.php';
-					if(file_exists($page_url)){
-						include_once($page_url); 
+					$page_url = 'pages/' . $page . '.php';
+					if (file_exists($page_url)) {
+						include_once($page_url);
 					}else{
-						include_once('pages/'.$page_default.'.php'); 
+						include_once('pages/' . $page_default . '.php');
 					}
 					?>
 				</div>

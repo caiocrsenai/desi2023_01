@@ -1,21 +1,22 @@
 <?php
-//var_dump($_POST);    
+//var_dump($_POST);
 if(!empty($_POST)){
     $sql = "
-    INSERT INTO user 
+    INSERT INTO user
     (pass, username, email, name, birthdate, photo, cep, id_city, id_state)
-    VALUES 
+    VALUES
     (
-    '".$_POST['pass']."', 
-    '".$_POST['username']."', 
-    '".$_POST['email']."', 
-    '".$_POST['name']."', 
-    '".$_POST['birthdate']."', 
-    '".$_POST['photo']."', 
-    '".$_POST['cep']."', 
-    '".$_POST['id_city']."', 
+    '".$_POST['pass']."',
+    '".$_POST['username']."',
+    '".$_POST['email']."',
+    '".$_POST['name']."',
+    '".$_POST['birthdate']."',
+    '".$_POST['photo']."',
+    '".$_POST['cep']."',
+    '".$_POST['id_city']."',
     '".$_POST['id_state']."'
-    )";
+    )
+    ";
     $result = $con->query($sql);
 }
 ?>
@@ -26,51 +27,50 @@ if(!empty($_POST)){
     </div>
     <div class="cb-body">
         <form method="POST" action="">
-
             <label>
                 <div class="lbl">Foto</div>
-                <input type="file" name = "photo">
+                <input type="file" name="photo">
             </label>
 
             <label>
                 <div class="lbl">Nome</div>
-                <input type="text" name = "name">
+                <input type="text" name="name">
             </label>
 
             <label>
                 <div class="lbl">Usuário</div>
-                <input type="text" name = "username">
+                <input type="text" name="username">
             </label>
 
             <label>
                 <div class="lbl">Senha</div>
-                <input type="text" name = "pass">
+                <input type="text" name="pass">
             </label>
 
             <label>
                 <div class="lbl">Email</div>
-                <input type="text" name = "email">
-            </label>    
-
-            <label>
-                <div class="lbl">Data de Nascimento</div>
-                <input type="date" name = "birthdate">
+                <input type="text" name="email">
             </label>
 
             <label>
-                <div class="lbl">CEP</div>
-                <input type="text" name = "cep">
-            </label>   
+                <div class="lbl">Data de Nascimento</div>
+                <input type="date" name="birthdate">
+            </label>
+
+            <label>
+                <div class="lbl">Cep</div>
+                <input type="text" name="cep">
+            </label>
 
             <label>
                 <div class="lbl">Estado</div>
-                <input type="text" name = "id_state">
-            </label> 
+                <input type="text" name="id_state">
+            </label>
 
             <label>
                 <div class="lbl">Cidade</div>
-                <input type="text" name = "id_city">
-            </label> 
+                <input type="text" name="id_city">
+            </label>
 
             <div class="form-actions">
                 <button type="submit">Enviar</button>
