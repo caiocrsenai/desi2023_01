@@ -14,12 +14,6 @@
                     Formulário
                 </a>
             </li>
-            <li>
-                <a href="?page=usuarios">
-                    <i class="fa-solid fa-gauge"></i>
-                    Usuários
-                </a>
-            </li>
         </ul>
     </div>
 </nav>
