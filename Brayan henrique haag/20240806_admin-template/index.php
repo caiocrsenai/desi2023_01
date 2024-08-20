@@ -2,7 +2,7 @@
 include_once('includes/connect.php');
 ?>
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 
 <head>
 	<meta charset="UTF-8">
