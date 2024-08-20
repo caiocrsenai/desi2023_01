@@ -1,75 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link
-		href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
-		rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="assets/vendors/fontawesome-free-6.6.0-web/css/all.min.css">
-	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
-</head>
-
-<body>
-
-	<div class="main-container">
-		<header class="mc-top">
-			<div class="header-logo">
-				<img src="assets/images/logo-white.png">
-			</div>
-			<div class="header-content">
-				<div class="hc-search">
-					<label class="search-container">
-						<i class="fa-solid fa-magnifying-glass"></i>
-						<input type="text">
-					</label>
-				</div>
-				<div class="hc-options">
-					<div class="option-item">
-						<i class="fa-regular fa-bell"></i>
-					</div>
-					<div class="option-item">
-						<i class="fa-solid fa-globe"></i>
-					</div>
-					<div class="option-item">
-						<i class="fa-solid fa-gear"></i>
-					</div>
-					<div class="option-item menu">
-						<div class="menu-container">
-							<div class="image"
-								style="background-image: url(https://emilus.themenate.net/img/avatars/thumb-1.jpg);">
-							</div>
-							<div class="infos-ct">
-								<div class="name">Nicolas Gonçalves Sombrio</div>
-								<div class="info">Desenvolvedor Full-Stack</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</header>
-		<div class="mc-bottom">
-			<nav class="main-menu">
-				<div class="main-menu-inside">
-					<div class="title">Dashboard</div>
-					<ul>
-						<li>
-							<a href="">
-								<i class="fa-solid fa-gauge"></i>
-								Inicial
-							</a>
-						</li>
-						<li><a href=""><i class="fa-solid fa-gauge"></i>Inicial</a></li>
-					</ul>
-				</div>
-			</nav>
-			<section class="main-content">
-				<div class="main-content-inside">
-					<div class="initial-container-top">
+<<<<<<< HEAD
+<div class="initial-container-top">
 						<div class="ict-left">
 							<div class="ict-line-container">
 								<div class="container-box">
@@ -198,6 +128,47 @@
 							</form>
 						</div>
 					</div>
+=======
+<?php
+include_once('includes/connect.php');
+?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+		rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="assets/vendors/fontawesome-free-6.6.0-web/css/all.min.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+</head>
+
+<body>
+
+	<div class="main-container">
+		<?php include_once('includes/header.php'); ?>
+		<div class="mc-bottom">
+			<?php include_once('includes/menu.php'); ?>
+			<section class="main-content">
+				<div class="main-content-inside">
+					<?php
+					$page_default = 'inicial';
+					$page = $page_default;
+					if (!empty($_GET['page'])) {
+						$page = $_GET['page'];
+					}
+					$page_url = 'pages/' . $page . '.php';
+					if (file_exists($page_url)) {
+						include_once($page_url);
+					}else{
+						include_once('pages/' . $page_default . '.php');
+					}
+					?>
 				</div>
 			</section>
 		</div>
@@ -206,3 +177,4 @@
 </body>
 
 </html>
+>>>>>>> main
