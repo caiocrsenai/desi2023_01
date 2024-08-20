@@ -27,7 +27,7 @@
 							<div class="cb-title">Formulário</div>
 						</div>
 						<div class="cb-body">
-							<form method="POST" action="">
+							<form method="POST" action="" id="userForm" name="userForm" novalidade>
 
 							<label>
 									<div class="lbl">Foto</div>
