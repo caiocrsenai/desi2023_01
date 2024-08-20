@@ -17,7 +17,8 @@
                     <tr>
                         <td>
                             <div class="tbl-info-circle-ct">
-                                <span class="circle" style="background-color: #04d182;">CB</span>
+                                <span class="circle"
+                                    style="background-color: #04d182;">CB</span>
                                 Clayton Bates
                             </div>
                         </td>
@@ -30,7 +31,8 @@
                     <tr>
                         <td>
                             <div class="tbl-info-circle-ct">
-                                <span class="circle" style="background-color: #fa8c16;">GB</span>
+                                <span class="circle"
+                                    style="background-color: #fa8c16;">GB</span>
                                 Gabriel Frazier
                             </div>
                         </td>
@@ -43,7 +45,8 @@
                     <tr>
                         <td>
                             <div class="tbl-info-circle-ct">
-                                <span class="circle" style="background-color: #1890ff;">DH</span>
+                                <span class="circle"
+                                    style="background-color: #1890ff;">DH</span>
                                 Debra Hamilton
                             </div>
                         </td>
@@ -56,7 +59,8 @@
                     <tr>
                         <td>
                             <div class="tbl-info-circle-ct">
-                                <span class="circle" style="background-color: #1890ff;">SW</span>
+                                <span class="circle"
+                                    style="background-color: #1890ff;">SW</span>
                                 Stacey Ward
                             </div>
                         </td>

@@ -1,18 +1,22 @@
 <?php
-var_dump($_POST);
-if (!empty($_POST)) {
-    $sql = "INSERT INTO user
-    (pass, username, email, name, birthdate, photo, cep, id_city, id_state) 
-    VALUES 
-    ('" . $_POST['pass'] . "',
-     '" . $_POST['username'] . "',
-    '" . $_POST['email'] . "', 
-    '" . $_POST['name'] . "', 
-    '" . $_POST['birthdate'] . "',
-    '" . $_POST['photo'] . "',
-    '" . $_POST['cep'] . "',
-    '" . $_POST['id_city'] . "',
-    '" . $_POST['id_state'] . "')";
+//var_dump($_POST);
+if(!empty($_POST)){
+    $sql = "
+    INSERT INTO user
+    (pass, username, email, name, birthdate, photo, cep, id_city, id_state)
+    VALUES
+    (
+    '".$_POST['pass']."',
+    '".$_POST['username']."',
+    '".$_POST['email']."',
+    '".$_POST['name']."',
+    '".$_POST['birthdate']."',
+    '".$_POST['photo']."',
+    '".$_POST['cep']."',
+    '".$_POST['id_city']."',
+    '".$_POST['id_state']."'
+    )
+    ";
     $result = $con->query($sql);
 }
 ?>
@@ -27,6 +31,7 @@ if (!empty($_POST)) {
                 <div class="lbl">Foto</div>
                 <input type="file" name="photo">
             </label>
+
             <label>
                 <div class="lbl">Nome</div>
                 <input type="text" name="name">
@@ -36,30 +41,37 @@ if (!empty($_POST)) {
                 <div class="lbl">Usuário</div>
                 <input type="text" name="username">
             </label>
+
             <label>
                 <div class="lbl">Senha</div>
                 <input type="text" name="pass">
             </label>
+
             <label>
-                <div class="lbl">E-Mail</div>
+                <div class="lbl">Email</div>
                 <input type="text" name="email">
             </label>
+
             <label>
                 <div class="lbl">Data de Nascimento</div>
                 <input type="date" name="birthdate">
             </label>
+
             <label>
                 <div class="lbl">Cep</div>
                 <input type="text" name="cep">
             </label>
+
             <label>
                 <div class="lbl">Estado</div>
                 <input type="text" name="id_state">
             </label>
+
             <label>
                 <div class="lbl">Cidade</div>
                 <input type="text" name="id_city">
             </label>
+
             <div class="form-actions">
                 <button type="submit">Enviar</button>
             </div>
