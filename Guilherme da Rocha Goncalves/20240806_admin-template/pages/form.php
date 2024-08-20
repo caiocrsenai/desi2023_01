@@ -1,24 +1,15 @@
 <?php
-//var_dump($_POST);
-if(!empty($_POST)){
-    $sql = "
-    INSERT INTO user
-    (pass, username, email, name, birthdate, photo, cep, id_city, id_state)
-    VALUES
-    (
-    '".$_POST['pass']."',
-    '".$_POST['username']."',
-    '".$_POST['email']."',
-    '".$_POST['name']."',
-    '".$_POST['birthdate']."',
-    '".$_POST['photo']."',
-    '".$_POST['cep']."',
-    '".$_POST['id_city']."',
-    '".$_POST['id_state']."'
-    )
-    ";
-    $result = $con->query($sql);
-}
+
+    var_dump($_POST);
+    if(!empty($_POST) || true){
+        $sql = "
+        INSERT INTO user (pass, username, email, name, birthdate, photo, cep, id_city, id_state) 
+        VALUES 
+        ('pass', 'username', 'email', 'name', '2024-08-14', 'photo', '89230560', '451', '125')
+        ";
+        $result = $con->query($sql);
+    }
+
 ?>
 
 <div class="container-box cb-form-max-width align-center flex-1">
@@ -71,6 +62,7 @@ if(!empty($_POST)){
                 <div class="lbl">Cidade</div>
                 <input type="text" name="id_city">
             </label>
+            
 
             <div class="form-actions">
                 <button type="submit">Enviar</button>
