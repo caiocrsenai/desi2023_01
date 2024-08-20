@@ -17,7 +17,7 @@
                 <i class="fa-solid fa-globe"></i>
             </div>
             <div class="option-item">
-                <i class="fa-solid fa-gear"></i>
+                <i class="fa-solid fa-gear"></i> 
             </div>
             <div class="option-item menu">
                 <div class="menu-container">
@@ -25,7 +25,7 @@
                         style="background-image: url(https://emilus.themenate.net/img/avatars/thumb-1.jpg);">
                     </div>
                     <div class="infos-ct">
-                        <div class="name">Caio Cidral Ramos</div>
+                        <div class="name">Nicolas Gonçalves Sombrio</div>
                         <div class="info">Desenvolvedor Full-Stack</div>
                     </div>
                 </div>
