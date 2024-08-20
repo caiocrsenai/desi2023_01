@@ -24,13 +24,13 @@ if (!empty($_POST)) {
     }
 }
 ?>
-v1.0.0
+
 <div class="container-box cb-form-max-width align-center flex-1">
     <div class="cb-header">
         <div class="cb-title">Formulário</div>
     </div>
     <div class="cb-body">
-        <form method="POST" action="" id="userForm" name="userForm" novalidate>
+        <form method="POST" action="" id="userForm" name="userForm">
             <label>
                 <div class="lbl">Foto</div>
                 <input type="file" name="photo">
