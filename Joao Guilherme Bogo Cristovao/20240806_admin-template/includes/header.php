@@ -22,7 +22,7 @@
             <div class="option-item menu">
                 <div class="menu-container">
                     <div class="image"
-                        style="background-image: url(https://i.pinimg.com/474x/d7/b4/fd/d7b4fd72edae50a8d5ba52f60c8ead29.jpg);">
+                        style="background-image: url(https://media.tenor.com/84fy0eER_aMAAAAM/breaking-bad.gif);">
                     </div>
                     <div class="infos-ct">
                         <div class="name">João Bogo</div>
