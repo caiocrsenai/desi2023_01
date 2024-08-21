@@ -18,6 +18,10 @@ body {
 	flex: 1;
 }
 
+.hide {
+	display: none;	
+}
+
 .align-center {
 	margin-left: auto;
 	margin-right: auto;
@@ -388,11 +392,11 @@ body {
 		}
 
 		.form-actions {
-			margin-top: 15px;
 			display: flex;
 			justify-content: flex-end;
+			margin-top: 15px;
+
 			button {
-				
 				display: flex;
 				align-items: center;
 				justify-content: center;
