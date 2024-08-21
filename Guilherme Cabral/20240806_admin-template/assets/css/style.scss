@@ -16,6 +16,11 @@ body {
 
 .flex-1 {
 	flex: 1;
+
+}
+
+.hide {
+	display: none;
 }
 
 .align-center {
@@ -392,9 +397,8 @@ body {
 			justify-content: flex-end;
 			margin-top: 15px;
 
-
 			button {
-				display: flex;			
+				display: flex;
 				align-items: center;
 				justify-content: center;
 				min-width: 80px;
@@ -408,9 +412,6 @@ body {
 				border: 0;
 				cursor: pointer;
 			}
-
 		}
-
-
 	}
 }
