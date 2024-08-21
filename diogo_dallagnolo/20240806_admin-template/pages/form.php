@@ -68,13 +68,38 @@ v1.0.0
 
             <label>
                 <div class="lbl">Estado</div>
-                <input type="text" name="id_state">
+                <select name="id_state">
+                    <option selected disabled style="display: n;">Selecione o estado</option>
+                    <?php
+                    $sql = "SELECT * FROM state";
+                    $result = $con->query($sql);
+
+                    if ($result->num_rows > 0) {
+                        while ($row = $result->fetch_object()) {
+                            echo '<option value="'. $row->id_state .'">'. $row->nome .' ('. $row->uf .')</option>';
+                        }
+                    }
+                    ?>
+                </select>
             </label>
 
             <label>
                 <div class="lbl">Cidade</div>
-                <input type="text" name="id_city">
+                <select name="id_city">
+                    <option selected disabled style="display: none;">Selecione o cidade</option>
+                    <?php
+                    $sql = "SELECT * FROM city";
+                    $result = $con->query($sql);
+
+                    if ($result->num_rows > 0) {
+                        while ($row = $result->fetch_object()) {
+                            echo '<option value="'. $row->id_city .'" data-uf="'. $row->uf . ' "class = "hide">'. $row->nome .'</option>';
+                        }
+                    }
+                    ?>
+                </select>
             </label>
+
 
             <div class="form-actions">
                 <button type="submit">Enviar</button>
@@ -85,6 +110,16 @@ v1.0.0
 </div>
 
 <script>
+
+    $(function(){
+        alert('Saindo mais cedo');
+    });
+
+    $(function(){
+
+    });
+
+
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     function validateForm() {
