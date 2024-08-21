@@ -22,11 +22,11 @@
             <div class="option-item menu">
                 <div class="menu-container">
                     <div class="image"
-                        style="background-image: url(https://upload.wikimedia.org/wikipedia/commons/e/e8/Ronaldinho_in_2019.jpg);">
+                        style="background-image: url(https://emilus.themenate.net/img/avatars/thumb-1.jpg);">
                     </div>
                     <div class="infos-ct">
-                        <div class="name">João Victor Corrêa</div>
-                        <div class="info">Consultor de vendas</div>
+                        <div class="name">João Victor Corrêa </div>
+                        <div class="info">Consultor de Vendas</div>
                     </div>
                 </div>
             </div>
