@@ -1,14 +1,8 @@
 <?php
-
-
 include_once('includes/connect.php');
-
 ?>
-
-
-
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 
 <head>
 	<meta charset="UTF-8">
@@ -21,46 +15,35 @@ include_once('includes/connect.php');
 		rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="assets/vendors/fontawesome-free-6.6.0-web/css/all.min.css">
 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	
+	<script src="assets/js/jquery-3.7.1.min.js"></script>
 </head>
 
 <body>
 
 	<div class="main-container">
-		<?php
-		include_once('includes/header.php');
-		?>
+		<?php include_once('includes/header.php'); ?>
 		<div class="mc-bottom">
-			<?php
-			include_once('includes/menu.php');
-			?>
+			<?php include_once('includes/menu.php'); ?>
 			<section class="main-content">
 				<div class="main-content-inside">
-
 					<?php
-                    
 					$page_default = 'inicial';
-                    $page = $page_default;
-					$page = 'inicial';
-					
-					if(!empty($_GET['page'])){
-					$page = $_GET['page'];	
+					$page = $page_default;
+					if (!empty($_GET['page'])) {
+						$page = $_GET['page'];
 					}
 					$page_url = 'pages/' . $page . '.php';
-					if(file_exists($page_url)){
+					if (file_exists($page_url)) {
 						include_once($page_url);
-					}
-					else{
+					}else{
 						include_once('pages/' . $page_default . '.php');
 					}
-					
 					?>
-
 				</div>
 			</section>
 		</div>
 	</div>
-
-
 
 </body>
 
