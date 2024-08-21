@@ -1,0 +1,26 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100%;
+    font-family: "Roboto", sans-serif;
+}
+
+.main-container {
+    text-align: center;
+    padding: 80px;
+}
+
+.main-container .link {
+    font-size: 30px;
+    padding: 5px;
+
+}
+
+.main-container .link a {
+    color: red;
+    text-decoration: none;
+}

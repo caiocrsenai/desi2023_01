@@ -1,0 +1,26 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100%;
+    font-family: "Roboto", sans-serif;
+}
+
+.main-container {
+    text-align: center;
+    padding: 30px;
+
+}
+
+.main-container h1 {
+    padding: 5px;
+    color: blue;
+}
+
+.main-container p {
+    padding: 15px;
+    color: rgb(70, 68, 68);
+}

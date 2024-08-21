@@ -8,9 +8,10 @@
                     Inicial
                 </a>
             </li>
-            <li><a href="?page=form">
+            <li>
+                <a href="?page=form">
                     <i class="fa-solid fa-gauge"></i>
-                    formulário
+                    Formulário
                 </a>
             </li>
             <li>

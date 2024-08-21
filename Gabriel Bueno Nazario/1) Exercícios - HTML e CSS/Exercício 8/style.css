@@ -1,0 +1,31 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100%;
+    font-family: "Roboto", sans-serif;
+}
+
+.main-container {
+display: flex;
+align-items: center;
+justify-content: space-between;
+min-height: 100px;
+background-color: aqua;
+padding: 30px;
+}
+
+.main-container .txt1 {
+    padding: 5px;
+}
+
+.main-container .txt2 {
+    padding: 5px;
+}
+
+.main-container .txt3 {
+    padding: 5px;
+}

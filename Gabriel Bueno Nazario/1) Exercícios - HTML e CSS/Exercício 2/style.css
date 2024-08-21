@@ -1,0 +1,22 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100%;
+    font-family: "Roboto", sans-serif;
+}
+
+.main-container {
+    text-align: center;
+    padding: 20px;
+}
+
+.main-container ul li {
+    font-size: 26px;
+    display: block;
+    padding: 12px 24px;
+    color: green;
+}
