@@ -18,6 +18,10 @@ body {
 	flex: 1;
 }
 
+.hide {
+	display: none;
+}
+
 .align-center {
 	margin-left: auto;
 	margin-right: auto;
@@ -388,23 +392,24 @@ body {
 		}
 
 		.form-actions {
-			margin-top: 15px;
-			justify-content: flex-end;
 			display: flex;
+			justify-content: flex-end;
+			margin-top: 15px;
+
 			button {
 				display: flex;
 				align-items: center;
+				justify-content: center;
 				min-width: 80px;
 				font-size: 14px;
 				height: 40px;
-				justify-content: center;
-				background-color: #3e79f7;
 				padding-left: 15px;
 				padding-right: 15px;
 				border-radius: 10px;
+				background-color: #3e79f7;
+				color: #FFF;
 				border: 0;
 				cursor: pointer;
-				color: #FFF;
 			}
 		}
 	}

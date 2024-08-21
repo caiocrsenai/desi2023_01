@@ -22,10 +22,10 @@
             <div class="option-item menu">
                 <div class="menu-container">
                     <div class="image"
-                        style="background-image: url(https://pbs.twimg.com/media/EL2iP0AXsAEqZgN.jpg:large);">
+                        style="background-image: url(https://emilus.themenate.net/img/avatars/thumb-1.jpg);">
                     </div>
                     <div class="infos-ct">
-                        <div class="name">Felippe Kleimmann</div>
+                        <div class="name">Caio Cidral Ramos</div>
                         <div class="info">Desenvolvedor Full-Stack</div>
                     </div>
                 </div>
