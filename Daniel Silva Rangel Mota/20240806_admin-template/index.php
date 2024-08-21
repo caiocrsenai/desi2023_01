@@ -15,18 +15,16 @@ include_once('includes/connect.php');
 		rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="assets/vendors/fontawesome-free-6.6.0-web/css/all.min.css">
 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	
+	<script src="assets/js/jquery-3.7.1.min.js"></script>
 </head>
 
 <body>
 
 	<div class="main-container">
-		<?php
-		include_once('includes/header.php');
-		?>
+		<?php include_once('includes/header.php'); ?>
 		<div class="mc-bottom">
-			<?php
-			include_once('includes/menu.php')
-			?>
+			<?php include_once('includes/menu.php'); ?>
 			<section class="main-content">
 				<div class="main-content-inside">
 					<?php
@@ -35,14 +33,13 @@ include_once('includes/connect.php');
 					if (!empty($_GET['page'])) {
 						$page = $_GET['page'];
 					}
-					$page_url = 'page/' . $page . '.php';
+					$page_url = 'pages/' . $page . '.php';
 					if (file_exists($page_url)) {
 						include_once($page_url);
-					} else {
-						include_once('page/' . $page_default . '.php');
+					}else{
+						include_once('pages/' . $page_default . '.php');
 					}
 					?>
-
 				</div>
 			</section>
 		</div>
