@@ -14,18 +14,12 @@
                     Formulário
                 </a>
             </li>
-
             <li>
                 <a href="?page=usuarios">
                     <i class="fa-solid fa-gauge"></i>
-                    Usuarios
+                    Usuários
                 </a>
             </li>
-
-            
-
-
-            
         </ul>
     </div>
 </nav>
