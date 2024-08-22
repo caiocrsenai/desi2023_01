@@ -24,6 +24,7 @@ if (!empty($_POST)) {
     }
 }
 ?>
+v1.0.0
 <div class="container-box cb-form-max-width align-center flex-1">
     <div class="cb-header">
         <div class="cb-title">Formulário</div>
@@ -65,43 +66,14 @@ if (!empty($_POST)) {
                 <input type="text" name="cep" required>
             </label>
 
-
-
             <label>
                 <div class="lbl">Estado</div>
-                <select name="id_state">
-                    <option selected disabled style="display: none ;">Selecione o estado</option><!-- para n ser possivel selecionar o selecione o estado -->
-                    <?php
-
-                    $sql = "SELECT * FROM state";
-                    $result = $con->query($sql);
-                    if ($result->num_rows > 0) {
-                        while ($row = $result->fetch_object()) {
-                            echo '<option value="' . $row->id_state . '">' . $row->nome . ' (' . $row->uf . ')</option>';
-                        }
-                    }
-                    ?>
-
-                </select>
+                <input type="text" name="id_state">
             </label>
-
 
             <label>
                 <div class="lbl">Cidade</div>
-                <select name="id_city">
-                    <option selected disabled style="display: none ;">Selecione a cidade</option><!-- para n ser possivel selecionar o selecione o estado -->
-                    <?php
-
-                    $sql = "SELECT * FROM city";
-                    $result = $con->query($sql);
-                    if ($result->num_rows > 0) {
-                        while ($row = $result->fetch_object()) {
-                            echo '<option value="' . $row->id_city . '" data-uf="' . $row->uf . '" class="hide">' . $row->nome . '</option>';
-                        }
-                    }
-                    ?>
-
-                </select>
+                <input type="text" name="id_city">
             </label>
 
             <div class="form-actions">
@@ -113,14 +85,6 @@ if (!empty($_POST)) {
 </div>
 
 <script>
-
-    $(function(){
-        alert('ae');
-    });
-    $(function(){
-        
-    });
-
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     function validateForm() {
