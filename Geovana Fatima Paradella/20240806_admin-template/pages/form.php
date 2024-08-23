@@ -32,50 +32,50 @@ if (!empty($_POST)) {
         <form method="POST" action="" id="userForm" name="userForm" novalidate>
             <label>
                 <div class="lbl">Foto</div>
-                <input type="file" name="photo">
+                <input type="file" name=" photo ">
             </label>
 
             <label>
                 <div class="lbl">Nome</div>
-                <input type="text" name="name" required>
+                <input type="text" name=" name " required>
             </label>
 
             <label>
                 <div class="lbl">Usuário</div>
-                <input type="text" name="username" required>
+                <input type="text" name=" username " required>
             </label>
 
             <label>
                 <div class="lbl">Senha</div>
-                <input type="password" name="pass" required>
+                <input type="password" name=" pass " required>
             </label>
 
             <label>
                 <div class="lbl">Email</div>
-                <input type="email" name="email" id="email" required>
+                <input type="email" name="email" id=" email " required>
             </label>
 
             <label>
                 <div class="lbl">Data de Nascimento</div>
-                <input type="date" name="birthdate" required>
+                <input type="date" name=" birthdate " required>
             </label>
 
             <label>
                 <div class="lbl">Cep</div>
-                <input type="text" name="cep" required>
+                <input type="text" name=" cep " required>
             </label>
 
             <label>
                 <div class="lbl">Estado</div>
                 <select name="id_state">
-                    <option selected disabled style="display: none;">Selecione o estado</option>
+                    <option selected disabled style="display: none;"value="">Selecione o estado</option>
                     <?php
                     $sql = "SELECT * FROM state";
                     $result = $con->query($sql);
 
                     if ($result->num_rows > 0) {
                         while ($row = $result->fetch_object()) {
-                            echo '<option value="'. $row->id_state .'">'. $row->nome .' ('. $row->uf .')</option>';
+                            echo '<option value="' . $row->id_state . '">' . $row->nome . ' (' . $row->uf . ')</option>';
                         }
                     }
                     ?>
@@ -85,14 +85,14 @@ if (!empty($_POST)) {
             <label>
                 <div class="lbl">Cidade</div>
                 <select name="id_city">
-                    <option selected disabled style="display: none;">Selecione o cidade</option>
+                    <option selected disabled style="display: none;" value="">Selecione o cidade</option>
                     <?php
                     $sql = "SELECT * FROM city";
                     $result = $con->query($sql);
 
                     if ($result->num_rows > 0) {
                         while ($row = $result->fetch_object()) {
-                            echo '<option value="'. $row->id_city .'" data-uf="'. $row->uf .'" class="hide">'. $row->nome .'</option>';
+                            echo '<option value="' . $row->id_city . '" data-uf="' . $row->uf . '" class="hide">' . $row->nome . '</option>';
                         }
                     }
                     ?>
@@ -108,13 +108,32 @@ if (!empty($_POST)) {
 </div>
 
 <script>
+    _qs('#userForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const _this = this;
+        _elements = _this._qsa('input, select');
 
-    $(function(){
-        alert('ae');
+        _elements.forEach(function(_element) {
+            const val = _element.value;
+
+            if (val == ""){
+                _element.classList.add('error');
+            }else{
+                _element.classList.remove('error');
+            }
+        });
     });
 
+    _qs('#userForm')._qsa('input, select').forEach(function(_element) {
+        _element.addEventListener('keyup', function(event) {
+            const _this = this;
+            val = _element.value;
+            console.dir(val);
+            _this.classList.remove('error');
+        });
+    });
 
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    /* const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     function validateForm() {
         const form = document.getElementById('userForm');
@@ -137,4 +156,5 @@ if (!empty($_POST)) {
             alert('Favor preencher todos os campos obrigatórios.');
         }
     });
+ */
 </script>
