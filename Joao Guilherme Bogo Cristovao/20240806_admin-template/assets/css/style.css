@@ -249,6 +249,10 @@ body {
       border-radius: 6px;
       outline: 0;
       color-scheme: dark; }
+      .container-box form label input.error,
+      .container-box form label select.error,
+      .container-box form label textarea.error {
+        border-color: #d86060; }
   .container-box form .form-actions {
     display: flex;
     justify-content: flex-end;
