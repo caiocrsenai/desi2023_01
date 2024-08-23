@@ -388,6 +388,10 @@ body {
 				border-radius: 6px;
 				outline: 0;
 				color-scheme: dark;
+
+				&.error{
+					border-color: #d86060;
+				}
 			}
 		}
 

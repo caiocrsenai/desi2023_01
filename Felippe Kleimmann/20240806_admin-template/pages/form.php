@@ -68,7 +68,7 @@ if (!empty($_POST)) {
             <label>
                 <div class="lbl">Estado</div>
                 <select name="id_state">
-                    <option selected disabled style="display: none;">Selecione o Estado</option>
+                    <option selected disabled style="display: none;" value="">Selecione o Estado</option>
                     <?php
                     $sql = "SELECT * FROM state";
                     $result = $con->query($sql);
@@ -85,7 +85,7 @@ if (!empty($_POST)) {
             <label>
                 <div class="lbl">Cidade</div>
                 <select name="id_city">
-                    <option selected disabled style="display: none;">Selecione a Cidade</option>
+                    <option selected disabled style="display: none;" value="">Selecione a Cidade</option>
                     <?php
                     $sql = "SELECT * FROM city";
                     $result = $con->query($sql);
@@ -109,13 +109,38 @@ if (!empty($_POST)) {
 </div>
 
 <script>
-    $(function() {
-        alert('Qualquer coisa');
+    _qs('#userForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const _this = this,
+            _elements = _this._qsa('input, select');
+
+        console.dir(_elements);
+        console.dir('---------');
+
+        _elements.forEach(function(_element) {
+            const val = _element.value;
+
+            if (val == '') {
+                _element.classList.add('error');
+            } else {
+                _element.classList.remove('error');
+            }
+        });
     });
 
-    $(function() {
+    _qs('#userForm')._qsa('input, select').forEach(function(_element) {
+        _element.addEventListener('keyup', function(event) {
+            const _this = this,
+                val = _element.value;
+
+                _this.classList.remove('error');
+
+            console.dir(val);
+        });
 
     });
+
+    /*
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     function validateForm() {
@@ -139,4 +164,5 @@ if (!empty($_POST)) {
             alert('Favor preencher todos os campos obrigatórios.');
         }
     });
+    */
 </script>
