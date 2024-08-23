@@ -17,6 +17,7 @@ include_once('includes/connect.php');
 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
 	<script src="assets/js/jquery-3.7.1.min.js"></Script>
+	<script src="assets/js/_qs.js"></Script>
 
 </head>
 
