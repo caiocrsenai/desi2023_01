@@ -68,7 +68,7 @@ if (!empty($_POST)) {
             <label>
                 <div class="lbl">Estado</div>
                 <select name="id_state">
-                <option selected disabled style="display: none;">Selecione o Estado</option>
+                <option selected disabled style="display: none;" value ="">Selecione o Estado</option>
 
                 <?php
             $sql = "SELECT * FROM state";
@@ -87,7 +87,7 @@ if (!empty($_POST)) {
             <label>
                 <div class="lbl">Cidade</div>
                 <select name="id_city">
-                <option selected disabled style="display: none;">Selecione a Cidade</option>
+                <option selected disabled style="display: none;" value = "">Selecione a Cidade</option>
 
                 <?php
             $sql = "SELECT * FROM city";
@@ -99,6 +99,7 @@ if (!empty($_POST)) {
                 }
             }
             ?>
+                </select>
             </label>
 
             <div class="form-actions">
@@ -111,13 +112,37 @@ if (!empty($_POST)) {
 
 <script>
 
+    _qs('#userForm').addEventListener('submit', function(event) {
+        event.preventDefault(); 
+        const _this = this,
+            _elements = _this._qsa('input, select');
 
-    $(function(){
-        alert('ae');
+        _elements.forEach(function(_element) {
+            const val = _element.value;
+
+            console.dir(_element);
+            console.dir(val);
+
+            if(val=="") {
+                _element.classList.add('error');
+            } else {
+                _element.classList.remove('error');
+            }
+        });
+
     });
 
-    $()
+    _qs('#userForm')._qsa('input, select').forEach(function(_element) {
 
+        _element.addEventListener('keyup', function(event) {
+            const _this = this,
+            val = _element.value;
+
+            _this.classList.remove('error');
+        });
+    });
+
+/*
 
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -142,4 +167,7 @@ if (!empty($_POST)) {
             alert('Favor preencher todos os campos obrigatórios.');
         }
     });
+    
+    */
+
 </script>
