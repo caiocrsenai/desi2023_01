@@ -16,11 +16,10 @@ body {
 
 .flex-1 {
 	flex: 1;
-	
 }
 
 .hide{
-display: none;
+	display: none;
 }
 
 .align-center {
@@ -389,6 +388,10 @@ display: none;
 				border-radius: 6px;
 				outline: 0;
 				color-scheme: dark;
+
+				&.error{
+					border-color: #d86060;
+				}
 			}
 		}
 
