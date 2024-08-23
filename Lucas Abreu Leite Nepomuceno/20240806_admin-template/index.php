@@ -16,9 +16,12 @@ include_once('includes/connect.php');
 	<link rel="stylesheet" type="text/css" href="assets/vendors/fontawesome-free-6.6.0-web/css/all.min.css">
 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 	
+	<script src="assets/js/jquery-3.7.1.min.js"></script>
+	<script src="assets/js/_qs.js"></script>
 </head>
 
-<body>
+<bod >
+
 
 	<div class="main-container">
 		<?php include_once('includes/header.php'); ?>
@@ -44,6 +47,6 @@ include_once('includes/connect.php');
 		</div>
 	</div>
 
-</body>
+</bod>
 
 </html>
