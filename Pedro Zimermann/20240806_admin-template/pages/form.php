@@ -71,7 +71,7 @@ v1.0.0
             <label>
                 <div class="lbl">Estado</div>
                 <select name="id_state">
-                    <option selected disabled style="display: none;">Selecione o estado</option>
+                    <option selected disabled style="display: none;" value="">Selecione o estado</option>
                     <?php
                     $sql = "SELECT * FROM state";
                     $result = $con->query($sql);
@@ -88,10 +88,10 @@ v1.0.0
 
             <label>
                 <div class="lbl">Cidade</div>
-                
-                
+
+
                 <select name="id_city">
-                    <option selected disabled style="display: none;">Selecione a cidade</option>
+                    <option selected disabled style="display: none;" value="">Selecione a cidade</option>
                     <?php
                     $sql = "SELECT * FROM city";
                     $result = $con->query($sql);
@@ -114,37 +114,59 @@ v1.0.0
 </div>
 
 <script>
-
-$(function(){
-
-    alert('Chegar em casa, acender uma vela, rezar um pai nosso...');
-
-});
-$(function(){
-
-});
-
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    function validateForm() {
-        const form = document.getElementById('userForm');
-        // Get all input fields
-        const fields = form.querySelectorAll('input');
-        let isValid = true;
-
-        let mailField = document.querySelector('#email');
-        if (!emailPattern.test(mailField.value)) {
-            alert('Este email está inadequado.');
-            isValid = false;
-        }
-
-        return isValid;
-    }
-
-    document.getElementById('userForm').addEventListener('submit', function (event) {
-        if (!validateForm()) {
-            event.preventDefault(); // Impede o envio do formulário se a validação falhar
-            alert('Favor preencher todos os campos obrigatórios.');
-        }
+    _qs('#userForm').addEventListener('submit', function (event) {
+        event.preventDefault();
+        const _this = this,
+            _elements = _this._qsa('input, select');
+        _elements.forEach(function (_element) {
+            const val = _element.value;
+            if (val == '') {
+                _element.classList.add('error');
+            } else {
+                _element.classList.remove('error');
+            };
+        });
     });
-</script>
+
+    _qs('#userForm')._qsa('input, select')
+        .forEach(function (_element) {
+            _element.addEventListener('keyup', function (event) {
+                const _this = this,
+                    val = _element.value;
+
+              _this.classList.remove('error');
+            });
+
+        });
+
+
+
+    // $(function () {
+
+    //     alert('...');
+
+    // });
+    //     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    //     function validateForm() {
+    //         const form = document.getElementById('userForm');
+    //         // Get all input fields
+    //         const fields = form.querySelectorAll('input');
+    //         let isValid = true;
+
+    //         let mailField = document.querySelector('#email');
+    //         if (!emailPattern.test(mailField.value)) {
+    //             alert('Este email está inadequado.');
+    //             isValid = false;
+    //         }
+
+    //         return isValid;
+    //     }
+
+    //     document.getElementById('userForm').addEventListener('submit', function (event) {
+    //         if (!validateForm()) {
+    //             event.preventDefault(); // Impede o envio do formulário se a validação falhar
+    //             alert('Favor preencher todos os campos obrigatórios.');
+    //         }
+    //     });
+// </script>
