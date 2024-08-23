@@ -17,10 +17,12 @@ include_once('includes/connect.php');
 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 	
      <script src="assets/js/jquery-3.7.1.min.js">   </script>
+	 <script src="assets/js/_qs.js"> </script>
 
 </head>
 
 <body>
+
 
 	<div class="main-container">
 		<?php include_once('includes/header.php'); ?>

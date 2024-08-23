@@ -66,39 +66,39 @@ if (!empty($_POST)) {
                 <input type="text" name="cep" required>
             </label>
 
-        
+
 
             <label>
                 <div class="lbl">Estado</div>
                 <select name="id_state">
-                    <option selected disabled style="display:nome ;">Selecione o estado</option>
-                <?php
-           $sql = "SELECT * FROM state";
-           $result = $con->query($sql);
+                    <option selected disabled style="display:nome ;" value="">Selecione o estado</option>
+                    <?php
+                    $sql = "SELECT * FROM state";
+                    $result = $con->query($sql);
 
-           if ($result->num_rows > 0) {
-            while ($row = $result->fetch_object()) {
-                echo '<option value="'. $row->id_state .'">'. $row->nome .' ('. $row->uf .')</option>';
-            }
-        }
-        ?>
+                    if ($result->num_rows > 0) {
+                        while ($row = $result->fetch_object()) {
+                            echo '<option value="' . $row->id_state . '">' . $row->nome . ' (' . $row->uf . ')</option>';
+                        }
+                    }
+                    ?>
                 </select>
             </label>
 
             <label>
                 <div class="lbl">Cidade</div>
                 <select name="id_city">
-                    <option selected disabled style="display:nome ;">Selecione a cidade</option>
-                <?php
-           $sql = "SELECT * FROM city";
-           $result = $con->query($sql);
+                    <option selected disabled style="display:nome ;" value="">Selecione a cidade</option>
+                    <?php
+                    $sql = "SELECT * FROM city";
+                    $result = $con->query($sql);
 
-           if ($result->num_rows > 0) {
-            while ($row = $result->fetch_object()) {
-                echo '<option value="'. $row->id_city .'" data-uf="'. $row->uf .'" class="hide">'. $row->nome .'</option>';
-            }
-        }
-        ?>
+                    if ($result->num_rows > 0) {
+                        while ($row = $result->fetch_object()) {
+                            echo '<option value="' . $row->id_city . '" data-uf="' . $row->uf . '" class="hide">' . $row->nome . '</option>';
+                        }
+                    }
+                    ?>
                 </select>
 
             </label>
@@ -111,37 +111,64 @@ if (!empty($_POST)) {
     </div>
 </div>
 
+
 <script>
+    _qs('#userForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const _this = this,
+            _elements = _this._qsa('input, select');
 
-    $(function(){
-        alert('ae');
+        console.dir(_elements);
+        console.dir('--------');
+
+
+        _elements.forEach(function(_element) {
+            const val = _element.value;
+
+            if (val == '') {
+                _element.classList.add('error');
+            } else {
+                _element.classList.remove('error');
+            }
+        });
     });
 
-    $(function(){
+    _qs('#userForm')._qsa('input, select').forEach(function(_element) {
+        _element.addEventListener('keyup', function(event) {
+            const _this = this,
+                val = _element.value;
 
+            _this.classList.remove('error');
+
+            console.dir(val);
+
+        });
     });
 
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    function validateForm() {
-        const form = document.getElementById('userForm');
-        // Get all input fields
-        const fields = form.querySelectorAll('input');
-        let isValid = true;
+    /*
+     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-        let mailField = document.querySelector('#email');
-        if (!emailPattern.test(mailField.value)) {
-            alert('Este email está inadequado.');
-            isValid = false;
-        }
+     function validateForm() {
+         const form = document.getElementById('userForm');
+         // Get all input fields
+         const fields = form.querySelectorAll('input');
+         let isValid = true;
 
-        return isValid;
-    }
+         let mailField = document.querySelector('#email');
+         if (!emailPattern.test(mailField.value)) {
+             alert('Este email está inadequado.');
+             isValid = false;
+         }
 
-    document.getElementById('userForm').addEventListener('submit', function(event) {
-        if (!validateForm()) {
-            event.preventDefault(); // Impede o envio do formulário se a validação falhar
-            alert('Favor preencher todos os campos obrigatórios.');
-        }
-    });
+         return isValid;
+     }
+
+     document.getElementById('userForm').addEventListener('submit', function(event) {
+         if (!validateForm()) {
+             event.preventDefault(); // Impede o envio do formulário se a validação falhar
+             alert('Favor preencher todos os campos obrigatórios.');
+         }
+     });
+     */
 </script>
