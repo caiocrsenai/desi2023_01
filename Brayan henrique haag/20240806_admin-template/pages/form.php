@@ -69,7 +69,7 @@ if (!empty($_POST)) {
             <label>
                 <div class="lbl">Estado</div>
                 <select name ="id_state" >
-                    <option selected disabled style="display: none;">Selecione o estado</option>
+                    <option selected disabled style="display: none;" value="">Selecione o estado</option>
                    <?php
                     $sql = "SELECT * FROM state";
                     $result = $con->query($sql);
@@ -86,7 +86,7 @@ if (!empty($_POST)) {
             <label>
                 <div class="lbl">Cidade</div>
                 <select name ="id_city" >
-                    <option selected disabled style="display: none;">Selecione a cidade</option>
+                    <option selected disabled style="display: none;" value="">Selecione a cidade</option>
                    <?php
                     $sql = "SELECT * FROM city";
                     $result = $con->query($sql);
@@ -110,11 +110,36 @@ if (!empty($_POST)) {
 
 <script>
 
-    $(function(){
-        alert('ae');
+    _qs('#userForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const _this = this,
+           _elements = _this._qsa('input, select');
+
+
+
+        _elements.forEach(function(_element) {
+            const val = _element.value;
+
+            if(val == ''){
+                _element.classList.add('error');
+            }else{
+                _element.classList.remove('error');
+            }
+
+        });
+    });
+
+    _qs('#userForm')._qsa('input, select').forEach(function(_element) {
+        _element.addEventListener('keyup', function(event) {
+            const _this = this,
+            val = _element.value;
+
+            _this.classList.remove('error');
+        });
     });
 
 
+/*
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     function validateForm() {
@@ -138,4 +163,6 @@ if (!empty($_POST)) {
             alert('Favor preencher todos os campos obrigatórios.');
         }
     });
+*/
+
 </script>
