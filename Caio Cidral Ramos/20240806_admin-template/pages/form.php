@@ -75,7 +75,7 @@ if (!empty($_POST)) {
 
                     if ($result->num_rows > 0) {
                         while ($row = $result->fetch_object()) {
-                            echo '<option value="'. $row->id_state .'">'. $row->nome .' ('. $row->uf .')</option>';
+                            echo '<option value="' . $row->id_state . '">' . $row->nome . ' (' . $row->uf . ')</option>';
                         }
                     }
                     ?>
@@ -92,7 +92,7 @@ if (!empty($_POST)) {
 
                     if ($result->num_rows > 0) {
                         while ($row = $result->fetch_object()) {
-                            echo '<option value="'. $row->id_city .'" data-uf="'. $row->uf .'" class="hide">'. $row->nome .'</option>';
+                            echo '<option value="' . $row->id_city . '" data-uf="' . $row->uf . '" class="hide">' . $row->nome . '</option>';
                         }
                     }
                     ?>
@@ -108,12 +108,17 @@ if (!empty($_POST)) {
 </div>
 
 <script>
+    _qs('#userForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const _this = this,
+            _inputs = _this._qsa('inputs');
 
-    $(function(){
-        alert('ae');
+        console.dir(_inputs);
+
     });
 
 
+    /*
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     function validateForm() {
@@ -137,4 +142,5 @@ if (!empty($_POST)) {
             alert('Favor preencher todos os campos obrigatórios.');
         }
     });
+    */
 </script>
