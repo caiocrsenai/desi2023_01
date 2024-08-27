@@ -134,7 +134,6 @@ if (!empty($_POST)) {
         });
     });
 
-
     // const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     // function validateForm() {
