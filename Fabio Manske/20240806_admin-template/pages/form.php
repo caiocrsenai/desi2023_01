@@ -101,7 +101,7 @@ if (!empty($_POST)) {
 
                     if ($result->num_rows > 0) {
                         while ($row = $result->fetch_object()) {
-                            echo '<option value="' . $row->id_city . '"data-uf="id_uf"' . $row->uf . '" class="hide">' . $row->nome . ' </option>';
+                            echo '<option value="' . $row->id_city . '"data-uf="id_uf"' . $row->uf . '">' . $row->nome . ' </option>';
                         }
                     }
                     ?>
@@ -122,24 +122,40 @@ if (!empty($_POST)) {
         event.preventDefault();
         const _this = this,
             _elements = _this._qsa('input, select');
+        let sendForm = true;
 
 
         _elements.forEach(function(_element) {
             const val = _element.value;
 
             if (val == '') {
+                sendForm = false;
                 _element.classList.add('error');
             } else {
                 _element.classList.remove('error');
 
             }
         });
+
+        if (sendForm == true) {
+            _this.submit();
+        }
+
     });
 
     _qs('#userForm')._qsa('input, select').forEach(function(_element) {
-        _element.addEventListener('keyup', function(event) {
+        const tagName = _element.tagName.toLowerCase();
+        let event = 'keyup';
+
+        if (tagName == 'select') {
+            event = 'change';
+        }
+
+
+
+        _element.addEventListener(event, function(event) {
             const _this = this,
-            val = _element.value;
+                val = _element.value;
 
             console.dir(val);
 
