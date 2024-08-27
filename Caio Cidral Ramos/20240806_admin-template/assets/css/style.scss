@@ -18,6 +18,10 @@ body {
 	flex: 1;
 }
 
+.hide{
+	display: none;
+}
+
 .align-center {
 	margin-left: auto;
 	margin-right: auto;
@@ -384,6 +388,10 @@ body {
 				border-radius: 6px;
 				outline: 0;
 				color-scheme: dark;
+
+				&.error{
+					border-color: #d86060;
+				}
 			}
 		}
 
