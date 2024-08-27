@@ -20,6 +20,14 @@
                     Usuários
                 </a>
             </li>
+
+            <li>
+                <a href="?page=produtos">
+                    <i class="fa-solid fa-thin fa-headphones"></i>
+                    Produtos
+                </a>
+            </li>
+
         </ul>
     </div>
 </nav>
