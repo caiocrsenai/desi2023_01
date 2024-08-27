@@ -14,6 +14,9 @@ body {
 .flex-1 {
   flex: 1; }
 
+.hide {
+  display: none; }
+
 .align-center {
   margin-left: auto;
   margin-right: auto; }
@@ -246,6 +249,10 @@ body {
       border-radius: 6px;
       outline: 0;
       color-scheme: dark; }
+      .container-box form label input.error,
+      .container-box form label select.error,
+      .container-box form label textarea.error {
+        border-color: #d86060; }
   .container-box form .form-actions {
     display: flex;
     justify-content: flex-end;
@@ -264,5 +271,3 @@ body {
       color: #FFF;
       border: 0;
       cursor: pointer; }
-
-/*# sourceMappingURL=style.css.map */
