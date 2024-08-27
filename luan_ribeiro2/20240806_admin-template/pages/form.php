@@ -5,7 +5,7 @@ if (!empty($_POST)) {
     INSERT INTO user
     (pass, username, email, name, birthdate, photo, cep, id_city, id_state)
     VALUES
-    (
+    ( 
     '" . $_POST['pass'] . "',
     '" . $_POST['username'] . "',
     '" . $_POST['email'] . "',
@@ -68,7 +68,7 @@ if (!empty($_POST)) {
             <label>
                 <div class="lbl">Estado</div>
                 <select name="id_state">
-                    <option selected disabled style="display: none;" value="" >Selecione o estado</option>
+                    <option selected disabled style="display: none;" value="">Selecione o estado</option>
                     <?php
                     $sql = "SELECT * FROM state";
                     $result = $con->query($sql);
@@ -85,7 +85,7 @@ if (!empty($_POST)) {
             <label>
                 <div class="lbl">Cidade</div>
                 <select name="id_city">
-                    <option selected disabled style="display: none;" value="" >Selecione o cidade</option>
+                    <option selected disabled style="display: none;" value="">Selecione o cidade</option>
                     <?php
                     $sql = "SELECT * FROM city";
                     $result = $con->query($sql);
@@ -118,21 +118,25 @@ if (!empty($_POST)) {
 
             if (val == '') {
                 _element.classList.add('error');
-            }else{
+            } else {
                 _element.classList.remove('error');
             }
         });
     });
 
     _qs('#userForm')._qsa('input, select').forEach(function(_element) {
-       _element.addEventListener('keyup', function(event) {
-        const _this = this,
-        val = _element.value;
-        _this.classList.remove('error');
+        const tagname = _element.tagname.tolowerCase(),
+        event = 'keyup';
+                  
 
-        console.dir(val);
-    });
-       
+        _element.addEventListener('keyup', function(event) {
+            const _this = this,
+                val = _element.value;
+            _this.classList.remove('error');
+
+            console.dir(val);
+        });
+
     });
 
 
