@@ -97,7 +97,7 @@ if (!empty($_POST)) {
 
                     if ($result->num_rows > 0) {
                         while ($row = $result->fetch_object()) {
-                            echo '<option value="' . $row->id_city . '" data-uf="'.$row->uf.'" class="hide">' . $row->nome . ' </option>';
+                            echo '<option value="' . $row->id_city . '" data-uf="' . $row->uf . '" class="hide" >' . $row->nome . ' </option>';
                         }
                     }
                     ?>
@@ -116,59 +116,90 @@ if (!empty($_POST)) {
 
 
 <script>
-
     _qs("#userForm").addEventListener('submit', function(event) {
         event.preventDefault();
         const _this = this,
             _elements = _this._qsa('input, select');
+        let sendForm = true;
 
-        
+
         /*console.dir(_elements);
         console.dir('----------');*/
 
-        _elements.forEach(function(_element){
+        _elements.forEach(function(_element) {
             const val = _element.value;
 
-            if (val ==""){
+            if (val == "") {
+                sendForm = false;
                 _element.classList.add('error');
-            } else{
+            } else {
                 _element.classList.remove('error');
+            }
+        });
+        if (sendForm == true) {
+            _this.submit();
+        }
+    });
+
+
+    _qs('[name="id_state"]').addEventListener('change', function(event) {
+        const _this = this,
+            idState = _this.value,
+            _city = _qs('[name="id_city"]');
+
+        _city._qsa('option').forEach(function(_optCity) {
+            const optCityIdState = _optCity.getAttribute('data-uf');
+
+            if (optCityIdState == idState) {
+                console.dir(_optCity)
+                _optCity.classList.remove('hide');
+            } else {
+                _optCity.classList.add('hide');
             }
         });
     });
 
-    _qs("#userForm")._qsa('input, select').forEach(function(_element){
-        _element.addEventListener('keyup', function(event) {
+
+
+    _qs("#userForm")._qsa('input, select').forEach(function(_element) {
+
+        const tagName = _element.tagName.toLowerCase();
+        let event = 'keyup';
+
+        if (tagName == 'select') {
+            event = 'change';
+        }
+
+        _element.addEventListener(event, function(event) {
             const _this = this,
                 val = _element.value;
 
-            console.dir(val);
             _element.classList.remove('error');
         });
     });
 
 
-   /* const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    /* const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    function validateForm() {
-        const form = document.getElementById('userForm');
-        // Get all input fields
-        const fields = form.querySelectorAll('input');
-        let isValid = true;
+     function validateForm() {
+         const form = document.getElementById('userForm');
+         // Get all input fields
+         const fields = form.querySelectorAll('input');
+         let isValid = true;
 
-        let mailField = document.querySelector('#email');
-        if (!emailPattern.test(mailField.value)) {
-            alert('Este email está inadequado.');
-            isValid = false;
-        }
+         let mailField = document.querySelector('#email');
+         if (!emailPattern.test(mailField.value)) {
+             alert('Este email está inadequado.');
+             isValid = false;
+         }
 
-        return isValid;
-    }
+         return isValid;
+     }
 
-    document.getElementById('userForm').addEventListener('submit', function(event) {
-        if (!validateForm()) {
-            event.preventDefault(); // Impede o envio do formulário se a validação falhar
-            alert('Favor preencher todos os campos obrigatórios.');
-        }
-    });*/
+     document.getElementById('userForm').addEventListener('submit', function(event) {
+         if (!validateForm()) {
+             event.preventDefault(); // Impede o envio do formulário se a validação falhar
+             alert('Favor preencher todos os campos obrigatórios.');
+         }
+     });*/
 </script>
