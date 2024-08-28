@@ -19,8 +19,7 @@ body {
 }
 
 .hide{
-  display: none;
-
+	display: none;
 }
 
 .align-center {
@@ -390,10 +389,9 @@ body {
 				outline: 0;
 				color-scheme: dark;
 
-               &.error{
-				border-color: #d86060;
-			   }
-
+				&.error{
+					border-color: #d86060;
+				}
 			}
 		}
 
