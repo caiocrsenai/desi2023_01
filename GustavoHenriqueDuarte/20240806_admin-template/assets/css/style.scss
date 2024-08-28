@@ -18,7 +18,7 @@ body {
 	flex: 1;
 }
 
-.hide{
+.hide {
 	display: none;
 }
 
@@ -389,7 +389,7 @@ body {
 				outline: 0;
 				color-scheme: dark;
 
-				&.error{
+				&.error {
 					border-color: #d86060;
 				}
 			}
@@ -417,4 +417,6 @@ body {
 			}
 		}
 	}
+
+
 }
