@@ -107,61 +107,90 @@ if (!empty($_POST)) {
     </div>
 </div>
 
-
 <script>
     _qs('#userForm').addEventListener('submit', function(event) {
         event.preventDefault();
         const _this = this,
             _elements = _this._qsa('input, select');
-
+        let sendForm = true;
 
         _elements.forEach(function(_element) {
             const val = _element.value;
 
             if (val == '') {
+                sendForm = false;
                 _element.classList.add('error');
-
             } else {
                 _element.classList.remove('error');
             }
         });
+
+        if (sendForm == true) {
+            this.submit();
+        }
     });
 
+
+    _qs('[name="id_state"]').addEventListener('change', function(event) {
+        const _this = this,
+            idState = _this.value,
+            _city = _qs('[name="id_city"]');
+
+        _city._qsa('option').forEach(function(_optCity) {
+
+            const optCityIdState= _optCity.getAttribute('data-uf');
+
+         if(optCityIdState== idState){
+            console.dir('Cidade: '+ _optCity.innerText);
+            _optCity.classList.remove('hide');
+         }else{
+            _optCity.classList.add('hide');
+         }
+        });
+    });
+
+
     _qs('#userForm')._qsa('input, select').forEach(function(_element) {
-        _element.addEventListener('keyup', function(event) {
+
+        const tagName = _element.tagName.toLowerCase();
+        let event = 'keyup';
+
+        if (tagName == 'select') {
+            event = 'change';
+        }
+
+        _element.addEventListener(event, function(event) {
             const _this = this,
-            val = _element.value;
+                val = _element.value;
 
             _this.classList.remove('error');
         });
     });
 
 
-
-
     /*
-        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-        function validateForm() {
-            const form = document.getElementById('userForm');
-            const fields = form.querySelectorAll('input');
-            let isValid = true;
+    function validateForm() {
+        const form = document.getElementById('userForm');
+        const fields = form.querySelectorAll('input');
+        let isValid = true;
 
-            let mailField = document.querySelector('#email');
-            if (!emailPattern.test(mailField.value)) {
-                alert('Este email está inadequado.');
-                isValid = false;
-            }
-
-            return isValid;
+        let mailField = document.querySelector('#email');
+        if (!emailPattern.test(mailField.value)) {
+            alert('Este email está inadequado.');
+            isValid = false;
         }
 
-        document.getElementById('userForm').addEventListener('submit', function(event) {
-            var validate = validateForm();
-            if (!validate) {
-                event.preventDefault(); // Impede o envio do formulário se a validação falhar
-                alert('Favor preencher todos os campos obrigatórios.');
-            }
-        });
+        return isValid;
+    }
+
+    document.getElementById('userForm').addEventListener('submit', function(event) {
+        var validate = validateForm();
+        if (!validate) {
+            event.preventDefault(); // Impede o envio do formulário se a validação falhar
+            alert('Favor preencher todos os campos obrigatórios.');
+        }
+    });
     */
 </script>
