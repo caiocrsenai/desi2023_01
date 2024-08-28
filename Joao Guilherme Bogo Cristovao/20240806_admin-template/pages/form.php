@@ -67,7 +67,7 @@ if (!empty($_POST)) {
 
             <label>
                 <div class="lbl">Estado</div>
-                <select name="id-state" ;>
+                <select name="id_state">
                     <option selected disabled style="display: none;" value="">Selecione o estado</option>
                     <?php
                     $sql = "SELECT * FROM state";
@@ -84,7 +84,7 @@ if (!empty($_POST)) {
 
             <label>
                 <div class="lbl">Cidade</div>
-                <select name="id-city" ;>
+                <select name="id_city">
                     <option selected disabled style="display: none;" value="">Selecione a cidade</option>
                     <?php
                     $sql = "SELECT * FROM city";
@@ -102,6 +102,7 @@ if (!empty($_POST)) {
             <div class="form-actions">
                 <button type="submit">Enviar</button>
             </div>
+
         </form>
     </div>
 </div>
@@ -111,24 +112,53 @@ if (!empty($_POST)) {
         event.preventDefault();
         const _this = this,
             _elements = _this._qsa('input, select');
+        let sendForm = true;
 
         _elements.forEach(function(_element) {
             const val = _element.value;
 
             if (val == '') {
+                sendForm = false;
                 _element.classList.add('error');
             } else {
                 _element.classList.remove('error');
             }
         });
 
+        if (sendForm == true) {
+            _this.submit();
+        }
+
+    });
+
+    _qs('[name="id_state"]').addEventListener('change', function(event) {
+        const _this = this,
+            idState = _this.value;
+        _city = _qs('[name="id_city"]');
+
+        _city._qsa('option').forEach(function(_optCity) {
+            const optCityIdState = _optCity.getAttribute('data-uf');
+
+            if (optCityIdState == idState) {
+                _optCity.classList.remove('hide');
+            } else {
+                _optCity.classList.add('hide');
+
+            }
+        });
     });
 
     _qs('#userForm')._qsa('input, select').forEach(function(_element) {
+        const tagName = _element.tagName.toLowerCase();
+        let event = 'keyup';
 
-        _element.addEventListener('keyup', function(event) {
+        if (tagName == 'select') {
+            event = 'change'
+        }
+
+        _element.addEventListener(event, function(event) {
             const _this = this,
-            val = _element.value;
+                val = _element.value;
 
             _this.classList.remove('error');
         });
