@@ -24,7 +24,6 @@ if (!empty($_POST)) {
     }
 }
 ?>
-v1.0.0
 <div class="container-box cb-form-max-width align-center flex-1">
     <div class="cb-header">
         <div class="cb-title">Formulário</div>
@@ -60,6 +59,7 @@ v1.0.0
                 <div class="lbl">Data de Nascimento</div>
                 <input type="date" name="birthdate" required>
             </label>
+
             <label>
                 <div class="lbl">Cep</div>
                 <input type="text" name="cep" required>
@@ -68,11 +68,9 @@ v1.0.0
             <label>
                 <div class="lbl">Estado</div>
                 <select name="id_state">
-                    <option selected disabled style="display: none;">Selecione o Estado
-
-                    </option>
+                    <option selected disabled style="display: none;" value="">Selecione o estado</option>
                     <?php
-                    $sql = "SELECT*FROM state";
+                    $sql = "SELECT * FROM state";
                     $result = $con->query($sql);
 
                     if ($result->num_rows > 0) {
@@ -86,17 +84,15 @@ v1.0.0
 
             <label>
                 <div class="lbl">Cidade</div>
-                <select name="iid_city">
-                    <option selected disabled style="display: none;">Selecione a Cidade
-
-                    </option>
+                <select name="id_city">
+                    <option selected disabled style="display: none;" value="">Selecione o cidade</option>
                     <?php
-                    $sql = "SELECT*FROM city";
+                    $sql = "SELECT * FROM city";
                     $result = $con->query($sql);
 
                     if ($result->num_rows > 0) {
                         while ($row = $result->fetch_object()) {
-                            echo '<option value="' . $row->id_city . '" data-uf="'.$row->uf.'" class="hide">' . $row->nome . '</option>';
+                            echo '<option value="' . $row->id_city . '" data-uf="' . $row->uf . '"class="hide">' . $row->nome . '</option>';
                         }
                     }
                     ?>
@@ -112,18 +108,71 @@ v1.0.0
 </div>
 
 <script>
+    _qs('#userForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const _this = this,
+            _elements = _this._qsa('input, select');
+        let sendform = true;
 
-$(function(){
-    alert('ae');
+        _elements.forEach(function(_element) {
+            const val = _element.value;
 
-});
+            if (val == '') {
+                sendform = false;
+                _element.classList.add('error');
+            } else {
+                _element.classList.remove('error');
+            }
+        });
+
+        if (sendform == true) {
+            _this.submit();
+        }
+
+    });
+
+    _qs('[name="id_state"]').addEventListener('change', function(event) {
+        const _this = this,
+            idState = _this.value,
+            _city = _qs('[name="id_city"]');
+
+        _city._qsa('option').forEach(function(_optCity) {
+            const optCityIdState = _optCity.getAttribute('data-uf');
+            
+            if(optCityIdState == idState){
+                 _optCity.classList.remove('hide');
+            }else {
+                    _optCity.classList.add('hide');
+                 }
+
+        });
+
+    });
+
+    _qs('#userForm')._qsa('input, select').forEach(function(_element) {
+
+        const tagName = _element.tagName.toLowerCase();
+        let event = 'keyup';
+
+        if (tagName == 'sekect') {
+            event = 'change'
+        }
+        _element.addEventListener(event, function(event) {
+            const _this = this,
+                val = _element.value;
+
+            _this.classList.remove('error');
+
+        });
+
+    });
 
 
+    /*
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     function validateForm() {
         const form = document.getElementById('userForm');
-        // Get all input fields
         const fields = form.querySelectorAll('input');
         let isValid = true;
 
@@ -137,9 +186,11 @@ $(function(){
     }
 
     document.getElementById('userForm').addEventListener('submit', function(event) {
-        if (!validateForm()) {
+        var validate = validateForm();
+        if (!validate) {
             event.preventDefault(); // Impede o envio do formulário se a validação falhar
             alert('Favor preencher todos os campos obrigatórios.');
         }
     });
+    */
 </script>
