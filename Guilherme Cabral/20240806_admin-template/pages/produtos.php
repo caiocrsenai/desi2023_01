@@ -1,13 +1,20 @@
 <?php
-var_dump($_POST);
+ var_dump($_POST);
 
-if(!empty)($_POST)) {
+if(!empty($_POST)){
     $sql = "
     INSERT INTO product (nome, idcategoria, codebar, preco)
     VALUES
     (
-    '", $POST
+    '" . $_POST['name'] . "',
+    '" . $_POST['categoria'] . "',
+    '" . $_POST['codebar'] . "',
+    '" . $_POST['preco'] . "'
+ )";
+ $result = $con->query($sql);
 }
+?>
+
 <div class="container-box cb-form-max-width align-center flex-1">
     <div class="cb-header">
         <div class="cb-title">Produtos</div>
