@@ -43,6 +43,7 @@ if (!empty($_POST)) {
             <label>
                 <div class="lbl">Usuário</div>
                 <input type="text" name="username" required>
+
             </label>
 
             <label>
@@ -112,12 +113,15 @@ if (!empty($_POST)) {
         const _this = this,
             _elements = _this._qsa('input, select');
 
+        let sendForm = true;
+
 
         _elements.forEach(function(_element) {
             const val = _element.value;
             console.dir(_element);
 
             if (val == '') {
+                sendForm = false;
                 _element.classList.add('error');
             } else {
                 _element.classList.remove('error');
@@ -126,11 +130,39 @@ if (!empty($_POST)) {
 
         });
 
+        if (sendForm == true) {
+            _this.submit();
+        }
+
     });
 
-    _qs('#userForm')._qsa('input, select').forEach(function(_element) {
-        _element.addEventListener('keyup', function(event) {
+    _qs('[name="id_state"]').addEventListener('change', function(event) {
+        const _this = this,
+            idState = _this.value,
+            _city = _qs('[name="id_city"]');
 
+        _city._qsa('option').forEach(function(_optCity) {
+            const optCityIdState = _optCity.getAttribute('data-uf');
+
+            if (optCityIdState == idState) {
+                _optCity.classList.remove('hide');
+            }else{
+                _optCity.classList.add('hide');
+            }
+        });
+    });
+
+
+
+    _qs('#userForm')._qsa('input, select').forEach(function(_element) {
+
+        const tagName = _element.tagName.toLowerCase();
+        let event = 'keyup';
+
+        if (tagName == 'sekect') {
+            event = 'change'
+        }
+        _element.addEventListener(event, function(event) {
             const _this = this,
                 val = _element.value;
 
