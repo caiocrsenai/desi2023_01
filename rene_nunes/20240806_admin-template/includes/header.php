@@ -22,7 +22,7 @@
             <div class="option-item menu">
                 <div class="menu-container">
                     <div class="image"
-                        style="background-image: url(https://emilus.themenate.net/img/avatars/thumb-1.jpg);">
+                        style="background-image: url(https://psicologoviniciusluz.files.wordpress.com/2022/08/breakin_bad_heisenberg_capa.jpg?w=1024);">
                     </div>
                     <div class="infos-ct">
                         <div class="name">Renê De Villa Nunes</div>
