@@ -10,14 +10,20 @@
             </li>
             <li>
                 <a href="?page=form">
-                    <i class="fa-solid fa-gauge"></i>
+                    <i class="fa-solid fa-rectangle-list"></i>
                     Formulário
                 </a>
             </li>
             <li>
                 <a href="?page=usuarios">
-                    <i class="fa-solid fa-gauge"></i>
+                    <i class="fa-solid fa-user-plus"></i>
                     Usuários
+                </a>
+            </li>
+            <li>
+                <a href="?page=produtos">
+                    <i class="fa-solid fa-file-import"></i>
+                    Produtos
                 </a>
             </li>
         </ul>
