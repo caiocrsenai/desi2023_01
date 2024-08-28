@@ -20,6 +20,12 @@
                     Usuários
                 </a>
             </li>
+            <li>
+                <a href="?page=produtos">
+                    <i class="fa-solid fa-file-import"></i>
+                    Produtos
+                </a>
+            </li>
         </ul>
     </div>
 </nav>

@@ -68,35 +68,35 @@ if (!empty($_POST)) {
 
             <label>
                 <div class="lbl">Estado</div>
-                <select name ="id_state" >
+                <select name="id_state">
                     <option selected disabled style="display: none;" value="">Selecione o estado</option>
-                   <?php
+                    <?php
                     $sql = "SELECT * FROM state";
                     $result = $con->query($sql);
 
-                     if ($result->num_rows > 0) {
-                       while ($row = $result->fetch_object()){
-                        echo '<option value="'. $row->id_state .'">'. $row->nome .' ('.$row->uf.')</option>';
-                       }
+                    if ($result->num_rows > 0) {
+                        while ($row = $result->fetch_object()) {
+                            echo '<option value="' . $row->id_state . '">' . $row->nome . ' (' . $row->uf . ')</option>';
+                        }
                     }
-                   ?>
+                    ?>
                 </select>
             </label>
 
             <label>
                 <div class="lbl">Cidade</div>
-                <select name ="id_city" >
+                <select name="id_city">
                     <option selected disabled style="display: none;" value="">Selecione a cidade</option>
-                   <?php
+                    <?php
                     $sql = "SELECT * FROM city";
                     $result = $con->query($sql);
 
-                     if ($result->num_rows > 0) {
-                       while ($row = $result->fetch_object()){
-                        echo '<option value="'. $row->id_city .'" data-uf="'. $row->uf .'" class="hide">'. $row->nome .'</option>';
-                       }
+                    if ($result->num_rows > 0) {
+                        while ($row = $result->fetch_object()) {
+                            echo '<option value="' . $row->id_city . '" data-uf="' . $row->uf . '"class="hide" >' . $row->nome . '</option>';
+                        }
                     }
-                   ?>
+                    ?>
                 </select>
             </label>
 
@@ -110,59 +110,87 @@ if (!empty($_POST)) {
 
 <script>
 
-    _qs('#userForm').addEventListener('submit', function(event) {
+    _qs('#userForm').addEventListener('submit', function (event) {
         event.preventDefault();
         const _this = this,
-           _elements = _this._qsa('input, select');
+            _elements = _this._qsa('input, select');
+        let sendForm = true;
 
 
-
-        _elements.forEach(function(_element) {
+        _elements.forEach(function (_element) {
             const val = _element.value;
 
-            if(val == ''){
+            if (val == '') {
+                sendForm = false;
                 _element.classList.add('error');
-            }else{
+            } else {
                 _element.classList.remove('error');
             }
+        });
 
+        if (sendForm == true) {
+            _this.submit();
+        }
+    });
+
+    _qs('[name="id_state"]').addEventListener('change', function (event) {
+        const _this = this,
+            idState = _this.value,
+            _city = _qs('[name="id_city"]')
+
+        _city._qsa('option').forEach(function (_optCity) {
+            const optCityIdState = _optCity.getAttribute('data-uf');
+
+            if (optCityIdState == idState) {
+                _optCity.classList.remove('hide');
+            } else {
+                _optCity.classList.add('hide');
+            }
         });
     });
 
-    _qs('#userForm')._qsa('input, select').forEach(function(_element) {
-        _element.addEventListener('keyup', function(event) {
+    _qs('#userForm')._qsa('input, select').forEach(function (_element) {
+        const tagName = _element.tagName.toLowerCase();
+        let event = 'keyup';
+
+        if (tagName == 'select') {
+            event = 'change';
+        }
+
+
+        _element.addEventListener(event, function (event) {
             const _this = this,
-            val = _element.value;
+                val = _element.value;
 
             _this.classList.remove('error');
         });
     });
 
 
-/*
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    function validateForm() {
-        const form = document.getElementById('userForm');
-        // Get all input fields
-        const fields = form.querySelectorAll('input');
-        let isValid = true;
-
-        let mailField = document.querySelector('#email');
-        if (!emailPattern.test(mailField.value)) {
-            alert('Este email está inadequado.');
-            isValid = false;
+    /*
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    
+        function validateForm() {
+            const form = document.getElementById('userForm');
+            // Get all input fields
+            const fields = form.querySelectorAll('input');
+            let isValid = true;
+    
+            let mailField = document.querySelector('#email');
+            if (!emailPattern.test(mailField.value)) {
+                alert('Este email está inadequado.');
+                isValid = false;
+            }
+    
+            return isValid;
         }
-
-        return isValid;
-    }
-
-    document.getElementById('userForm').addEventListener('submit', function(event) {
-        if (!validateForm()) {
-            event.preventDefault(); // Impede o envio do formulário se a validação falhar
-            alert('Favor preencher todos os campos obrigatórios.');
-        }
-    });
-*/
+    
+        document.getElementById('userForm').addEventListener('submit', function(event) {
+            if (!validateForm()) {
+                event.preventDefault(); // Impede o envio do formulário se a validação falhar
+                alert('Favor preencher todos os campos obrigatórios.');
+            }
+        });
+    */
 
 </script>
