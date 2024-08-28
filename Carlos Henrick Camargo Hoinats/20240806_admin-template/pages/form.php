@@ -24,7 +24,6 @@ if (!empty($_POST)) {
     }
 }
 ?>
-v1.0.0
 <div class="container-box cb-form-max-width align-center flex-1">
     <div class="cb-header">
         <div class="cb-title">Formulário</div>
@@ -65,38 +64,40 @@ v1.0.0
                 <div class="lbl">Cep</div>
                 <input type="text" name="cep" required>
             </label>
-
+        
             <label>
                 <div class="lbl">Estado</div>
-                <select name = "id_state">
-                    <option selected disabled style= "display: none;"> selecione o estado </option>
-                    <?php
-                    $sql = "SELECT * FROM state";
-                    $result = $con -> query($sql);
+                <select name="id_state">
+                <option selected disabled style="display: none;" value ="">Selecione o Estado</option>
 
-                    if ($result -> num_rows > 0) {
-                        while ($row = $result -> fetch_object()){
-                            echo '<option value="'.$row -> id_state.'">' .$row -> nome. ' ('.$row -> uf.')</option>';
-                        }
-                    }
-                    ?>
-                </select>
+                <?php
+            $sql = "SELECT * FROM state";
+            $result = $con->query($sql);
+
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_object()) {
+                    echo '<option value="'.$row->id_state.'">'.$row->nome .' ('. $row->uf .')</option>';
+                }
+            }
+            ?>
+            </select>
             </label>
 
             <label>
                 <div class="lbl">Cidade</div>
-                <select name = "id_city">
-                    <option selected disabled style= "display: none;"> selecione o estado </option>
-                    <?php
-                    $sql = "SELECT * FROM city";
-                    $result = $con -> query($sql);
+                <select name="id_city">
+                <option selected disabled style="display: none;" value = "">Selecione a Cidade</option>
 
-                    if ($result -> num_rows > 0) {
-                        while ($row = $result -> fetch_object()){
-                            echo '<option value="'.$row -> id_city.'" data-uf="'.$row -> uf.'" class="hide">' .$row -> nome. '</option>';
-                        }
-                    }
-                    ?>
+                <?php
+            $sql = "SELECT * FROM city";
+            $result = $con->query($sql);
+
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_object()) {
+                    echo '<option value="'.$row->id_city.'" data-uf="'.$row->uf.'" class= "hide">'.$row->nome .'</option>';
+                }
+            }
+            ?>
                 </select>
             </label>
 
@@ -110,12 +111,71 @@ v1.0.0
 
 <script>
 
-    $(function(){
-        alert('ae');
+    _qs('#userForm').addEventListener('submit', function(event) {
+        event.preventDefault(); 
+        const _this = this,
+            _elements = _this._qsa('input, select');
+        let sendForm = true;
+        _elements.forEach(function(_element) {
+            const val = _element.value;
+
+            console.dir(_element);
+            console.dir(val);
+
+            if(val=="") {
+                sendForm = false;
+                _element.classList.add('error');
+            } else {
+                _element.classList.remove('error');
+            }
+        });
+
+        if (sendForm == true){
+            _this.submit();
+        }
+
     });
 
-    $()
+    _qs('[name="id_state"').addEventListener('change',function(event){
+        const _this = this,
+            idState = _this.value,
+            _city = _qs('[name="id_city"');
 
+        _city._qsa('option').forEach(function(_optCity){
+            const optCityIdState = _optCity.getAttribute('data-uf');
+
+            
+            if(optCityIdState == idState){
+                _optCity.classList.remove('hide')
+            }
+            else{
+                _optCity.classList.add('hide');
+            }
+        });
+
+
+
+    });
+
+
+    _qs('#userForm')._qsa('input, select').forEach(function(_element) {
+        const tagName = _element.tagName.toLowerCase();
+        let event = 'keyup';
+
+        if (tagName == 'select'){
+            event = 'change';
+        }
+
+
+        _element.addEventListener(event, function(event) {
+            const _this = this,
+            val = _element.value;
+
+            _this.classList.remove('error');
+        });
+    });
+
+/*
 
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -140,4 +200,7 @@ v1.0.0
             alert('Favor preencher todos os campos obrigatórios.');
         }
     });
+    
+    */
+
 </script>
