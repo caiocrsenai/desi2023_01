@@ -92,7 +92,7 @@ if (!empty($_POST)) {
 
                     if ($result->num_rows > 0) {
                         while ($row = $result->fetch_object()) {
-                            echo '<option value="' . $row->id_city . '" data-uf="' . $row->uf . '" class="hide">' . $row->nome . '</option>';
+                            echo '<option value="' . $row->id_city . '" data-uf="' . $row->uf . '" class ="hide">' . $row->nome . '</option>';
                         }
                     }
                     ?>
@@ -112,28 +112,55 @@ if (!empty($_POST)) {
         event.preventDefault();
         const _this = this,
             _elements = _this._qsa('input, select');
+        let sendForm = true;
 
 
         _elements.forEach(function(_element) {
             const val = _element.value;
 
             if (val == '') {
+                semForm = false;
                 _element.classList.add('error');
 
             } else {
                 _element.classList.remove('error');
             }
         });
-
+        if (sendForm == true) {
+            this.submit();
+        }
     });
 
-    _qs('#userForm')._qsa('input, select').forEach(function(_element){
-        _element.addEventListener('keyup', function(event) {
+    _qs('[name="id_state"]').addEventListener('change', function(event) {
+        const _this = this,
+            idState = this.value,
+            _city = _qs('[name="id_city"]');
+
+        _city._qsa('option').forEach(function(_optCity) {
+            const optCityIdState = _optCity.getAttribute('data-uf');
+
+            if (optCityIdState == idState) {
+                _optCity.classList.remove('hide');
+            } else {
+                _optCity.classList.add('hide');
+            }
+        });
+    });
+
+
+
+    _qs('#userForm')._qsa('input, select').forEach(function(_element) {
+        const tagName = _element.tagName.toLowerCase();
+        let event = 'keyup';
+        if (tagName == 'select') {
+            event = 'change';
+        }
+        _element.addEventListener(event, function(event) {
             const _this = this,
-            val = _element.value;
+                val = _element.value;
             _this.classList.remove('error');
+        });
     });
-});
 
 
 
