@@ -18,6 +18,11 @@
                 <a href="?page=usuarios">
                     <i class="fa-solid fa-gauge"></i>
                     Usuários
+                <li>
+                <a href="?page=produtos">
+                    <i class="fa-solid fa-gauge"></i>
+                    Produtos
+                </li>
                 </a>
             </li>
         </ul>

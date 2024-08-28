@@ -118,32 +118,63 @@ if (!empty($_POST)) {
         event.preventDefault();
         const _this = this,
             _elements = _this._qsa('input, select');
-      
-        _elements.forEach(function(_element) {
-        const val = _element.value;
+        let sendForm = true;
 
-            if(val == ''){
+        _elements.forEach(function (_element) {
+            const val = _element.value;
+
+            if (val == '') {
+                sendForm = false;
                 _element.classList.add('error');
             }
-            else{
+            else {
                 _element.classList.remove('error');
             }
 
-        });                                     
-        
+        });
+
+        if (sendForm == true) {
+            _this.submit();
+        }
+
 
     });
-    
-    _qs('#userForm')._qsa('input, select').forEach(function(_element){
-      _element.addEventListener('keyup', function (event){
+
+    _qs('[name="id_state"]').addEventListener('change', function (event) {
         const _this = this,
-        val = _element.value;
+            idState = _this.value,
+            _city = _qs('[name="id_city"]');
 
-        
-        _this.classList.remove('error');
+        _city._qsa('option').forEach(function (_opCity) {
+            const opCityIdState = _opCity.getAttribute('data-uf');
+            console.dir(opCityIdState);
 
-      });
-     
+            
+            if(opCityIdState == idState){
+                _opCity.classList.remove('hide');
+              }
+              else{
+                _opCity.classList.add('hide');
+              }
+        });
+    });
+
+    _qs('#userForm')._qsa('input, select').forEach(function (_element) {
+        const tagName = _element.tagName.toLowerCase();
+        let event = 'keyup';
+        if (tagName == 'select') {
+            event = 'change';
+        }
+
+        _element.addEventListener(event, function (event) {
+            const _this = this,
+                val = _element.value;
+
+
+            _this.classList.remove('error');
+
+        });
+
     });
 
 
