@@ -101,7 +101,7 @@ if (!empty($_POST)) {
 
                     if ($result->num_rows > 0) {
                         while ($row = $result->fetch_object()) {
-                            echo '<option value="' . $row->id_city . '"data-uf="id_uf"' . $row->uf . '">' . $row->nome . ' </option>';
+                            echo '<option value="' . $row->id_city . '" data-uf="' . $row->uf . '" class="hide">' . $row->nome . ' </option>';
                         }
                     }
                     ?>
@@ -143,6 +143,26 @@ if (!empty($_POST)) {
 
     });
 
+    _qs('[name="id_state"]').addEventListener('change', function(event) {
+        const _this = this,
+            idState = _this.value,
+            _city = _qs('[name="id_city"]');
+
+        _city._qsa('option').forEach(function(_optCity) {
+            const optCityIdState = _optCity.getAttribute('data-uf');
+
+
+            if (optCityIdState == idState) {
+                _optCity.classList.remove('hide');
+            } else {
+                _optCity.classList.add('hide');
+            }
+        });
+    });
+
+
+
+
     _qs('#userForm')._qsa('input, select').forEach(function(_element) {
         const tagName = _element.tagName.toLowerCase();
         let event = 'keyup';
@@ -156,9 +176,6 @@ if (!empty($_POST)) {
         _element.addEventListener(event, function(event) {
             const _this = this,
                 val = _element.value;
-
-            console.dir(val);
-
             _this.classList.remove('error');
         });
     });
