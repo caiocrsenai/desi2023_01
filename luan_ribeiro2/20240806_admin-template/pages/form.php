@@ -5,7 +5,7 @@ if (!empty($_POST)) {
     INSERT INTO user
     (pass, username, email, name, birthdate, photo, cep, id_city, id_state)
     VALUES
-    ( 
+    (
     '" . $_POST['pass'] . "',
     '" . $_POST['username'] . "',
     '" . $_POST['email'] . "',
@@ -32,37 +32,37 @@ if (!empty($_POST)) {
         <form method="POST" action="" id="userForm" name="userForm" novalidate>
             <label>
                 <div class="lbl">Foto</div>
-                <input type="file" name="photo">
+                <input type="file" name=" photo ">
             </label>
 
             <label>
                 <div class="lbl">Nome</div>
-                <input type="text" name="name" required>
+                <input type="text" name=" name " required>
             </label>
 
             <label>
                 <div class="lbl">Usuário</div>
-                <input type="text" name="username" required>
+                <input type="text" name=" username " required>
             </label>
 
             <label>
                 <div class="lbl">Senha</div>
-                <input type="password" name="pass" required>
+                <input type="password" name=" pass " required>
             </label>
 
             <label>
                 <div class="lbl">Email</div>
-                <input type="email" name="email" id="email" required>
+                <input type="email" name="email" id=" email " required>
             </label>
 
             <label>
                 <div class="lbl">Data de Nascimento</div>
-                <input type="date" name="birthdate" required>
+                <input type="date" name=" birthdate " required>
             </label>
 
             <label>
                 <div class="lbl">Cep</div>
-                <input type="text" name="cep" required>
+                <input type="text" name=" cep " required>
             </label>
 
             <label>
@@ -92,7 +92,7 @@ if (!empty($_POST)) {
 
                     if ($result->num_rows > 0) {
                         while ($row = $result->fetch_object()) {
-                            echo '<option value="' . $row->id_city . '" data-uf="' . $row->uf . '" class="hide">' . $row->nome . '</option>';
+                            echo '<option value="' . $row->id_city . '" data-uf="' . $row->uf . '" class="hide" >' . $row->nome . '</option>';
                         }
                     }
                     ?>
@@ -110,59 +110,80 @@ if (!empty($_POST)) {
 <script>
     _qs('#userForm').addEventListener('submit', function(event) {
         event.preventDefault();
-        const _this = this,
-            _elements = _this._qsa('input, select');
+        const _this = this;
+        _elements = _this._qsa('input, select');
+        let sendForm = true;
 
         _elements.forEach(function(_element) {
             const val = _element.value;
 
-            if (val == '') {
+            if (val == "") {
+                sendForm = false;
                 _element.classList.add('error');
             } else {
                 _element.classList.remove('error');
             }
         });
+        if (sendForm == true) {
+            _this.submit();
+        }
+    });
+
+
+    _qs('[name="id_state"]').addEventListener('change', function(event) {
+        const _this = this,
+            idState = _this.value,
+            _city = _qs('[name="id_city"]');
+
+        _city._qsa('option').forEach(function(_optCity) {
+            const optCityIdState = _optCity.getAttribute('data-uf');
+
+
+            if (optCityIdState == idState) {
+                _optCity.classList.remove('hide');
+            } else {
+                _optCity.classList.add('hide');
+
+            }
+        })
     });
 
     _qs('#userForm')._qsa('input, select').forEach(function(_element) {
-        const tagname = _element.tagname.tolowerCase(),
-        event = 'keyup';
-                  
-
-        _element.addEventListener('keyup', function(event) {
-            const _this = this,
-                val = _element.value;
-            _this.classList.remove('error');
-
-            console.dir(val);
-        });
-
-    });
-
-
-    /*
-        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-        function validateForm() {
-            const form = document.getElementById('userForm');
-            const fields = form.querySelectorAll('input');
-            let isValid = true;
-
-            let mailField = document.querySelector('#email');
-            if (!emailPattern.test(mailField.value)) {
-                alert('Este email está inadequado.');
-                isValid = false;
-            }
-
-            return isValid;
+        const tagName = _element.tagName.toLowerCase();
+        let event = 'keyup';
+        if (tagName == 'select') {
+            event = 'change';
         }
 
-        document.getElementById('userForm').addEventListener('submit', function(event) {
-            var validate = validateForm();
-            if (!validate) {
-                event.preventDefault(); // Impede o envio do formulário se a validação falhar
-                alert('Favor preencher todos os campos obrigatórios.');
-            }
+        _element.addEventListener('event', function(event) {
+            const _this = this;
+            val = _element.value;
+            _this.classList.remove('error');
         });
-        */
+    });
+
+    /* const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    function validateForm() {
+        const form = document.getElementById('userForm');
+        const fields = form.querySelectorAll('input');
+        let isValid = true;
+
+        let mailField = document.querySelector('#email');
+        if (!emailPattern.test(mailField.value)) {
+            alert('Este email está inadequado.');
+            isValid = false;
+        }
+
+        return isValid;
+    }
+
+    document.getElementById('userForm').addEventListener('submit', function(event) {
+        var validate = validateForm();
+        if (!validate) {
+            event.preventDefault(); // Impede o envio do formulário se a validação falhar
+            alert('Favor preencher todos os campos obrigatórios.');
+        }
+    });
+ */
 </script>

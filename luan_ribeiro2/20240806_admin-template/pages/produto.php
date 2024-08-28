@@ -1,54 +1,47 @@
 <?php
-//var_dump($_POST);
+var_dump($_POST);
+
 if (!empty($_POST)) {
     $sql = "
-    INSERT INTO user 
-    (nome, idacategoria, codebar, preco)
+    INSERT INTO product
+    (nome, idcategoria, codebar, preco)
     VALUES
     (
     '" . $_POST['nome'] . "',
-    '" . $_POST['categoria'] . "',
+    '" . $_POST['idcategoria'] . "',
+    '" . $_POST['codebar'] . "',
     '" . $_POST['preco'] . "',
-     '" . $_POST['codebar'] . "',
-    )";
+    )
+    ";
     $result = $con->query($sql);
-
-    if ($result) {
-        echo "<script>alert('Usuário " . $_POST['username'] . " cadastrado com sucesso!')</script>";
-    }
 }
 ?>
 
 <div class="container-box cb-form-max-width align-center flex-1">
     <div class="cb-header">
+
         <div class="cb-title">Produtos</div>
     </div>
     <div class="cb-body">
-        <form method="POST" action="" id="userForm" name="userForm" novalidate>
+        <form method="POST" action="" id="product" name="productForm" novalidate>
             <label>
-                <div class="lbl">nome</div>
-                <input type="text" name="name" required>
+                <div class="lbl">Nome</div>
+                <input type="text" name=" nome " required>
+            </label>
+            <label>
+                <div class="lbl">Categoria</div>
+                <input type="text" name=" idcategoria "required>
+            </label>
+            <label>
+                <div class="lbl">Codebar</div>
+                <input type="text" name=" codebar " maxlength="13">
+            </label>
+            <label>
+                <div class="lbl">Preco</div>
+                <input type="number" min="-0.00" max="10000.00" step="0.01" name=" preco ">
             </label>
 
-            <label>
-                <div class="lbl">categoria</div>
-                <input type="text" name="categoria" required>
-            </label>
-
-            <label>
-                <div class="lbl">codigo de barras (EAN-13)</div>
-                <input type="text" name="codebarr" maxlength="13">
-            </label>
-
-            <label>
-                <div class="lbl">preco</div>
-                <input type="number" name="number" min="0.00" max="10000.0" step="0.10" name="preco" required />
-            </label>
-
-            <div class="form actions">
-                <button type="submit"> Enviar </button>
+            <div class="form-actions">
+                <button type="submit">Enviar</button>
             </div>
-
-        </form>
     </div>
-</div>div>
