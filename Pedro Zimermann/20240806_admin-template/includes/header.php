@@ -25,8 +25,8 @@
                         style="background-image: url(https://emilus.themenate.net/img/avatars/thumb-1.jpg);">
                     </div>
                     <div class="infos-ct">
-                        <div class="name">Pedro Paiva</div>
-                        <div class="info">Técnico de TI</div>
+                        <div class="name">Caio Cidral Ramos</div>
+                        <div class="info">Desenvolvedor Full-Stack</div>
                     </div>
                 </div>
             </div>

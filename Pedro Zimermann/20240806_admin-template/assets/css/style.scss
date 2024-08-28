@@ -17,7 +17,8 @@ body {
 .flex-1 {
 	flex: 1;
 }
-.hide {
+
+.hide{
 	display: none;
 }
 
@@ -52,7 +53,7 @@ body {
 				display: flex;
 				justify-content: space-between;
 				align-items: center;
-				color: #fff;
+				color: #FFF;
 
 				.hc-search {
 					color: #72849a;
@@ -94,6 +95,7 @@ body {
 						}
 
 						&.menu {
+
 							.menu-container {
 								display: flex;
 								align-items: center;
@@ -107,6 +109,7 @@ body {
 								}
 
 								.infos-ct {
+
 									.name,
 									.info {
 										font-size: 14px;
@@ -133,7 +136,7 @@ body {
 			height: 100%;
 			width: 250px;
 			position: relative;
-			color: #fff;
+			color: #FFF;
 			background-color: #283142;
 
 			.main-menu-inside {
@@ -152,7 +155,9 @@ body {
 				}
 
 				ul {
+
 					li {
+
 						a {
 							display: block;
 							padding: 12px 24px;
@@ -189,7 +194,9 @@ body {
 					flex: 1;
 
 					.ict-line-container {
+
 						.container-box {
+
 							.lc-cb-infos {
 								display: flex;
 								align-items: center;
@@ -199,6 +206,7 @@ body {
 									font-size: 30px;
 									font-weight: 700;
 									color: #d6d7dc;
+
 								}
 
 								.value-small {
@@ -231,7 +239,8 @@ body {
 	background-color: #283142;
 
 	.cb-header {
-		& + .cb-body {
+
+		&+.cb-body {
 			margin-top: 20px;
 		}
 	}
@@ -269,14 +278,14 @@ body {
 				height: 30px;
 				font-size: 12px;
 				border-radius: 30px;
-				color: #fff;
+				color: #FFF;
 				font-weight: 500;
 			}
 		}
 
 		.tbl-status {
 			display: inline-flex;
-			border: 1px solid #ccc;
+			border: 1px solid #CCC;
 			padding: 8px 12px;
 			border-radius: 8px;
 			font-size: 12px;
@@ -312,7 +321,9 @@ body {
 			border-collapse: separate;
 
 			thead {
+
 				tr {
+
 					th {
 						position: relative;
 						padding: 16px 16px;
@@ -328,14 +339,14 @@ body {
 			}
 
 			tbody {
+
 				tr {
+
 					td {
 						position: relative;
 						padding: 16px 16px;
 						overflow-wrap: break-word;
-						transition:
-							background 0.2s,
-							border-color 0.2s;
+						transition: background 0.2s, border-color 0.2s;
 						border-bottom: 1px solid #1c232f;
 					}
 
@@ -348,11 +359,12 @@ body {
 	}
 
 	form {
+
 		label {
 			display: flex;
 			flex-direction: column;
 
-			& + label {
+			&+label {
 				margin-top: 15px;
 			}
 
@@ -399,7 +411,7 @@ body {
 				padding-right: 15px;
 				border-radius: 10px;
 				background-color: #3e79f7;
-				color: #fff;
+				color: #FFF;
 				border: 0;
 				cursor: pointer;
 			}
