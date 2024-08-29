@@ -26,8 +26,14 @@
                                 <td><?php echo $row->name; ?></td>
                                 <td><?php echo $row->email; ?></td>
                                 <td><?php echo $row->username; ?></td>
-                                <td></td>
-                                <td></td>
+                                <td>
+                                    <a href="">
+                                        <i class="fa-regular fa-pen-to-square"></i>
+                                    </a>
+                                </td>
+                                <td>
+                                    <i class="fa-regular fa-trash-can"></i>
+                                </td>
                             </tr>
                     <?php
                         }
