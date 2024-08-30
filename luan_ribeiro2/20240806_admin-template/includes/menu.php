@@ -9,8 +9,9 @@
                 </a>
             </li>
             <li>
-                <a href="?page=form">
-                <i class="fa-brands fa-wpforms"></i> Formulário
+                <a href="?page=Usuario">
+                <i class="fa-brands fa-wpforms"></i> 
+                Usuario
                 </a>
             </li>
             <li>
