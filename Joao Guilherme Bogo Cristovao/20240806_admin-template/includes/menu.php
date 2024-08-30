@@ -9,9 +9,9 @@
                 </a>
             </li>
             <li>
-                <a href="?page=form">
+                <a href="?page=usuario">
                     <i class="fa-solid fa-file-pen"></i>
-                    Formulário
+                    Usuário
                 </a>
             </li>
             <li>
