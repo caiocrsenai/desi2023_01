@@ -1,28 +1,69 @@
 <?php
+
 //var_dump($_POST);
+
+$idUser = false;
+$userInfos = false;
+
+if(!empty($_GET['id'])){
+    $idUser = $_GET['id'];
+
+}
+
+
+
 if (!empty($_POST)) {
-    $sql = "
-    INSERT INTO user
-    (pass, username, email, name, birthdate, photo, cep, id_city, id_state)
-    VALUES
-    (
-    '" . $_POST['pass'] . "',
-    '" . $_POST['username'] . "',
-    '" . $_POST['email'] . "',
-    '" . $_POST['name'] . "',
-    '" . $_POST['birthdate'] . "',
-    '" . $_POST['photo'] . "',
-    '" . $_POST['cep'] . "',
-    '" . $_POST['id_city'] . "',
-    '" . $_POST['id_state'] . "'
-    )
-    ";
+     
+    if($idUser){
+        $sql = "
+        UPDATE user SET 
+        pass = 'Josee', 
+        username = 'Joose', 
+        email = 'Jose123@gmail.com', 
+        name = 'Jose1', 
+        birthdate = '2001-01-23', 
+        cep = '43553431', 
+        id_city = '4545', 
+        id_state = '27' 
+        WHERE user.id = 27";
+
+    }else{
+        $sql = "
+        INSERT INTO user
+        (pass, username, email, name, birthdate, photo, cep, id_city, id_state)
+        VALUES
+        (
+        '" . $_POST['pass'] . "',
+        '" . $_POST['username'] . "',
+        '" . $_POST['email'] . "',
+        '" . $_POST['name'] . "',
+        '" . $_POST['birthdate'] . "',
+        '" . $_POST['photo'] . "',
+        '" . $_POST['cep'] . "',
+        '" . $_POST['id_city'] . "',
+        '" . $_POST['id_state'] . "'
+        )
+        "; 
+    }
+  
     $result = $con->query($sql);
 
     if ($result) {
         echo "<script>alert('Usuário " . $_POST['username'] . " cadastrado com sucesso!')</script>";
     }
 }
+
+
+if($idUser){
+    $sql = "SELECT * FROM user WHERE id = " . $idUser;
+    $result = $con->query($sql);
+
+    if ($result->num_rows > 0) {
+        $userInfos= $result->fetch_object();       
+    }
+}
+
+
 ?>
 <div class="container-box cb-form-max-width align-center flex-1">
     <div class="cb-header">
@@ -31,28 +72,28 @@ if (!empty($_POST)) {
     <div class="cb-body">
         <form method="POST" action="" id="userForm" name="userForm" novalidate>
             <label>
-                <div class="lbl">Foto</div>
+        <!-- <div class="lbl">Foto</div>
                 <input type="file" name="photo">
-            </label>
+            </label> -->
 
             <label>
                 <div class="lbl">Nome</div>
-                <input type="text" name="name" required>
-            </label>
+                <input type="text" name="name" value="<?php echo $userInfos ? $userInfos ->name : '' ?>" required>
+             </label>
 
             <label>
                 <div class="lbl">Usuário</div>
-                <input type="text" name="username" required>
+                <input type="text" name="username" value="<?php echo $userInfos ? $userInfos ->username : '' ?>" required>
             </label>
 
             <label>
                 <div class="lbl">Senha</div>
-                <input type="password" name="pass" required>
+                <input type="password" name="pass" value="<?php echo $userInfos ? $userInfos ->senha : '' ?>" required>
             </label>
 
             <label>
                 <div class="lbl">Email</div>
-                <input type="email" name="email" id="email" required>
+                <input type="email" name="email" id="email" value="<?php echo $userInfos ? $userInfos ->email : '' ?>" required>
             </label>
 
             <label>
@@ -77,7 +118,7 @@ if (!empty($_POST)) {
 
                     if ($result->num_rows > 0) {
                         while ($row = $result->fetch_object()) {
-                            echo '<option value="' . $row->id_state . '">' . $row->nome . ' (' . $row->uf . ')</option>';
+                            echo '<option value="'  . $row->id_state . '" '. ($userInfos ? ($userInfos ->id_state == $row->id_state ? 'selected' : '') : '') . '>' . $row->nome . ' (' . $row->uf . ')</option>';
                         }
                     }
 
@@ -96,10 +137,13 @@ if (!empty($_POST)) {
 
                     if ($result->num_rows > 0) {
                         while ($row = $result->fetch_object()) {
-                            echo '<option value="' . $row->id_city . '" data-uf="' . $row->uf . '" class="hide">' . $row->nome . '</option>';
+                            echo '<option
+                             value="' . $row->id_city . '" 
+                             data-uf="' . $row->uf . '" 
+                             class="hide" '. ($userInfos ? ($userInfos ->id_city == $row->id_city ? 'selected' : '') : '') . '>' . $row->nome . '</option>';
                         }
                     }
-
+                
                     ?>
                 </select>
             </label>
@@ -149,13 +193,13 @@ if (!empty($_POST)) {
             const opCityIdState = _opCity.getAttribute('data-uf');
             console.dir(opCityIdState);
 
-            
-            if(opCityIdState == idState){
+
+            if (opCityIdState == idState) {
                 _opCity.classList.remove('hide');
-              }
-              else{
+            }
+            else {
                 _opCity.classList.add('hide');
-              }
+            }
         });
     });
 

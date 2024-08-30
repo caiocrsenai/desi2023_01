@@ -9,21 +9,22 @@
                 </a>
             </li>
             <li>
-                <a href="?page=form">
+                <a href="?page=usuario">
                     <i class="fa-solid fa-gauge"></i>
-                    Formulário
+                    Usuário
                 </a>
             </li>
             <li>
                 <a href="?page=usuarios">
                     <i class="fa-solid fa-gauge"></i>
                     Usuários
-                <li>
+                </a>
+            </li>
+            <li>
                 <a href="?page=produtos">
                     <i class="fa-solid fa-gauge"></i>
                     Produtos
-                </li>
-                </a>
+                    </a>
             </li>
         </ul>
     </div>
