@@ -8,24 +8,38 @@ if (!empty($_GET['id'])) {
 }
 
 
-
 if (!empty($_POST)) {
-    $sql = "
-    INSERT INTO user
-    (pass, username, email, name, birthdate, photo, cep, id_city, id_state)
-    VALUES
-    (
-    '" . $_POST['pass'] . "',
-    '" . $_POST['username'] . "',
-    '" . $_POST['email'] . "',
-    '" . $_POST['name'] . "',
-    '" . $_POST['birthdate'] . "',
-    '',
-    '" . $_POST['cep'] . "',
-    '" . $_POST['id_city'] . "',
-    '" . $_POST['id_state'] . "'
-    )
-    ";
+
+    if ($idUser) {
+
+        $sql = "
+        UPDATE user SET 
+        pass = '1648', 
+        username = 'ana_12', 
+        name = 'Ana Catarina Ghisi Macedo', 
+        birthdate = '2004-04-05', 
+        cep = '89216640', 
+        id_city = '20', 
+        id_state = '21' WHERE user.id = 12
+        ";
+    } else {
+        $sql = "
+        INSERT INTO user
+        (pass, username, email, name, birthdate, photo, cep, id_city, id_state)
+        VALUES
+        (
+        '" . $_POST['pass'] . "',
+        '" . $_POST['username'] . "',
+        '" . $_POST['email'] . "',
+        '" . $_POST['name'] . "',
+        '" . $_POST['birthdate'] . "',
+        '',
+        '" . $_POST['cep'] . "',
+        '" . $_POST['id_city'] . "',
+        '" . $_POST['id_state'] . "'
+        )";
+    }
+
     $result = $con->query($sql);
 
     if ($result) {
@@ -101,7 +115,7 @@ if ($idUser) {
                     if ($result->num_rows > 0) {
                         while ($row = $result->fetch_object()) {
                             echo '<option 
-                            value="' . $row->id_state . '" '. ($userInfos ? ($userInfos->id_state == $row->id_state ? 'selected' : '') : '') . '>' . $row->nome . '  (' . $row->uf . ')</option>';
+                            value="' . $row->id_state . '" ' . ($userInfos ? ($userInfos->id_state == $row->id_state ? 'selected' : '') : '') . '>' . $row->nome . '  (' . $row->uf . ')</option>';
                         }
                     }
                     ?>
@@ -124,8 +138,8 @@ if ($idUser) {
                             echo '<option 
                             value="' . $row->id_city . '" 
                             data-uf="' . $row->uf . '" 
-                            class="hide" '. ($userInfos ? ($userInfos->id_city == $row->id_city ? 'selected' : '') : '') . '>' . $row->nome . '</option>';
-                        }                                        
+                            class="hide" ' . ($userInfos ? ($userInfos->id_city == $row->id_city ? 'selected' : '') : '') . '>' . $row->nome . '</option>';
+                        }
                     }
                     ?>
                 </select>
