@@ -40,6 +40,7 @@ include_once('includes/connect.php');
 					}else{
 						include_once('pages/' . $page_default . '.php');
 					}
+					
 					?>
 				</div>
 			</section>
