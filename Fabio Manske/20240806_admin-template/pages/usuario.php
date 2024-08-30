@@ -20,7 +20,7 @@ if (!empty($_POST)) {
     '" . $_POST['email'] . "',
     '" . $_POST['name'] . "',
     '" . $_POST['birthdate'] . "',
-    '" . $_POST['photo'] . "',
+    '',
     '" . $_POST['cep'] . "',
     '" . $_POST['id_city'] . "',
     '" . $_POST['id_state'] . "'
@@ -50,10 +50,10 @@ if ($idUser) {
     </div>
     <div class="cb-body">
         <form method="POST" action="" id="userForm" name="userForm" novalidate>
-            <label>
+            <!-- <label>
                 <div class="lbl">Foto</div>
                 <input type="file" name="photo">
-            </label>
+            </label> -->
 
             <label>
                 <div class="lbl">Nome</div>
