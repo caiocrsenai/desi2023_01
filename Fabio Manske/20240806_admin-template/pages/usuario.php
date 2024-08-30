@@ -1,5 +1,14 @@
 <?php
 //var_dump($_POST);
+$idUser = false;
+$userInfos = false;
+
+if (!empty($_GET['id'])) {
+    $idUser = $_GET['id'];
+}
+
+
+
 if (!empty($_POST)) {
     $sql = "
     INSERT INTO user
@@ -23,6 +32,16 @@ if (!empty($_POST)) {
         echo "<script>alert('Usuário " . $_POST['username'] . " cadastrado com sucesso!')</script>";
     }
 }
+
+if ($idUser) {
+    $sql = "SELECT * FROM user WHERE id = " . $idUser;
+    $result = $con->query($sql);
+
+    if ($result->num_rows > 0) {
+        $userInfos = $result->fetch_object();
+    }
+}
+
 ?>
 
 <div class="container-box cb-form-max-width align-center flex-1">
@@ -38,32 +57,32 @@ if (!empty($_POST)) {
 
             <label>
                 <div class="lbl">Nome</div>
-                <input type="text" name="name" required>
+                <input type="text" name="name" value="<?php echo  $userInfos ? $userInfos->name : '' ?>" required>
             </label>
 
             <label>
                 <div class="lbl">Usuário</div>
-                <input type="text" name="username" required>
+                <input type="text" name="username" value="<?php echo  $userInfos ? $userInfos->username : '' ?>" required>
             </label>
 
             <label>
                 <div class="lbl">Senha</div>
-                <input type="password" name="pass" required>
+                <input type="password" name="pass" value="<?php echo  $userInfos ? $userInfos->pass : '' ?>" required>
             </label>
 
             <label>
                 <div class="lbl">Email</div>
-                <input type="email" name="email" id="email" required>
+                <input type="email" name="email" id="email" value="<?php echo  $userInfos ? $userInfos->email : '' ?>" required>
             </label>
 
             <label>
                 <div class="lbl">Data de Nascimento</div>
-                <input type="date" name="birthdate" required>
+                <input type="date" name="birthdate" value="<?php echo  $userInfos ? $userInfos->birthdate : '' ?>" required>
             </label>
 
             <label>
                 <div class="lbl">Cep</div>
-                <input type="text" name="cep" required>
+                <input type="text" name="cep" value="<?php echo  $userInfos ? $userInfos->cep : '' ?>" required>
             </label>
             <pre>
 
@@ -81,7 +100,8 @@ if (!empty($_POST)) {
 
                     if ($result->num_rows > 0) {
                         while ($row = $result->fetch_object()) {
-                            echo '<option value="' . $row->id_state . '">' . $row->nome . '  (' . $row->uf . ')</option>';
+                            echo '<option 
+                            value="' . $row->id_state . '" '. ($userInfos ? ($userInfos->id_state == $row->id_state ? 'selected' : '') : '') . '>' . $row->nome . '  (' . $row->uf . ')</option>';
                         }
                     }
                     ?>
@@ -101,8 +121,11 @@ if (!empty($_POST)) {
 
                     if ($result->num_rows > 0) {
                         while ($row = $result->fetch_object()) {
-                            echo '<option value="' . $row->id_city . '" data-uf="' . $row->uf . '" class="hide">' . $row->nome . ' </option>';
-                        }
+                            echo '<option 
+                            value="' . $row->id_city . '" 
+                            data-uf="' . $row->uf . '" 
+                            class="hide" '. ($userInfos ? ($userInfos->id_city == $row->id_city ? 'selected' : '') : '') . '>' . $row->nome . '</option>';
+                        }                                        
                     }
                     ?>
                 </select>
