@@ -1,7 +1,22 @@
 <?php
-//var_dump($_POST);
+$idUser = false;
+$userInfos = false;
+if (!empty($_GET['id'])) {
+    $idUser = $_GET['id'];
+}
+
+
 if (!empty($_POST)) {
-    $sql = "
+
+    if ($idUser) {
+        $sql = "UPDATE  SET pass = 'meuidolo@',
+        birthdate = '1986-06-28',
+        cep = '8927744',
+        id_city = '5102',
+        id_state = '14'
+        WHERE .id = 8";
+    } else {
+        $sql = "
     INSERT INTO user
     (pass, username, email, name, birthdate, photo, cep, id_city, id_state)
     VALUES
@@ -11,16 +26,27 @@ if (!empty($_POST)) {
     '" . $_POST['email'] . "',
     '" . $_POST['name'] . "',
     '" . $_POST['birthdate'] . "',
-    '" . $_POST['photo'] . "',
+    '',
     '" . $_POST['cep'] . "',
     '" . $_POST['id_city'] . "',
     '" . $_POST['id_state'] . "'
     )
     ";
+    }
+
+
     $result = $con->query($sql);
 
     if ($result) {
         echo "<script>alert('Usuário " . $_POST['username'] . " cadastrado com sucesso!')</script>";
+    }
+}
+if ($idUser) {
+    $sql = "SELECT * FROM user WHERE id = " . $idUser;
+    $result = $con->query($sql);
+
+    if ($result->num_rows > 0) {
+        $userInfos =  $result->fetch_object();
     }
 }
 ?>
@@ -37,32 +63,32 @@ if (!empty($_POST)) {
 
             <label>
                 <div class="lbl">Nome</div>
-                <input type="text" name="name" required>
+                <input type="text" name="name" value="<?php echo $userInfos ? $userInfos->name : '' ?>" required>
             </label>
 
             <label>
                 <div class="lbl">Usuário</div>
-                <input type="text" name="username" required>
+                <input type="text" name="username" value="<?php echo $userInfos ? $userInfos->username : '' ?>" required>
             </label>
 
             <label>
                 <div class="lbl">Senha</div>
-                <input type="password" name="pass" required>
+                <input type="password" name="pass" value="<?php echo $userInfos ? $userInfos->pass : '' ?>" required>
             </label>
 
             <label>
                 <div class="lbl">Email</div>
-                <input type="email" name="email" id="email" required>
+                <input type="email" name="email" id="email" value="<?php echo $userInfos ? $userInfos->email : '' ?>" required>
             </label>
 
             <label>
                 <div class="lbl">Data de Nascimento</div>
-                <input type="date" name="birthdate" required>
+                <input type="date" name="birthdate" value="<?php echo $userInfos ? $userInfos->birthdate : '' ?>" required>
             </label>
 
             <label>
                 <div class="lbl">Cep</div>
-                <input type="text" name="cep" required>
+                <input type="text" name="cep" value="<?php echo $userInfos ? $userInfos->cep : '' ?>" required>
             </label>
 
             <label>
@@ -92,7 +118,10 @@ if (!empty($_POST)) {
 
                     if ($result->num_rows > 0) {
                         while ($row = $result->fetch_object()) {
-                            echo '<option value="' . $row->id_city . '" data-uf="' . $row->uf . '" class="hide">' . $row->nome . '</option>';
+                            echo '<option
+                             value="' . $row->id_city . '" 
+                             data-uf="' . $row->uf . '" 
+                             class="hide" ' . ($userInfos ? ($userInfos->id_city ? 'selected' : '') : '') . '>' . $row->nome . '</option>';
                         }
                     }
                     ?>
@@ -125,23 +154,23 @@ if (!empty($_POST)) {
             }
         });
 
-        if(sendForm == true){
+        if (sendForm == true) {
             _this.submit();
         }
     });
 
-    _qs('[name="id_state"]').addEventListener('change', function(event){
+    _qs('[name="id_state"]').addEventListener('change', function(event) {
         console.dir(this.value);
-            idState = _this.value,
+        idState = _this.value,
             _city = _qs('["name=id_city"]');
 
         _city._qsa('option').forEach(function(_optCity) {
             const optCityIdState = _optCity.getAttribute('data-uf');
             console.dir(_optCityIdState);
 
-            if(optCityIdState == idState){
+            if (optCityIdState == idState) {
                 _optCity.classList.remove('hide');
-            }else{
+            } else {
                 _optCity.classList.add('hide');
             }
         });
@@ -150,10 +179,10 @@ if (!empty($_POST)) {
 
     _qs('#userForm')._qsa('input, select').forEach(function(_element) {
         const tagName = _element.tagName.toLowerCase();
-            
+
         let event = 'keyup';
-        
-        if(tagName == 'select'){
+
+        if (tagName == 'select') {
             event = 'change';
         }
 
@@ -162,7 +191,7 @@ if (!empty($_POST)) {
             const _this = this,
                 val = _element.value;
 
-                _this.classList.remove('error');
+            _this.classList.remove('error');
         });
     });
 
