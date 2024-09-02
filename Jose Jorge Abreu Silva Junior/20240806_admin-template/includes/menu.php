@@ -3,24 +3,29 @@
         <div class="title">Dashboard</div>
         <ul>
             <li>
-                <a href="?page=Inicial">
+                <a href="?page=inicial">
                     <i class="fa-solid fa-gauge"></i>
                     Inicial
                 </a>
             </li>
             <li>
-                <a href="?page=form">
-                    <i class="fa-solid fa-gauge">´</i>
-                    Formulario
+                <a href="?page=usuario">
+                    <i class="fa-solid fa-gauge"></i>
+                    Usuário
                 </a>
             </li>
             <li>
                 <a href="?page=usuarios">
-                    <i class="fa-solid fa-gauge">´</i>
+                    <i class="fa-solid fa-gauge"></i>
                     Usuários
                 </a>
             </li>
-
+            <li>
+                <a href="?page=produtos">
+                    <i class="fa-solid fa-gauge"></i>
+                    Produtos
+                    </a>
+            </li>
         </ul>
     </div>
 </nav>
