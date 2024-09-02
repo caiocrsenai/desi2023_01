@@ -1,27 +1,7 @@
 <?php
-$idUser = false;
-$userInfos = false;
-if (!empty($_GET['id'])) {
-    $idUser = $_GET['id'];
-}
-
-
+//var_dump($_POST);
 if (!empty($_POST)) {
-
-    if ($idUser) {
-        $sql = "
-        UPDATE user SET 
-        pass = '', 
-        username = '', 
-        email = '', 
-        name = '', 
-        birthdate = '', 
-        cep = '', 
-        id_city = '', 
-        id_state = '' 
-        WHERE user.id = ";
-    } else {
-        $sql = "
+    $sql = "
     INSERT INTO user
     (pass, username, email, name, birthdate, photo, cep, id_city, id_state)
     VALUES
@@ -31,79 +11,63 @@ if (!empty($_POST)) {
     '" . $_POST['email'] . "',
     '" . $_POST['name'] . "',
     '" . $_POST['birthdate'] . "',
-    '',
+    '" . $_POST['photo'] . "',
     '" . $_POST['cep'] . "',
     '" . $_POST['id_city'] . "',
     '" . $_POST['id_state'] . "'
     )
     ";
-    }
-
-
     $result = $con->query($sql);
 
     if ($result) {
         echo "<script>alert('Usuário " . $_POST['username'] . " cadastrado com sucesso!')</script>";
     }
 }
-
-if ($idUser) {
-    $sql = "SELECT * FROM user where id=" . $idUser;
-    $result = $con->query($sql);
-
-    if ($result->num_rows > 0) {
-        $userInfos = $result->fetch_object();
-    }
-}
 ?>
-
 <div class="container-box cb-form-max-width align-center flex-1">
     <div class="cb-header">
         <div class="cb-title">Formulário</div>
     </div>
     <div class="cb-body">
         <form method="POST" action="" id="userForm" name="userForm" novalidate>
-            <!-- <label>
+            <label>
                 <div class="lbl">Foto</div>
                 <input type="file" name="photo">
-            </label> -->
+            </label>
 
             <label>
                 <div class="lbl">Nome</div>
-                <input type="text" name="name" value="<?php echo $userInfos ? $userInfos->name : '' ?>" required>
+                <input type="text" name="name" required>
             </label>
 
             <label>
                 <div class="lbl">Usuário</div>
-                <input type="text" name="username" value="<?php echo $userInfos ? $userInfos->username : '' ?>" required>
+                <input type="text" name="username" required>
             </label>
 
             <label>
                 <div class="lbl">Senha</div>
-                <input type="password" name="pass" value="<?php echo $userInfos ? $userInfos->pass : '' ?>" required>
+                <input type="password" name="pass" required>
             </label>
 
             <label>
                 <div class="lbl">Email</div>
-                <input type="email" name="email" id="email" value="<?php echo $userInfos ? $userInfos->email : '' ?>" required>
+                <input type="email" name="email" id="email" required>
             </label>
 
             <label>
                 <div class="lbl">Data de Nascimento</div>
-                <input type="date" name="birthdate" value="<?php echo $userInfos ? $userInfos->birthdate : '' ?>" required>
+                <input type="date" name="birthdate" required>
             </label>
 
             <label>
                 <div class="lbl">Cep</div>
-                <input type="text" name="cep" value="<?php echo $userInfos ? $userInfos->cep : '' ?>" required>
+                <input type="text" name="cep" required>
             </label>
 
             <label>
                 <div class="lbl">Estado</div>
                 <select name="id_state">
-
-
-
                     <option selected disabled style="display: none;" value="">Selecione o estado</option>
                     <?php
                     $sql = "SELECT * FROM state";
@@ -111,7 +75,7 @@ if ($idUser) {
 
                     if ($result->num_rows > 0) {
                         while ($row = $result->fetch_object()) {
-                            echo '<option value="' . $row->id_state . '" ' . ($userInfos ? ($userInfos->id_state ? 'selected' : '') : '') . ' >' . $row->nome . ' (' . $row->uf . ')</option>';
+                            echo '<option value="' . $row->id_state . '">' . $row->nome . ' (' . $row->uf . ')</option>';
                         }
                     }
                     ?>
@@ -121,15 +85,14 @@ if ($idUser) {
             <label>
                 <div class="lbl">Cidade</div>
                 <select name="id_city">
-                    <option selected disabled style="display: none;" value="">Selecione o cidade</option>
+                    <option selected disabled style="display: none;" value="">Selecione a cidade</option>
                     <?php
                     $sql = "SELECT * FROM city";
                     $result = $con->query($sql);
 
                     if ($result->num_rows > 0) {
                         while ($row = $result->fetch_object()) {
-
-                            echo '<option value="' . $row->id_city . '" data-uf="' . $row->uf . '" class="hide" ' . ($userInfos ? ($userInfos->id_city ? 'selected' : '') : '') . '>' . $row->nome . '</option>';
+                            echo '<option value="' . $row->id_city . '" data-uf="' . $row->uf . '" class="hide">' . $row->nome . '</option>';
                         }
                     }
                     ?>
@@ -162,34 +125,28 @@ if ($idUser) {
             }
         });
 
-        if (sendForm == true) {
+        if(sendForm == true){
             _this.submit();
         }
     });
 
-    _qs('[name="id_state"]').addEventListener('change', function(_optCity) {
+    _qs('[name="id_state"]').addEventListener('change', function(event){
         const _this = this,
-            idState = this.value,
+            idState = _this.value,
             _city = _qs('[name="id_city"]');
-
-
 
         _city._qsa('option').forEach(function(_optCity) {
             const optCityIdState = _optCity.getAttribute('data-uf');
-            console.dir(optCityIdState);
 
-            if (optCityIdState == idState) {
+            if(optCityIdState == idState){
                 _optCity.classList.remove('hide');
-            } else {
-                _optCity.classList.add('hide')
+            }else{
+                _optCity.classList.add('hide');
             }
         });
-
     });
 
-
     _qs('#userForm')._qsa('input, select').forEach(function(_element) {
-
         const tagName = _element.tagName.toLowerCase();
         let event = 'keyup';
 

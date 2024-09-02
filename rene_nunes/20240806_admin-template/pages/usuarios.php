@@ -9,9 +9,9 @@
                     <tr>
                         <th>Nome</th>
                         <th>Email</th>
-                        <th>Usuário</th>
+                        <th>Usuario</th>
                         <th width="10px">Alterar</th>
-                        <th width="10px">Exluir</th>
+                        <th width="10px">Excluir</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -23,24 +23,22 @@
                         while ($row = $result->fetch_object()) {
                     ?>
                             <tr>
-                                <td><?php echo $row->name ?></td>
-                                <td><?php echo $row->email ?></td>
-                                <td><?php echo $row->username ?></td>
-                                <td><a href="?page=usuario&id=<?php echo $row->id?>" class="btn-status color-blue">
+                                <td><?php echo $row->name; ?></td>
+                                <td><?php echo $row->email; ?></td>
+                                <td><?php echo $row->username; ?></td>
+                                <td>
+                                    <a href="">
                                         <i class="fa-regular fa-pen-to-square"></i>
                                     </a>
                                 </td>
                                 <td>
-                                    <div class="btn-status color-red">
-                                        <i class="fa-solid fa-trash"></i>
-                                    </div>
+                                    <i class="fa-regular fa-trash-can"></i>
                                 </td>
                             </tr>
                     <?php
                         }
                     }
                     ?>
-
                 </tbody>
             </table>
         </div>
