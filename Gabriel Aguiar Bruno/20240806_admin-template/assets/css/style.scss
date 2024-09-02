@@ -18,7 +18,7 @@ body {
 	flex: 1;
 }
 
-.hide{
+.hide {
 	display: none;
 }
 
@@ -263,7 +263,6 @@ body {
 	}
 }
 
-
 .container-box {
 	display: flex;
 	flex-direction: column;
@@ -390,7 +389,7 @@ body {
 				outline: 0;
 				color-scheme: dark;
 
-				&.error{
+				&.error {
 					border-color: #d86060;
 				}
 			}
