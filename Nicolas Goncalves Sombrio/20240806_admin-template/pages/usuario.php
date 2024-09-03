@@ -18,7 +18,8 @@ if (!empty($_POST)) {
         cep = '" . $_POST['cep'] . "', 
         id_city = '" . $_POST['id_city'] . "', 
         id_state = '" . $_POST['id_state'] . "' 
-        WHERE user.id = ". $idUser;
+        WHERE user.id = ". $idUser ."
+        ";
     } else {
         $sql = "
         INSERT INTO user
@@ -42,7 +43,11 @@ if (!empty($_POST)) {
     $result = $con->query($sql);
 
     if ($result) {
-        echo "<script>alert('Usuário " . $_POST['username'] . " cadastrado com sucesso!')</script>";
+        $action = "cadastrado";
+        if($idUser){
+            $action = "alterado";
+        }
+        echo "<script>alert('Usuário " . $_POST['username'] . " ".$action." com sucesso!')</script>";
     }
 }
 
