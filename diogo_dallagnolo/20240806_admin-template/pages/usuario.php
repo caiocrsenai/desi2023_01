@@ -1,54 +1,66 @@
 <?php
 $idUser = false;
 $userInfos = false;
+
 if (!empty($_GET['id'])) {
     $idUser = $_GET['id'];
 }
 
-
 if (!empty($_POST)) {
 
     if ($idUser) {
-        $sql = "UPDATE  SET pass = 'meuidolo@',
-        birthdate = '1986-06-28',
-        cep = '8927744',
-        id_city = '5102',
-        id_state = '14'
-        WHERE .id = 8";
+        $sql = "
+        UPDATE user SET 
+        pass = '" . $_POST['pass'] . "', 
+        username = '" . $_POST['username'] . "', 
+        email = '" . $_POST['email'] . "', 
+        name = '" . $_POST['name'] . "', 
+        birthdate = '" . $_POST['birthdate'] . "', 
+        cep = '" . $_POST['cep'] . "', 
+        id_city = '" . $_POST['id_city'] . "', 
+        id_state = '" . $_POST['id_state'] . "' 
+        WHERE user.id = 30
+        ";
     } else {
         $sql = "
-    INSERT INTO user
-    (pass, username, email, name, birthdate, photo, cep, id_city, id_state)
-    VALUES
-    (
-    '" . $_POST['pass'] . "',
-    '" . $_POST['username'] . "',
-    '" . $_POST['email'] . "',
-    '" . $_POST['name'] . "',
-    '" . $_POST['birthdate'] . "',
-    '',
-    '" . $_POST['cep'] . "',
-    '" . $_POST['id_city'] . "',
-    '" . $_POST['id_state'] . "'
-    )
-    ";
+        INSERT INTO user
+        (pass, username, email, name, birthdate, photo, cep, id_city, id_state)
+        VALUES
+        (
+        '" . $_POST['pass'] . "',
+        '" . $_POST['username'] . "',
+        '" . $_POST['email'] . "',
+        '" . $_POST['name'] . "',
+        '" . $_POST['birthdate'] . "',
+        '',
+        '" . $_POST['cep'] . "',
+        '" . $_POST['id_city'] . "',
+        '" . $_POST['id_state'] . "'
+        )
+        ";
     }
-
 
     $result = $con->query($sql);
 
     if ($result) {
-        echo "<script>alert('Usuário " . $_POST['username'] . " cadastrado com sucesso!')</script>";
+        $action = "cadastrado";
+        if($idUser){
+            $action = "alterado";
+        }
+        
+        echo "<script>alert('Usuário " . $_POST['username'] . " ". $action ." com sucesso!')</script>";
     }
 }
+
 if ($idUser) {
     $sql = "SELECT * FROM user WHERE id = " . $idUser;
     $result = $con->query($sql);
 
     if ($result->num_rows > 0) {
-        $userInfos =  $result->fetch_object();
+        $userInfos = $result->fetch_object();
     }
 }
+
 ?>
 <div class="container-box cb-form-max-width align-center flex-1">
     <div class="cb-header">
@@ -56,10 +68,10 @@ if ($idUser) {
     </div>
     <div class="cb-body">
         <form method="POST" action="" id="userForm" name="userForm" novalidate>
-            <label>
+            <!-- <label>
                 <div class="lbl">Foto</div>
                 <input type="file" name="photo">
-            </label>
+            </label> -->
 
             <label>
                 <div class="lbl">Nome</div>
@@ -101,7 +113,7 @@ if ($idUser) {
 
                     if ($result->num_rows > 0) {
                         while ($row = $result->fetch_object()) {
-                            echo '<option value="' . $row->id_state . '">' . $row->nome . ' (' . $row->uf . ')</option>';
+                            echo '<option value="' . $row->id_state . '" ' . ($userInfos ? ($userInfos->id_state == $row->id_state ? 'selected' : '') : '') . '>' . $row->nome . ' (' . $row->uf . ')</option>';
                         }
                     }
                     ?>
@@ -111,17 +123,17 @@ if ($idUser) {
             <label>
                 <div class="lbl">Cidade</div>
                 <select name="id_city">
-                    <option selected disabled style="display: none;" value="">Selecione o cidade</option>
+                    <option selected disabled style="display: none;" value="">Selecione a cidade</option>
                     <?php
                     $sql = "SELECT * FROM city";
                     $result = $con->query($sql);
 
                     if ($result->num_rows > 0) {
                         while ($row = $result->fetch_object()) {
-                            echo '<option
-                             value="' . $row->id_city . '" 
-                             data-uf="' . $row->uf . '" 
-                             class="hide" ' . ($userInfos ? ($userInfos->id_city ? 'selected' : '') : '') . '>' . $row->nome . '</option>';
+                            echo '<option 
+                            value="' . $row->id_city . '" 
+                            data-uf="' . $row->uf . '" 
+                            class="hide" ' . ($userInfos ? ($userInfos->id_city == $row->id_city ? 'selected' : '') : '') . '>' . $row->nome . '</option>';
                         }
                     }
                     ?>
@@ -160,13 +172,12 @@ if ($idUser) {
     });
 
     _qs('[name="id_state"]').addEventListener('change', function(event) {
-        console.dir(this.value);
-        idState = _this.value,
-            _city = _qs('["name=id_city"]');
+        const _this = this,
+            idState = _this.value,
+            _city = _qs('[name="id_city"]');
 
         _city._qsa('option').forEach(function(_optCity) {
             const optCityIdState = _optCity.getAttribute('data-uf');
-            console.dir(_optCityIdState);
 
             if (optCityIdState == idState) {
                 _optCity.classList.remove('hide');
@@ -174,19 +185,16 @@ if ($idUser) {
                 _optCity.classList.add('hide');
             }
         });
-
     });
 
     _qs('#userForm')._qsa('input, select').forEach(function(_element) {
         const tagName = _element.tagName.toLowerCase();
-
         let event = 'keyup';
 
         if (tagName == 'select') {
             event = 'change';
         }
 
-        console.dir(_element);
         _element.addEventListener(event, function(event) {
             const _this = this,
                 val = _element.value;

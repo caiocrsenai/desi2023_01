@@ -9,7 +9,7 @@
                 </a>
             </li>
             <li>
-                <a href="?page=form=usuario">
+                <a href="?page=usuario">
                     <i class="fa-solid fa-gauge"></i>
                     Usuário
                 </a>
