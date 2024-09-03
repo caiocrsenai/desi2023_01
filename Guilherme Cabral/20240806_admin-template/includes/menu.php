@@ -4,7 +4,7 @@
         <ul>
             <li>
                 <a href="?page=inicial">
-                    <i class="fa-solid fa-gauge"></i>
+                    <i class="fa-brands fa-playstation"></i>
                     Inicial
                 </a>
             </li>
@@ -16,14 +16,14 @@
             </li>
             <li>
                 <a href="?page=usuarios">
-                    <i class="fa-solid fa-gauge"></i>
+                    <i class="fa-solid fa-user-plus"></i>
                     Usuários
                 </a>
             </li>
             <li>
-                <a href="?page=produtos">
-                    <i class="fa-solid fa-gauge"></i>
-                    Produtos
+                <a href="?page=produto">
+                    <i class="fa-solid fa-file-import"></i>
+                    Produto
                 </a>
             </li>
         </ul>

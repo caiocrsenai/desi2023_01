@@ -1,42 +1,6 @@
 <?php
-$idUser = false;
-$userInfos = false;
-if (!empty($_GET['id'])) {
-    $idUser = $_GET['id'];
-}
-
+//var_dump($_POST);
 if (!empty($_POST)) {
-
-    IF($idUser){
-        $sql ="INSERT INTO user (id, 
-        pass, 
-        username,
-         email, 
-         name, 
-         birthdate, 
-         photo, 
-         cep, 
-         id_city, 
-         id_state) VALUES (NULL, 'aaa', 'fff', 'sss', 'ffff', 'dasd', '', '3333', '212', '22'), (NULL, 'asda', '', '', '', '', '', '', '', '')
-        ";
-    }else{
-        $sql = "
-        INSERT INTO user
-        (pass, username, email, name, birthdate, photo, cep, id_city, id_state)
-        VALUES
-        (
-        '" . $_POST['pass'] . "',
-        '" . $_POST['username'] . "',
-        '" . $_POST['email'] . "',
-        '" . $_POST['name'] . "',
-        '" . $_POST['birthdate'] . "',
-        '',
-        '" . $_POST['cep'] . "',
-        '" . $_POST['id_city'] . "',
-        '" . $_POST['id_state'] . "'
-        )
-        ";
-    }
     $sql = "
     INSERT INTO user
     (pass, username, email, name, birthdate, photo, cep, id_city, id_state)
@@ -47,7 +11,7 @@ if (!empty($_POST)) {
     '" . $_POST['email'] . "',
     '" . $_POST['name'] . "',
     '" . $_POST['birthdate'] . "',
-    '',
+    '" . $_POST['photo'] . "',
     '" . $_POST['cep'] . "',
     '" . $_POST['id_city'] . "',
     '" . $_POST['id_state'] . "'
@@ -59,15 +23,6 @@ if (!empty($_POST)) {
         echo "<script>alert('Usuário " . $_POST['username'] . " cadastrado com sucesso!')</script>";
     }
 }
-
-if ($idUser) {
-    $sql = "SELECT * FROM user WHERE id =" .$idUser;
-    $result = $con->query($sql);
-
-    if ($result->num_rows > 0) {
-        $userInfos = $result->fetch_object();
-    }
-}
 ?>
 <div class="container-box cb-form-max-width align-center flex-1">
     <div class="cb-header">
@@ -75,45 +30,39 @@ if ($idUser) {
     </div>
     <div class="cb-body">
         <form method="POST" action="" id="userForm" name="userForm" novalidate>
-            <!-- <label>
+            <label>
                 <div class="lbl">Foto</div>
                 <input type="file" name="photo">
-            </label> -->
+            </label>
 
             <label>
                 <div class="lbl">Nome</div>
-                <input type="text" name="name" value="<?php echo $userInfos ? $userInfos ->name : '' ?>" required>
+                <input type="text" name="name" required>
             </label>
-            
 
             <label>
                 <div class="lbl">Usuário</div>
-                <input type="text" name="username" value="<?php echo $userInfos ? $userInfos ->username : '' ?>" required>
-                </label> 
+                <input type="text" name="username" required>
             </label>
 
             <label>
                 <div class="lbl">Senha</div>
-                <input type="password" name="pass" value="<?php echo $userInfos ? $userInfos ->pass : '' ?>" required>
-                </label> 
+                <input type="password" name="pass" required>
             </label>
 
             <label>
                 <div class="lbl">Email</div>
-                <input type="email" name="email" id="email" value="<?php echo $userInfos ? $userInfos ->email : '' ?>" required>
-                </label> 
+                <input type="email" name="email" id="email" required>
             </label>
 
             <label>
                 <div class="lbl">Data de Nascimento</div>
-                <input type="date" name="birthdate" value="<?php echo $userInfos ? $userInfos ->birthdate : '' ?>" required>
-                </label> 
+                <input type="date" name="birthdate" required>
             </label>
 
             <label>
                 <div class="lbl">Cep</div>
-                <input type="text" name="cep" value="<?php echo $userInfos ? $userInfos ->cep: '' ?>" required>
-                </label> 
+                <input type="text" name="cep" required>
             </label>
 
             <label>
@@ -126,7 +75,7 @@ if ($idUser) {
 
                     if ($result->num_rows > 0) {
                         while ($row = $result->fetch_object()) {
-                            echo '<option value="' . $row->id_state . '" '.( $userInfos ? ($userInfos ->id_state ==$row->id_state ? 'selected' :'') :'').'>' . $row->nome . ' (' . $row->uf . ')</option>';
+                            echo '<option value="' . $row->id_state . '">' . $row->nome . ' (' . $row->uf . ')</option>';
                         }
                     }
                     ?>
@@ -143,10 +92,7 @@ if ($idUser) {
 
                     if ($result->num_rows > 0) {
                         while ($row = $result->fetch_object()) {
-                            echo '<option 
-                            value="' . $row->id_city . '" 
-                            data-uf="' . $row->uf . '" 
-                            class="hide" '.( $userInfos ? ($userInfos ->id_city ==$row->id_city ? 'selected' :'') :'').'>' . $row->nome . ' </option>';
+                            echo '<option value="' . $row->id_city . '" data-uf="' . $row->uf . '" class="hide">' . $row->nome . '</option>';
                         }
                     }
                     ?>
@@ -179,25 +125,23 @@ if ($idUser) {
             }
         });
 
-        if (sendForm == true) {
+        if(sendForm == true){
             _this.submit();
         }
-
     });
 
-    _qs('[name="id_state"]').addEventListener('change', function(event) {
+    _qs('[name="id_state"]').addEventListener('change', function(event){
         const _this = this,
-            idState = _this.value;
-        _city = _qs('[name="id_city"]');
+            idState = _this.value,
+            _city = _qs('[name="id_city"]');
 
         _city._qsa('option').forEach(function(_optCity) {
             const optCityIdState = _optCity.getAttribute('data-uf');
 
-            if (optCityIdState == idState) {
+            if(optCityIdState == idState){
                 _optCity.classList.remove('hide');
-            } else {
+            }else{
                 _optCity.classList.add('hide');
-
             }
         });
     });
@@ -207,7 +151,7 @@ if ($idUser) {
         let event = 'keyup';
 
         if (tagName == 'select') {
-            event = 'change'
+            event = 'change';
         }
 
         _element.addEventListener(event, function(event) {
@@ -218,27 +162,30 @@ if ($idUser) {
         });
     });
 
-    // const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    // function validateForm() {
-    //     const form = document.getElementById('userForm');
-    //     const fields = form.querySelectorAll('input');
-    //     let isValid = true;
+    /*
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    //     let mailField = document.querySelector('#email');
-    //     if (!emailPattern.test(mailField.value)) {
-    //         alert('Este email está inadequado.');
-    //         isValid = false;
-    //     }
+    function validateForm() {
+        const form = document.getElementById('userForm');
+        const fields = form.querySelectorAll('input');
+        let isValid = true;
 
-    //     return isValid;
-    // }
+        let mailField = document.querySelector('#email');
+        if (!emailPattern.test(mailField.value)) {
+            alert('Este email está inadequado.');
+            isValid = false;
+        }
 
-    // document.getElementById('userForm').addEventListener('submit', function(event) {
-    //     var validate = validateForm();
-    //     if (!validate) {
-    //         event.preventDefault(); // Impede o envio do formulário se a validação falhar
-    //         alert('Favor preencher todos os campos obrigatórios.');
-    //     }
-    // });
+        return isValid;
+    }
+
+    document.getElementById('userForm').addEventListener('submit', function(event) {
+        var validate = validateForm();
+        if (!validate) {
+            event.preventDefault(); // Impede o envio do formulário se a validação falhar
+            alert('Favor preencher todos os campos obrigatórios.');
+        }
+    });
+    */
 </script>

@@ -22,10 +22,10 @@
             <div class="option-item menu">
                 <div class="menu-container">
                     <div class="image"
-                        style="background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTn7KAhD4HLNtS525KxMnGiUW36_a_YRN1s0ow6_PS8idxUvvMmG3pXTZkD4AvQkstXhyQ&usqp=CAU);">
+                        style="background-image: url(https://emilus.themenate.net/img/avatars/thumb-1.jpg);">
                     </div>
                     <div class="infos-ct">
-                        <div class="name">Guilherme Cabral</div>
+                        <div class="name">Caio Cidral Ramos</div>
                         <div class="info">Desenvolvedor Full-Stack</div>
                     </div>
                 </div>

@@ -18,8 +18,8 @@ include_once('includes/connect.php');
 	
 	<script src="assets/js/jquery-3.7.1.min.js"></script>
 	<script src="assets/js/_qs.js"></script>
-
 </head>
+
 <body>
 
 	<div class="main-container">
