@@ -40,7 +40,10 @@ include_once('includes/connect.php');
 					}else{
 						include_once('pages/' . $page_default . '.php');
 					}
+<<<<<<< Updated upstream
 					
+=======
+>>>>>>> Stashed changes
 					?>
 				</div>
 			</section>
