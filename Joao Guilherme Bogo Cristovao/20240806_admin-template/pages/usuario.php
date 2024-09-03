@@ -9,17 +9,17 @@ if (!empty($_GET['id'])) {
 if (!empty($_POST)) {
 
     if ($idUser) {
-        $sql ="
+        $sql = "
         UPDATE user SET 
-        pass = '4567', 
-        username = 'nóiaa', 
-        email = 'cabrall@gmail', 
-        name = 'Guilherme Cabrall', 
-        birthdate = '2005-04-28', 
-        photo = '2.png', cep = '8920242', 
-        id_city = '250', 
-        id_state = '12' 
-        WHERE user.id = 12
+        pass = '" . $_POST['pass'] . "', 
+        username = '" . $_POST['username'] . "', 
+        email = '" . $_POST['email'] . "', 
+        name = '" . $_POST['name'] . "', 
+        birthdate = '" . $_POST['birthdate'] . "', 
+        cep = '" . $_POST['cep'] . "', 
+        id_city = '" . $_POST['id_city'] . "', 
+        id_state = '" . $_POST['id_state'] . "' 
+        WHERE user.id = " . $idUser . "
         ";
     } else {
         $sql = "
@@ -43,7 +43,12 @@ if (!empty($_POST)) {
     $result = $con->query($sql);
 
     if ($result) {
-        echo "<script>alert('Usuário " . $_POST['username'] . " cadastrado com sucesso!')</script>";
+        $action = "cadastrado";
+        if($idUser){
+            $action = "alterado";
+        }
+
+        echo "<script>alert('Usuário " . $_POST['username'] . " " . $action . " com sucesso!')</script>";
     }
 }
 
