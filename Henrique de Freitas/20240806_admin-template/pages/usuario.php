@@ -12,14 +12,16 @@ if (!empty($_POST)) {
 
     if ($idUser) {
         $sql = "UPDATE user SET 
-        pass = '123444', 
-        username` = 'Natha',
-        email` = 'Nathan@gmail.co',
-        name` = 'Natha',
-        birthdate` = '2005-19-08',
-        cep` = '46',
-        id_city` = '75',
-        id_state` = '25' WHERE user.id = 19";
+        pass = '".$_POST['pass']."', 
+        username = '".$_POST['username']."',
+        email = '".$_POST['email']."',
+        name = '".$_POST['name']."',
+        birthdate = '".$_POST['birthdate']."',
+        cep = '".$_POST['cep']."',
+        id_city = '".$_POST['id_city']."',
+        id_state = '".$_POST['id_state']."'
+        WHERE user.id = " . $idUser . "
+        ";
 
     } else {
 
@@ -43,8 +45,14 @@ if (!empty($_POST)) {
 
     $result = $con->query($sql);
 
-    if ($result) {
-        echo "<script>alert('Usuário " . $_POST['username'] . " cadastrado com sucesso!')</script>";
+    if ($result) { 
+        $action = "cadastrado";
+        if($idUser){
+            $action = "alterado";
+        }
+
+
+        echo "<script>alert('Usuário " . $_POST['username'] . " ".$action." com sucesso!')</script>";
     }
 }
 
