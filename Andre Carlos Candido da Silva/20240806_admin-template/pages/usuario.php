@@ -12,15 +12,16 @@ if (!empty($_GET['id'])) {
 
 if (!empty($_POST)) {
     if ($idUser) {
-        $sql="
+        $sql = "
         UPDATE user SET 
-        pass = 'dgafdgdfhhg', 
-        username = 'cofabuw.', 
-        email = 'bera@mailinator.com.', 
-        name = 'Rose Cegerg ehgwrthr ththj', 
-        cep = '52142141', 
-        id_city = '1', 
-        id_state = '1' 
+        pass = '" . $_POST['pass'] . "', 
+        username = '" . $_POST['username'] . ".', 
+        email = '" . $_POST['email'] . "', 
+        name = '" . $_POST['name'] . "',
+        birthdate ='" . $_POST['birthdate'] . "', 
+        cep = '" . $_POST['cep'] . "', 
+        id_city = '" . $_POST['id_city'] . "', 
+        id_state = '" . $_POST['id_state'] . "' 
         WHERE user.id = 13
         ";
     } else {
@@ -47,7 +48,11 @@ if (!empty($_POST)) {
     $result = $con->query($sql);
 
     if ($result) {
-        echo "<script>alert('Usuário " . $_POST['username'] . " cadastrado com sucesso!')</script>";
+        $action="cadastrado";
+        if($idUser){
+            $action="alterado";
+        }
+        echo "<script>alert('Usuário " . $_POST['username'] . " ".$action." com sucesso!')</script>";
     }
 }
 
@@ -141,6 +146,9 @@ if ($idUser) {
                     ?>
                 </select>
 
+                <div class="form-actions">
+                    <button type="submit">Enviar</button>
+                </div>
 
             </label>
 
