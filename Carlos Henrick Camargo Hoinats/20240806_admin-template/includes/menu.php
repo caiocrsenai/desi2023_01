@@ -4,14 +4,14 @@
         <ul>
             <li>
                 <a href="?page=inicial">
-                <i class="fa-solid fa-play"></i>
+                    <i class="fa-brands fa-playstation"></i>
                     Inicial
                 </a>
             </li>
             <li>
-                <a href="?page=form">
-                <i class="fa-solid fa-rectangle-list"></i>
-                    Formulário
+                <a href="?page=usuario">
+                    <i class="fa-solid fa-gauge"></i>
+                    Usuário
                 </a>
             </li>
             <li>
@@ -21,11 +21,11 @@
                 </a>
             </li>
             <li>
-                <a href = "?page=produtos">
+                <a href="?page=produtos">
                     <i class="fa-solid fa-file-import"></i>
-                    Produtos
+                    Produtos 
                 </a>
-            </li>           
+            </li>
         </ul>
     </div>
 </nav>
