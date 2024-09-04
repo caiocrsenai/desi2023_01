@@ -1,54 +1,75 @@
 <?php
-var_dump($POST);
+if (!empty($_GET['id'])) {
+    $idUser = $_GET['id'];
 
-if(!empty($_POST)){
-    $sql = " 
-    INSERT INTO product (nome, idcategoria, codebar, preco)
-    VALUES
-    ('" ;
+    $sql = "DELETE FROM user WHERE user.id = " . $idUser . ";";
 
+    $result = $con->query($sql);
+    if ($con->affected_rows > 0) {
+        echo "<script>alert('Usuário excluido com sucesso!')</script>";
+    }
 }
+?>
 
-
-?>  
-
-
-<div class="container-box cb-form-max-width align-center flex-1">
+<div class="container-box flex-1">
     <div class="cb-header">
-        <div class="cb-title">Produtos
+        <div class="cb-title">Produtos</div>
+    </div>
+    <div class="cb-body">
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Categoria</th>
+                        <th>Preço</th>
+                        <th width="10px">Alterar</th>
+                        <th width="10px">Excluir</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    $sql = "SELECT * FROM product";
+                    $result = $con->query($sql);
 
+                    if ($result->num_rows > 0) {
+                        while ($row = $result->fetch_object()) {
+                    ?>
+                            <tr>
+                                <td><?php echo $row->name; ?></td>
+                                <td><?php echo $row->id_category; ?></td>
+                                <td><?php echo $row->price; ?></td>
+                                <td>
+                                    <a href="?page=produto&id=<?php echo $row->id; ?>" class="btn-status color-blue">
+                                        <i class="fa-regular fa-pen-to-square"></i>
+                                    </a>
+                                </td>
+                                <td>
+                                    <div class="delete-user btn-status color-red" data-id="<?php echo $row->id; ?>">
+                                        <i class="fa-regular fa-trash-can"></i>
+                                    </div>
+                                </td>
+                            </tr>
+                    <?php
+                        }
+                    }
+                    ?>
+                </tbody>
+            </table>
         </div>
     </div>
-
-    <div class="cb-body">
-        <form method="POST" action="" id="userForm" name="userForm" novalidate>
-            <label>
-                <div class="lbl">Nome</div>
-                <input type="text" name="name" required>
-            </label>
-
-            <label>
-                <div class="lbl">Categoria</div>
-                <input type="text" name="Categoria" required>
-            </label>
-
-            <label>
-                <div class="lbl">Codebar</div>
-                <input type="text" name="Codebar" maxlength="13">
-            </label>
-
-            <label>
-                <div class="lbl">Preço</div>
-                <input type="number" min="0.00" max="10000.00" step="0.10" name="preco" />
-            </label>
-
-            <div class="form-actions">
-                <button type="submit">Enviar</button>
-            </div>
-
-        </form>
-
-
-    </div>
-
 </div>
+
+<script>
+    _qsa('.delete-user').forEach(function(_element) {
+        _element.addEventListener('click', function(e) {
+            const _this = this,
+                dataId = _this.getAttribute('data-id');
+
+            if (confirm('Você deseja realmente excluir o usuário?')) {
+                //alert('Excluir usuario: ' + dataId);
+                window.location.href = '?page=usuarios&id=' + dataId;
+            }
+        });
+    });
+</script>

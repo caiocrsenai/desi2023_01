@@ -20,8 +20,7 @@ include_once('includes/connect.php');
 	<script src="assets/js/_qs.js"></script>
 </head>
 
-<bod >
-
+<body>
 
 	<div class="main-container">
 		<?php include_once('includes/header.php'); ?>
@@ -47,6 +46,6 @@ include_once('includes/connect.php');
 		</div>
 	</div>
 
-</bod>
+</body>
 
 </html>
