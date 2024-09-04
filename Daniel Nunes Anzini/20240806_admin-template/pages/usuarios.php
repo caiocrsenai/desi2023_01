@@ -3,7 +3,7 @@
         $idUser = $_GET['id'];
         $sql="DELETE FROM user WHERE user.id = " . $idUser . ";";
 
-         $result = "DELETE FROM user WHERE user.id = " . $idUser . ";";
+         $result = $con->query($sql);
         if ($con->affected_rows > 0) {             
             echo "<script>alert('Usuário excluido com sucesso!')</script>";
         }
