@@ -9,7 +9,7 @@
                 </a>
             </li>
             <li>
-                <a href="?page= Usuario">
+                <a href="?page=usuario">
                     <i class="fa-solid fa-gauge"></i>
                     Usuário
                 </a>
@@ -18,6 +18,12 @@
                 <a href="?page=usuarios">
                     <i class="fa-solid fa-user-plus"></i>
                     Usuários
+                </a>
+            </li>
+            <li>
+                <a href="?page=produto">
+                    <i class="fa-solid fa-file-import"></i>
+                    Produto 
                 </a>
             </li>
             <li>

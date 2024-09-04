@@ -18,7 +18,7 @@ body {
 	flex: 1;
 }
 
-.hide{
+.hide {
 	display: none;
 }
 
@@ -230,6 +230,7 @@ body {
 		}
 	}
 }
+
 .btn-status {
 	display: inline-flex;
 	border: 1px solid #CCC;
@@ -261,6 +262,7 @@ body {
 		border-color: #873a3a;
 	}
 }
+
 .container-box {
 	display: flex;
 	flex-direction: column;
@@ -387,7 +389,7 @@ body {
 				outline: 0;
 				color-scheme: dark;
 
-				&.error{
+				&.error {
 					border-color: #d86060;
 				}
 			}
