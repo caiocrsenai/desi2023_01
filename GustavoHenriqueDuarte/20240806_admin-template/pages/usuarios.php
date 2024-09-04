@@ -14,7 +14,7 @@ if (!empty($_GET['id'])) {
 
 <div class="container-box flex-1">
     <div class="cb-header">
-        <div class="cb-title">Vendas</div>
+        <div class="cb-title">Usuários</div>
     </div>
     <div class="cb-body">
         <div class="table-container">

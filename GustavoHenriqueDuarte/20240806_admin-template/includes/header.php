@@ -22,11 +22,11 @@
             <div class="option-item menu">
                 <div class="menu-container">
                     <div class="image"
-                        style="background-image: url(https://emilus.themenate.net/img/avatars/thumb-1.jpg);">
+                        style="background-image: url(https://i.pinimg.com/originals/16/03/5c/16035c929a7528572ddba708dc886c65.jpg);">
                     </div>
                     <div class="infos-ct">
-                        <div class="name">Caio Cidral Ramos</div>
-                        <div class="info">Desenvolvedor Full-Stack</div>
+                        <div class="name">Gustavo Henrique Duarte</div>
+                        <div class="info">Desenvolvedor Empty-Stack</div>
                     </div>
                 </div>
             </div>
