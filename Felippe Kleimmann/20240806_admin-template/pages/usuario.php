@@ -9,17 +9,17 @@ if (!empty($_GET['id'])) {
 if (!empty($_POST)) {
 
     if ($idUser) {
-        $SQL = "UPDATE user SET
-     pass = 'Pa$$w0rd!AAA', 
-     username = 'bihazyzeceAAAAA', 
-     email = 'guvoguzy@mailinator.comAAA', 
-     name = 'Amaya HoffmanAAA', 
-     birthdate = '1997-03-12', 
-     cep = '12', 
-     id_city = '3803', 
-     id_state = '12' WHERE 
-     user.id = 59";
-
+        $sql = "UPDATE user SET
+        pass = '" . $_POST['pass'] . "', 
+        username = '" . $_POST['username'] . "', 
+        email = '" . $_POST['email'] . "', 
+        name = '" . $_POST['name'] . "', 
+        birthdate = '" . $_POST['birthdate'] . "', 
+        cep = '" . $_POST['cep'] . "', 
+        id_city = '" . $_POST['id_city'] . "', 
+        id_state = '" . $_POST['id_state'] . "' 
+        WHERE 
+        user.id = " . $idUser . "";
     } else {
         $sql = "
         INSERT INTO user
@@ -37,11 +37,17 @@ if (!empty($_POST)) {
         '" . $_POST['id_state'] . "'
         )
         ";
-        $result = $con->query($sql);
+    }
 
-        if ($result) {
-            echo "<script>alert('Usuário " . $_POST['username'] . " cadastrado com sucesso!')</script>";
+    $result = $con->query($sql);
+
+    if ($result) {
+        $action = "cadastrado";
+        if ($idUser) {
+            $action = 'alterado';
         }
+
+        echo "<script>alert('Usuário " . $_POST['username'] . " " . $action . " com sucesso!')</script>";
     }
 }
 
