@@ -65,9 +65,6 @@ if ($idUser) {
     }
 }
 
-
-
-
 ?>
 <div class="container-box cb-form-max-width align-center flex-1">
     <div class="cb-header">
