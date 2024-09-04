@@ -22,6 +22,13 @@
             </li>
 
             <li>
+                <a href="?page=produto">
+                    <i class="fa-solid fa-thin fa-headphones"></i>
+                    Produto
+                </a>
+            </li>
+
+            <li>
                 <a href="?page=produtos">
                     <i class="fa-solid fa-thin fa-headphones"></i>
                     Produtos
