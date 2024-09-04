@@ -26,6 +26,12 @@
                     produto
                 </a>
             </li>
+            <li>
+                <a href="?page=produtos">
+                    <i class="fa-solid fa-file-import"></i>
+                    produtos
+                </a>
+            </li>
         </ul>
     </div>
 </nav>
