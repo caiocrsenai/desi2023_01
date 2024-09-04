@@ -65,7 +65,7 @@ if ($idUser) {
 ?>
 <div class="container-box cb-form-max-width align-center flex-1">
     <div class="cb-header">
-        <div class="cb-title">Formulário</div>
+        <div class="cb-title">Usuário</div>
     </div>
     <div class="cb-body">
         <form method="POST" action="" id="userForm" name="userForm" novalidate>
