@@ -1,50 +1,75 @@
 <?php
-var_dump($_POST);
+if (!empty($_GET['id'])) {
+    $idProduct = $_GET['id'];
 
-if (!empty($_POST)) {
-    $sql = "
-    INSERT INTO product (nome, idcategoria, codebar, preco)
-    VALUES
-    (
-    '" . $_POST['name'] . "',
-    " . $_POST['categoria'] . ",
-    '" . $_POST['codebar'] . "',
-    '" . $_POST['preco'] . "'
-    )";
+    $sql = "DELETE FROM product WHERE product.id = " . $idProduct . ";";
 
     $result = $con->query($sql);
+    if ($con->affected_rows > 0) {
+        echo "<script>alert('Produto excluido com sucesso!')</script>";
+    }
 }
 ?>
 
-<div class="container-box cb-form-max-width align-center flex-1">
+<div class="container-box flex-1">
     <div class="cb-header">
         <div class="cb-title">Produtos</div>
     </div>
     <div class="cb-body">
-        <form method="POST" action="" id="productForm" name="productForm" novalidate>
-            <label>
-                <div class="lbl">Nome</div>
-                <input type="text" name="name" required>
-            </label>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Categoria</th>
+                        <th>Preço</th>
+                        <th width="10px">Alterar</th>
+                        <th width="10px">Excluir</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    $sql = "SELECT * FROM product";
+                    $result = $con->query($sql);
 
-            <label>
-                <div class="lbl">Categoria</div>
-                <input type="text" name="categoria" required>
-            </label>
-
-            <label>
-                <div class="lbl">Código de Barras (EAN-13)</div>
-                <input type="text" name="codebar" maxlength="13">
-            </label>
-
-            <label>
-                <div class="lbl">Preco</div>
-                <input type="number" min="0.00" max="10000.00" step="0.10" name="preco" />
-            </label>
-
-            <div class="form-actions">
-                <button type="submit">Enviar</button>
-            </div>
-        </form>
+                    if ($result->num_rows > 0) {
+                        while ($row = $result->fetch_object()) {
+                            ?>
+                            <tr>
+                                <td><?php echo $row->name; ?></td>
+                                <td><?php echo $row->id_category; ?></td>
+                                <td><?php echo $row->price; ?></td>
+                                <td>
+                                    <a href="?page=produto&id=<?php echo $row->id; ?>" class="btn-status color-blue">
+                                        <i class="fa-regular fa-pen-to-square"></i>
+                                    </a>
+                                </td>
+                                <td>
+                                    <div class="delete-product btn-status color-red" data-id="<?php echo $row->id; ?>">
+                                        <i class="fa-regular fa-trash-can"></i>
+                                    </div>
+                                </td>
+                            </tr>
+                            <?php
+                        }
+                    }
+                    ?>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
+
+<script>
+    _qsa('.delete-product').forEach(function (_element) {
+        _element.addEventListener('click', function (e) {
+            const _this = this,
+                dataId = _this.getAttribute('data-id');
+
+            if (confirm('Você deseja realmente excluir o Produto?')) {
+                //alert('Excluir usuario: ' + dataId);
+                window.location.href = '?page=produtos&id=' + dataId;
+            }
+        });
+    });
+</script>

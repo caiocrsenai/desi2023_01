@@ -1,5 +1,4 @@
 <?php
-
 if (!empty($_GET['id'])) {
     $idUser = $_GET['id'];
 
@@ -7,16 +6,14 @@ if (!empty($_GET['id'])) {
 
     $result = $con->query($sql);
     if ($con->affected_rows > 0) {
-        echo "<script>alert('Usuário com sucesso!')</script>";
+        echo "<script>alert('Usuário excluido com sucesso!')</script>";
     }
 }
-
 ?>
-
 
 <div class="container-box flex-1">
     <div class="cb-header">
-        <div class="cb-title">Vendas</div>
+        <div class="cb-title">Usuarios</div>
     </div>
     <div class="cb-body">
         <div class="table-container">
@@ -48,7 +45,7 @@ if (!empty($_GET['id'])) {
                                     </a>
                                 </td>
                                 <td>
-                                    <div class=" delete-user btn-status color-red" data-id="<?php echo $row->id; ?>">
+                                    <div class="delete-user btn-status color-red" data-id="<?php echo $row->id; ?>">
                                         <i class="fa-regular fa-trash-can"></i>
                                     </div>
                                 </td>
@@ -69,12 +66,10 @@ if (!empty($_GET['id'])) {
             const _this = this,
                 dataId = _this.getAttribute('data-id');
 
-            if (confirm('voce deseja realmente excluir o usuario?')) {
-                //alert('Excluir usuario:' + dataId);
+            if (confirm('Você deseja realmente excluir o usuário?')) {
+                //alert('Excluir usuario: ' + dataId);
                 window.location.href = '?page=usuarios&id=' + dataId;
             }
-
         });
-
-    })
+    });
 </script>
