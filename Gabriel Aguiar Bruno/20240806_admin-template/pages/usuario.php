@@ -43,13 +43,12 @@ if (!empty($_POST)) {
     $result = $con->query($sql);
 
     if ($result) {
-        $action = 'cadastrado';
-
+        $action = "cadastrado";
         if($idUser){
-            $action = 'alterado';
+            $action = "alterado";
         }
 
-        echo "<script>alert('Usuário " . $_POST['username']." ". $action . " com sucesso!')</script>";
+        echo "<script>alert('Usuário " . $_POST['username'] . " " . $action . " com sucesso!')</script>";
     }
 }
 

@@ -2,19 +2,18 @@
 if (!empty($_GET['id'])) {
     $idUser = $_GET['id'];
 
-    $sql = "DELETE FROM user WHERE user.id = " . $idUser . "";
+    $sql = "DELETE FROM user WHERE user.id = " . $idUser . ";";
 
     $result = $con->query($sql);
-
     if ($con->affected_rows > 0) {
-        echo "<script>alert('Usuário excluído com sucesso!')</script>";
+        echo "<script>alert('Usuário excluido com sucesso!')</script>";
     }
 }
 ?>
 
 <div class="container-box flex-1">
     <div class="cb-header">
-        <div class="cb-title">Vendas</div>
+        <div class="cb-title">Usuários</div>
     </div>
     <div class="cb-body">
         <div class="table-container">
@@ -64,17 +63,13 @@ if (!empty($_GET['id'])) {
 <script>
     _qsa('.delete-user').forEach(function(_element) {
         _element.addEventListener('click', function(e) {
+            const _this = this,
+                dataId = _this.getAttribute('data-id');
 
-            const _this = this;
-
-            dataId = _this.getAttribute('data-id');
-
-            if (confirm('Você deseja realmente excluir o usuário?')) {
-                alert('Excluir usuário: ' + dataId);
-
-                window.location.href = '?page=usuarios&id=' + dataId;
+            if (confirm('Você deseja realmente excluir o produto?')) {
+                //alert('Excluir usuario: ' + dataId);
+                window.location.href = '?page=produtos&id=' + dataId;
             }
-
         });
     });
 </script>
