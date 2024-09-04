@@ -19,7 +19,8 @@ if (!empty($_POST)) {
         cep = '" . $_POST['cep'] . "', 
         id_city = '" . $_POST['id_city'] . "', 
         id_state = '" . $_POST['id_state'] . "' 
-        WHERE user.id = " . $idUser . "
+        WHERE 
+        user.id = " . $idUser . "
         ";
     } else {
         $sql = "

@@ -21,6 +21,12 @@
                 </a>
             </li>
             <li>
+                <a href="?page=produto">
+                    <i class="fa-solid fa-box-open"></i>
+                    Produto
+                </a>
+            </li>
+            <li>
                 <a href="?page=produtos">
                     <i class="fa-solid fa-box-open"></i>
                     Produtos
