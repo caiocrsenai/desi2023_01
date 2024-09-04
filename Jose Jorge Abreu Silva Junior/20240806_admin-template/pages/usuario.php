@@ -1,14 +1,13 @@
 <?php
-
+if (!empty($_GET['id'])) {
+    $idUser = $_GET['id'];
+}
 //var_dump($_POST);
 
 $idUser = false;
 $userInfos = false;
 
-if(!empty($_GET['id'])){
-    $idUser = $_GET['id'];
 
-}
 
 
 
@@ -17,15 +16,16 @@ if (!empty($_POST)) {
     if($idUser){
         $sql = "
         UPDATE user SET 
-        pass = 'Josee', 
-        username = 'Joose', 
-        email = 'Jose123@gmail.com', 
-        name = 'Jose1', 
-        birthdate = '2001-01-23', 
-        cep = '43553431', 
-        id_city = '4545', 
-        id_state = '27' 
-        WHERE user.id = 27";
+        pass = '" . $_POST['pass'] . "', 
+        username = '" . $_POST['username'] . "', 
+        email = '" . $_POST['email'] . "', 
+        name = '" . $_POST['name'] . "', 
+        birthdate = '" . $_POST['birthdate'] . "', 
+        cep = '" . $_POST['cep'] . "', 
+        id_city = '" . $_POST['id_city'] . "', 
+        id_state = '" . $_POST['id_state'] . "' 
+        WHERE user.id = " . $idUser .  " 
+        ";
 
     }else{
         $sql = "
@@ -38,7 +38,7 @@ if (!empty($_POST)) {
         '" . $_POST['email'] . "',
         '" . $_POST['name'] . "',
         '" . $_POST['birthdate'] . "',
-        '" . $_POST['photo'] . "',
+        '',
         '" . $_POST['cep'] . "',
         '" . $_POST['id_city'] . "',
         '" . $_POST['id_state'] . "'
@@ -48,8 +48,13 @@ if (!empty($_POST)) {
   
     $result = $con->query($sql);
 
-    if ($result) {
-        echo "<script>alert('Usuário " . $_POST['username'] . " cadastrado com sucesso!')</script>";
+    if ($result) { 
+        $action = "cadastrado";
+        if($idUser){
+            $action = "alterado";
+        }
+
+        echo "<script>alert('Usuário " . $_POST['username'] . " " . $action . " com sucesso!')</script>";
     }
 }
 
