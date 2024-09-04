@@ -232,6 +232,7 @@ body {
 }
 
 .btn-status {
+	cursor: pointer;
 	display: inline-flex;
 	border: 1px solid #CCC;
 	padding: 8px 12px;
@@ -416,7 +417,6 @@ body {
 				background-color: #3e79f7;
 				color: #FFF;
 				border: 0;
-				cursor: pointer;
 			}
 		}
 	}
