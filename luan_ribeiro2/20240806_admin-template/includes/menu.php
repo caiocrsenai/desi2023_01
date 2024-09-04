@@ -28,6 +28,13 @@
                 </a>
             </li>
 
+            <li>
+                <a href="?page=produtos">
+                <i class="fa-solid fa-boxes-stacked"></i>
+                    Produtos
+                </a>
+            </li>
+
         </ul>
     </div>
 </nav>
