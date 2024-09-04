@@ -9,7 +9,13 @@ if (!empty($_GET['id'])) {
 if (!empty($_POST)) {
 
     if ($idProduct) {
-        $sql = "";
+        $sql = "UPDATE product SET 
+        name = '" . $_POST['name'] . "',
+        id_category = '" . $_POST['id_category'] . "',
+        codebar = '" . $_POST['codebar'] . "',
+        price = '" . $_POST['price'] . "' 
+        WHERE product.id = " . $idProduct . "
+        ";
     } else {
         $sql = "INSERT INTO product 
         (name, id_category, codebar, price)
@@ -53,25 +59,26 @@ if ($idProduct) {
         <form method="POST" action="" id="productForm" name="productForm" novalidate>
             <label>
                 <div class="lbl">Nome</div>
-                <input type="text" name="name" required>
+                <input type="text" name="name" value="<?php echo $productInfos ? $productInfos->name : '' ?>" required>
             </label>
 
             <label>
                 <div class="lbl">Categoria</div>
-                <input type="text" name="id_category" required>
+                <input type="text" name="id_category" value="<?php echo $productInfos ? $productInfos->id_category : '' ?>" required>
             </label>
 
             <label>
                 <div class="lbl">Código de Barras (EAN-13)</div>
-                <input type="text" name="codebar" maxlength="13">
+                <input type="text" name="codebar" value="<?php echo $productInfos ? $productInfos->codebar : '' ?>">
             </label>
 
             <label>
                 <div class="lbl">Preco</div>
-                <input type="number" min="0.00" max="10000.00" step="0.10" name="price" />
+                <input type="number" min="0.00" max="10000.00" step="0.10" name="price"
+                    value="<?php echo $productInfos ? $productInfos->price : '' ?>" />
             </label>
 
-            <div class="form-actions">
+            <div class=" form-actions">
                 <button type="submit">Enviar</button>
             </div>
         </form>
