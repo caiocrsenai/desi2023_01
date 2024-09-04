@@ -24,6 +24,13 @@
             <li>
                 <a href="?page=produto">
                 <i class="fa-solid fa-box"></i>
+                    Produto
+                </a>
+            </li>
+
+            <li>
+                <a href="?page=produtos">
+                <i class="fa-solid fa-box"></i>
                     Produtos
                 </a>
             </li>
