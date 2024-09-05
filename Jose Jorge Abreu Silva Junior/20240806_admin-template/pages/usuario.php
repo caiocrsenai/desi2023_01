@@ -84,7 +84,7 @@ if($idUser){
             <label>
                 <div class="lbl">Nome</div>
                 <input type="text" name="name" value="<?php echo $userInfos ? $userInfos ->name : '' ?>" required>
-             </label>
+             </label>                                                                                                                                                                                                                       
 
             <label>
                 <div class="lbl">Usuário</div>

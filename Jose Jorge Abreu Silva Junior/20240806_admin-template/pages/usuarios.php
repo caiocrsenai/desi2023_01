@@ -2,7 +2,7 @@
 if (!empty($_GET['id'])) {
     $idUser = $_GET['id'];
 
-    $sql ="DELETE FROM user WHERE user.id = " . $idUser . ";";
+    $sql = "DELETE FROM user WHERE user.id = " . $idUser . ";";
 
     $result = $con->query($sql);
 
