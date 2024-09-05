@@ -12,7 +12,7 @@
         </div>
     </div>
     <div class="ict-right">
-        teste
+        123
     </div>
 </div>
 <div class="initial-container-bottom">
