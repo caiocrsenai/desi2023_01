@@ -388,6 +388,7 @@ body {
 				border-radius: 6px;
 				outline: 0;
 				color-scheme: dark;
+				resize: none;
 
 				&.error {
 					border-color: #d86060;
@@ -399,6 +400,7 @@ body {
 			display: flex;
 			justify-content: flex-end;
 			margin-top: 15px;
+			
 
 			button {
 				display: flex;
@@ -415,6 +417,8 @@ body {
 				border: 0;
 				cursor: pointer;
 			}
+			
+			
 		}
 	}
 }
