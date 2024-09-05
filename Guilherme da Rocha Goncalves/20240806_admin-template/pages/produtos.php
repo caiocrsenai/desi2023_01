@@ -14,7 +14,7 @@
 
 <div class="container-box flex-1">
     <div class="cb-header">
-        <div class="cb-title">Usuarios</div>
+        <div class="cb-title">Produtos</div>
     </div>
     <div class="cb-body">
         <div class="table-container">
@@ -22,8 +22,8 @@
                 <thead>
                     <tr>
                         <th>Nome</th>
-                        <th>Email</th>
-                        <th>Usuario</th>
+                        <th>Categoria</th>
+                        <th>Preço</th>
                         <th width="10px">Alterar</th>
                         <th width="10px">Excluir</th>
                     </tr>
@@ -38,10 +38,10 @@
                     ?>
                             <tr>
                                 <td><?php echo $row->name; ?></td>
-                                <td><?php echo $row->email; ?></td>
-                                <td><?php echo $row->username; ?></td>
+                                <td><?php echo $row->id_category; ?></td>
+                                <td><?php echo $row->price; ?></td>
                                 <td>
-                                    <a href="?page=usuario&id=<?php echo $row->id; ?>" class="btn-status color-blue">
+                                    <a href="?page=produto&id=<?php echo $row->id; ?>" class="btn-status color-blue">
                                         <i class="fa-regular fa-pen-to-square"></i>
                                     </a>
                                 </td>
