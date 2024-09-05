@@ -21,11 +21,17 @@
                 </a>
             </li>
             <li>
+                <a href="?page=produto">
+                    <i class="fa-solid fa-gauge"></i>
+                    Produto
+                    </a>
+            </li>
+            <li>
                 <a href="?page=produtos">
                     <i class="fa-solid fa-gauge"></i>
                     Produtos
-                    </a>
-            </li>
+                </a>
+            </li>  
         </ul>
     </div>
 </nav>
