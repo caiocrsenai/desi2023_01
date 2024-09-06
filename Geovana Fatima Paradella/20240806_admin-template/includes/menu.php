@@ -31,6 +31,17 @@
                     <i class="fa-solid fa-certificate"></i>
                     Produtos
                 </a>
+                <li>
+                <a href="?page=categoria">
+                    <i class="fa-solid fa-certificate"></i>
+                    Categoria
+                </a>
+            </li>
+            <li>
+                <a href="?page=categorias">
+                    <i class="fa-solid fa-certificate"></i>
+                    Categorias
+                </a>
             </li>
         </ul>
     </div>
