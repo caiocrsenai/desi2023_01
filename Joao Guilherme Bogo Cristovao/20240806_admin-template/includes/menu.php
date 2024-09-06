@@ -32,6 +32,18 @@
                     Produtos
                 </a>
             </li>
+            <li>
+                <a href="?page=categoria">
+                    <i class="fa-solid fa-box-open"></i>
+                    Categoria
+                </a>
+            </li>
+            <li>
+                <a href="?page=categorias">
+                    <i class="fa-solid fa-box-open"></i>
+                    Categorias
+                </a>
+            </li>
         </ul>
     </div>
 </nav>
