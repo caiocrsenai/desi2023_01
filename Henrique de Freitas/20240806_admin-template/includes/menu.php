@@ -33,6 +33,20 @@
                 </a>
             </li>
 
+            <li>
+                <a href="?page=categorias">
+                    <i class="fa-solid fa-file-import"></i>
+                    Categorias
+                </a>
+            </li>
+
+            <li>
+                <a href="?page=categoria">
+                    <i class="fa-solid fa-file-import"></i>
+                    Categoria
+                </a>
+            </li>
+
         </ul>
     </div>
 </nav>
