@@ -34,7 +34,7 @@ if (!empty($_POST)) {
 
     if ($result) {
         echo "<script>alert('Produto " . $_POST['name'] . " ".$action." com sucesso!'); 
-        window.location.href = '?page=produtos;
+        window.location.href = '?page=produtos'
         </script>";
     }
 }
