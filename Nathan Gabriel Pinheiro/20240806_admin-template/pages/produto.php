@@ -16,6 +16,7 @@ if (!empty($_POST)) {
         price = '" . $_POST['price'] . "'
         WHERE product.id = " . $idProduct . "
         ";
+        
     } else {
         $sql = "INSERT INTO product 
         (name, id_category, codebar, price) 
