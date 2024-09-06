@@ -22,8 +22,7 @@ if (!empty($_POST)) {
        WHERE user.id = ". $idUser . "
       ";
     }else{
-        $sql = "
-    INSERT INTO user
+        $sql = "INSERT INTO user
     (pass, username, email, name, birthdate, photo, cep, id_city, id_state)
     VALUES
     (
