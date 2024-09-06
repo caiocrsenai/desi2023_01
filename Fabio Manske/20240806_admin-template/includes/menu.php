@@ -35,6 +35,20 @@
                 </a>
             </li>
 
+            <li>
+                <a href="?page=categoria">
+                    <i class="fa-solid fa-thin fa-headphones"></i>
+                    Categoria
+                </a>
+            </li>
+
+            <li>
+                <a href="?page=categorias">
+                    <i class="fa-solid fa-thin fa-headphones"></i>
+                    CategoriasD
+                </a>
+            </li>
+
         </ul>
     </div>
 </nav>
