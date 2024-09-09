@@ -41,7 +41,7 @@
             <li>
                 <a href="?page=categorias">
                     <i class="fa-solid fa-file-import"></i>
-                    CategoriasD
+                    Categorias
                 </a>
             </li>
         </ul>
