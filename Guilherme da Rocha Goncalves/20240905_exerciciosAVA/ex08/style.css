@@ -1,0 +1,30 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px; /* Espaço entre os elementos */
+    padding: 20px;
+}
+
+.box {
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    min-height: 100px; /* Altura mínima */
+    flex: 1; /* Faz as divs ocuparem o mesmo espaço */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+p {
+    margin: 0;
+}
