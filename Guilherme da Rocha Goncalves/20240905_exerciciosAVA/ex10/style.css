@@ -1,0 +1,42 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+.background-section {
+    position: relative;
+    height: 100vh; /* Altura da tela inteira */
+    background: url('caminho/para/sua-imagem.jpg') no-repeat center center; /* Substitua pelo caminho da sua imagem */
+    background-size: cover; /* Faz a imagem cobrir toda a seção */
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5); /* Camada de sobreposição preta com 50% de opacidade */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.content {
+    color: white; /* Cor do texto */
+    text-align: center; /* Centraliza o texto horizontalmente */
+    padding: 20px; /* Espaçamento interno */
+}
+
+h1 {
+    margin-bottom: 20px; /* Espaçamento abaixo do título */
+}
+
+p {
+    margin: 0; /* Remove a margem do parágrafo */
+}
