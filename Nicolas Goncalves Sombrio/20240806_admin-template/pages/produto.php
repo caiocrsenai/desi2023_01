@@ -15,7 +15,7 @@ if (!empty($_POST)) {
         id_category = '" . $_POST['id_category'] . "', 
         codebar = '" . $_POST['codebar'] . "', 
         price = '" . $_POST['price'] . "' 
-        WHERE product.id = ".$idProduct."";
+        WHERE product.id = " . $idProduct . "";
     } else {
         $action = "cadastrado";
         $sql = "INSERT INTO product 
@@ -33,7 +33,7 @@ if (!empty($_POST)) {
     $result = $con->query($sql);
 
     if ($result) {
-        echo "<script>alert('Produto " . $_POST['name'] . " ".$action." com sucesso!'); 
+        echo "<script>alert('Produto " . $_POST['name'] . " " . $action . " com sucesso!'); 
         window.location.href = '?page=produtos'
         </script>";
     }
@@ -61,8 +61,25 @@ if ($idProduct) {
             </label>
 
             <label>
+
                 <div class="lbl">Categoria</div>
-                <input type="text" name="id_category" value="<?php echo $productInfos ? $productInfos->id_category : '' ?>" required>
+                <select name="id_category">
+                    <option selected disabled style="display: none;" value="">Selecione a categoria</option>
+                    <?php
+                    $sql = "SELECT * FROM category";
+                    $result = $con->query($sql);
+
+                    if ($result->num_rows > 0) {
+                        while ($row = $result->fetch_object()) {
+                            echo '<option value="' . $row->id . '" ' . ($productInfos ? ($productInfos->id_category == $row->id ? 'selected' : '') : '') . '>' . $row->name . '</option>';
+                        }
+                    }
+                    ?>
+                </select>
+
+                <!-- <div class="lbl">Categoria</div>
+                <input type="text" name="id_category" value="<?php //echo $productInfos ? $productInfos->id_category : '' 
+                                                                ?>" required> -->
             </label>
 
             <label>
