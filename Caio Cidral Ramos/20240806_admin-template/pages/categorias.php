@@ -1,12 +1,12 @@
 <?php
 if (!empty($_GET['id'])) {
-    $idProduct = $_GET['id'];
+    $idCategory = $_GET['id'];
 
-    $sql = "DELETE FROM product WHERE product.id = " . $idProduct . ";";
+    $sql = "DELETE FROM category WHERE category.id = " . $idCategory . ";";
 
     $result = $con->query($sql);
     if ($con->affected_rows > 0) {
-        echo "<script>alert('Produto excluido com sucesso!')</script>";
+        echo "<script>alert('Categoria excluido com sucesso!')</script>";
     }
 }
 ?>
@@ -21,15 +21,14 @@ if (!empty($_GET['id'])) {
                 <thead>
                     <tr>
                         <th>Nome</th>
-                        <th>Categoria</th>
-                        <th>Preço</th>
+                        <th>Descrição</th>
                         <th width="10px">Alterar</th>
                         <th width="10px">Excluir</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
-                    $sql = "SELECT * FROM product";
+                    $sql = "SELECT * FROM category";
                     $result = $con->query($sql);
 
                     if ($result->num_rows > 0) {
@@ -37,10 +36,9 @@ if (!empty($_GET['id'])) {
                     ?>
                             <tr>
                                 <td><?php echo $row->name; ?></td>
-                                <td><?php echo $row->id_category; ?></td>
-                                <td><?php echo $row->price; ?></td>
+                                <td><?php echo $row->description; ?></td>
                                 <td>
-                                    <a href="?page=produto&id=<?php echo $row->id; ?>" class="btn-status color-blue">
+                                    <a href="?page=categoria&id=<?php echo $row->id; ?>" class="btn-status color-blue">
                                         <i class="fa-regular fa-pen-to-square"></i>
                                     </a>
                                 </td>
@@ -68,7 +66,7 @@ if (!empty($_GET['id'])) {
 
             if (confirm('Você deseja realmente excluir o produto?')) {
                 //alert('Excluir usuario: ' + dataId);
-                window.location.href = '?page=produtos&id=' + dataId;
+                window.location.href = '?page=categorias&id=' + dataId;
             }
         });
     });
