@@ -5,7 +5,10 @@ $productInfos = false;
 if (!empty($_GET['id'])) {
     $idProduct = $_GET['id'];
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
  
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 }
@@ -14,19 +17,24 @@ if (!empty($_POST)) {
 
     if ($idProduct) {
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         $sql =  "
         UPDATE product SET 
+=======
+        $sql = "UPDATE product SET 
+>>>>>>> Stashed changes
         name = '" . $_POST['name'] . "', 
         id_category = '" . $_POST['id_category'] . "', 
         codebar = '" . $_POST['codebar'] . "', 
-        price = '" . $_POST['price'] . "'
-        WHERE product.id =  $idProduct; 
+        price = '" . $_POST['price'] . "' 
+        WHERE product.id = ". $idProduct ."
         ";
     } else {
-        $sql = " INSERT INTO product 
-        ( name, id_category, codebar, price) 
+        $sql = "INSERT INTO product 
+        (name, id_category, codebar, price) 
         VALUES 
         (
+<<<<<<< Updated upstream
         '". $_POST ['name'] ."',
         '". $_POST ['id_category'] ."',
         '". $_POST ['codebar'] ."',
@@ -44,10 +52,15 @@ if (!empty($_POST)) {
         (name, id_category, codebar, price) 
         VALUES 
         (
+=======
+>>>>>>> Stashed changes
             '" . $_POST['name'] . "',
             '" . $_POST['id_category'] . "',
             '" . $_POST['codebar'] . "',
             '" . $_POST['price'] . "'
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
         )
         ";
@@ -56,12 +69,22 @@ if (!empty($_POST)) {
     $result = $con->query($sql);
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     if ($result) {      
         $action = 'cadastrado';
         if ($idProduct){
             $action = "alterado";   
         }
         echo "<script>alert('Produto " . $_POST['name'] . " " .$action. " com sucesso!')</script>";
+=======
+    if ($result) {
+        $action = "cadastrado";
+        if ($idProduct) {
+            $action = "alterado";
+        }
+
+        echo "<script>alert('Produto " . $_POST['name'] . " " . $action . " com sucesso!')</script>";
+>>>>>>> Stashed changes
 =======
     if ($result) {
         $action = "cadastrado";
@@ -93,7 +116,11 @@ if ($idProduct) {
             <label>
                 <div class="lbl">Nome</div>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
                 <input type="text" name="name" value="<?php echo $productInfos ? $productInfos->name : '' ?>"required>
+=======
+                <input type="text" name="name" value="<?php echo $productInfos ? $productInfos->name : '' ?>" required>
+>>>>>>> Stashed changes
             </label>
 
             <label>

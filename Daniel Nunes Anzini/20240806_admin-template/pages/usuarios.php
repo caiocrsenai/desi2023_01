@@ -1,14 +1,21 @@
 <?php
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     if (!empty($_GET['id'])) {
         $idUser = $_GET['id'];
         $sql="DELETE FROM user WHERE user.id = " . $idUser . ";";
+=======
+if (!empty($_GET['id'])) {
+    $idUser = $_GET['id'];
+>>>>>>> Stashed changes
 
-         $result = $con->query($sql);
-        if ($con->affected_rows > 0) {             
-            echo "<script>alert('Usuário excluido com sucesso!')</script>";
-        }
+    $sql = "DELETE FROM user WHERE user.id = " . $idUser . ";";
+
+    $result = $con->query($sql);
+    if ($con->affected_rows > 0) {
+        echo "<script>alert('Usuário excluido com sucesso!')</script>";
     }
+<<<<<<< Updated upstream
 =======
 if (!empty($_GET['id'])) {
     $idUser = $_GET['id'];
@@ -21,12 +28,19 @@ if (!empty($_GET['id'])) {
     }
 }
 >>>>>>> Stashed changes
+=======
+}
+>>>>>>> Stashed changes
 ?>
 
 <div class="container-box flex-1">
     <div class="cb-header">
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         <div class="cb-title">Vendas</div>
+=======
+        <div class="cb-title">Usuários</div>
+>>>>>>> Stashed changes
 =======
         <div class="cb-title">Usuários</div>
 >>>>>>> Stashed changes
@@ -62,9 +76,15 @@ if (!empty($_GET['id'])) {
                                 </td>
                                 <td>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
                                      <div class="delete-user btn-status color-red" data-id="<?php echo $row->id; ?>">
                                       <i class="fa-regular fa-trash-can"></i>
                                      </div>
+=======
+                                    <div class="delete-user btn-status color-red" data-id="<?php echo $row->id; ?>">
+                                        <i class="fa-regular fa-trash-can"></i>
+                                    </div>
+>>>>>>> Stashed changes
 =======
                                     <div class="delete-user btn-status color-red" data-id="<?php echo $row->id; ?>">
                                         <i class="fa-regular fa-trash-can"></i>
@@ -80,6 +100,7 @@ if (!empty($_GET['id'])) {
             </table>
         </div>
     </div>
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 </div>;
 
@@ -100,6 +121,12 @@ if (!empty($_GET['id'])) {
 
 <script>
     _qsa('.delete-user').forEach(function(_element) {
+=======
+</div>
+
+<script>
+    _qsa('.delete-user').forEach(function(_element) {
+>>>>>>> Stashed changes
         _element.addEventListener('click', function(e) {
             const _this = this,
                 dataId = _this.getAttribute('data-id');
@@ -109,6 +136,9 @@ if (!empty($_GET['id'])) {
                 window.location.href = '?page=usuarios&id=' + dataId;
             }
         });
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
     });
 </script>

@@ -1,16 +1,20 @@
 <?php
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     if (!empty($_GET['id'])) {
         $idProduct = $_GET['id'];
+=======
+if (!empty($_GET['id'])) {
+    $idProduct = $_GET['id'];
+>>>>>>> Stashed changes
 
-        $sql="DELETE FROM product WHERE product.id = " . $idProduct . ";";
+    $sql = "DELETE FROM product WHERE product.id = " . $idProduct . ";";
 
-         $result = $con->query($sql);
-        if ($con->affected_rows > 0) {             
-            echo "<script>alert('Produto excluido com sucesso!')</script>";
-
-        }
+    $result = $con->query($sql);
+    if ($con->affected_rows > 0) {
+        echo "<script>alert('Produto excluido com sucesso!')</script>";
     }
+<<<<<<< Updated upstream
 =======
 if (!empty($_GET['id'])) {
     $idProduct = $_GET['id'];
@@ -21,6 +25,9 @@ if (!empty($_GET['id'])) {
     if ($con->affected_rows > 0) {
         echo "<script>alert('Produto excluido com sucesso!')</script>";
     }
+}
+>>>>>>> Stashed changes
+=======
 }
 >>>>>>> Stashed changes
 ?>
@@ -60,9 +67,15 @@ if (!empty($_GET['id'])) {
                                 </td>
                                 <td>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
                                      <div class="delete-user btn-status color-red" data-id="<?php echo $row->id; ?>">
                                       <i class="fa-regular fa-trash-can"></i>
                                      </div>
+=======
+                                    <div class="delete-product btn-status color-red" data-id="<?php echo $row->id; ?>">
+                                        <i class="fa-regular fa-trash-can"></i>
+                                    </div>
+>>>>>>> Stashed changes
 =======
                                     <div class="delete-product btn-status color-red" data-id="<?php echo $row->id; ?>">
                                         <i class="fa-regular fa-trash-can"></i>
@@ -83,6 +96,7 @@ if (!empty($_GET['id'])) {
 <script>
     _qsa('.delete-product').forEach(function(_element) {
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     _element.addEventListener('click', function(e){
         const_this = this,
         dataId = this.getAttribute('data-id');
@@ -94,6 +108,8 @@ if (!empty($_GET['id'])) {
     });
         
 =======
+=======
+>>>>>>> Stashed changes
         _element.addEventListener('click', function(e) {
             const _this = this,
                 dataId = _this.getAttribute('data-id');
@@ -103,6 +119,9 @@ if (!empty($_GET['id'])) {
                 window.location.href = '?page=produtos&id=' + dataId;
             }
         });
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
     });
 </script>
