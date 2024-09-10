@@ -56,12 +56,12 @@ if ($idCategory) {
         <div class="cb-title">Categoria</div>
     </div>
     <div class="cb-body">
-        <form method="POST" action="" id="categoryForm" name = "categoryForm" novalidate>
+        <form method="POST" action="" id="id_category" name = "categoryForm" novalidate>
             <label>
                 <div class="lbl">Nome</div>
                 <input type="text" name="name" value="<?php echo $categoryInfos ? $categoryInfos->name : '' ?>" required>
             </label>
-
+            
             <label>
                 <div class="lbl">Descrição</div>
                 <input type="text" name="description" value="<?php echo $categoryInfos ? $categoryInfos->description : '' ?>" required>
