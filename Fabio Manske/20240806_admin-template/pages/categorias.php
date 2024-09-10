@@ -23,6 +23,7 @@ if (!empty($_GET['id'])) {
                     <tr>
                         <th>Nome</th>
                         <th>Descrição</th>
+                        <th>Price</th>
                         <th width="10px">Alterar</th>
                         <th width="10px">Excluir</th>
                     </tr>
@@ -39,6 +40,7 @@ if (!empty($_GET['id'])) {
                             <tr>
                                 <td><?php echo $row->name; ?></td>
                                 <td><?php echo $row->description; ?></td>
+                                <td><?php echo $row->price; ?></td>
                                 <td>
                                     <a href="?page=categoria&id=<?php echo $row->id; ?>" class="btn-status color-blue">
                                         <i class="fa-regular fa-pen-to-square"></i>

@@ -14,7 +14,7 @@ if (!empty($_POST)) {
         $sql = "UPDATE category SET 
         name = '" . $_POST['name'] . "', 
         description = '" . $_POST['description'] . "'        
-        WHERE category.id = " . $idCategory."";
+        WHERE category.id = " . $idCategory . "";
     } else {
         $sql = "INSERT INTO category 
         (name, description)
@@ -59,13 +59,14 @@ if ($idCategory) {
             </label>
 
             <label>
-                <div class="lbl">Categoria</div>
-                <input type="text" name="description" value="<?php echo  $categoryInfos ? $categoryInfos->description : '' ?>" required>
+                <div class="lbl">Descrição</div>
+                <input type="text" name="description" value="<?php echo  $categoryInfos ? $categoryInfos->name : '' ?>" required>
             </label>
 
             <div class="form-actions">
                 <button type="submit">Enviar</button>
             </div>
+
         </form>
     </div>
 </div>
