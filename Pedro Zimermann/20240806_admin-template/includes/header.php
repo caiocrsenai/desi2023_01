@@ -1,6 +1,6 @@
 <header class="mc-top">
    <div class="header-logo">
-       <a href="?=inicial"> <img src="assets/images/logo-white.png"> </a>
+       <a href="?page=inicial"> <img src="assets/images/logo-white.png"> </a>
     </div>
     <div class="header-content">
         <div class="hc-search">
