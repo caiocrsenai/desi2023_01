@@ -1,0 +1,14 @@
+table {
+    width: 100%; /* Define a largura da tabela para 100% */
+    border-collapse: collapse; /* Remove o espaço entre as bordas das células */
+}
+
+th, td {
+    border: 1px solid black; /* Adiciona uma borda de 1px sólida preta */
+    padding: 8px; /* Adiciona um padding interno às células */
+    text-align: left; /* Alinha o texto à esquerda */
+}
+
+thead {
+    background-color: #f2f2f2; /* Define uma cor de fundo para o cabeçalho da tabela */
+}
