@@ -174,7 +174,7 @@ if ($idUser) {
             _this.submit();
         }
 
-    });
+    }); 
 
     _qs('[name="id_state"]').addEventListener('change', function(event) {
         const _this = this,
