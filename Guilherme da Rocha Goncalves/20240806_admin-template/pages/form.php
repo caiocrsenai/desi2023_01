@@ -24,7 +24,6 @@ if (!empty($_POST)) {
     }
 }
 ?>
-v1.0.0
 <div class="container-box cb-form-max-width align-center flex-1">
     <div class="cb-header">
         <div class="cb-title">Formulário</div>
@@ -66,43 +65,37 @@ v1.0.0
                 <input type="text" name="cep" required>
             </label>
 
-            
-
             <label>
                 <div class="lbl">Estado</div>
                 <select name="id_state">
-                <option selected disable style = "display: none;"> Selecione o estado</option>
+                    <option selected disabled style="display: none;">Selecione o estado</option>
+                    <?php
+                    $sql = "SELECT * FROM state";
+                    $result = $con->query($sql);
 
-                <?php
-                $sql = "SELECT *FROM state";
-                $result = $con->query($sql);
-
-                if ($result->num_rows > 0) {
-                while ($row = $result->fetch_object()){
-                    echo '<option value="'. $row->id_state .'">'. $row->nome .' ('. $row->uf .') </option>';
-                }
-            }
-            ?>
-
+                    if ($result->num_rows > 0) {
+                        while ($row = $result->fetch_object()) {
+                            echo '<option value="' . $row->id_state . '">' . $row->nome . ' (' . $row->uf . ')</option>';
+                        }
+                    }
+                    ?>
                 </select>
             </label>
 
             <label>
                 <div class="lbl">Cidade</div>
                 <select name="id_city">
-                <option selected disable style = "display: none;"> Selecione a cidade</option>
+                    <option selected disabled style="display: none;">Selecione o cidade</option>
+                    <?php
+                    $sql = "SELECT * FROM city";
+                    $result = $con->query($sql);
 
-                <?php
-                $sql = "SELECT *FROM city";
-                $result = $con->query($sql);
-
-                if ($result->num_rows > 0) {
-                while ($row = $result->fetch_object()){
-                    echo '<option value="'. $row->id_city .'" data-uf="'. $row->uf .'" class="hide">'. $row->nome .' </option>';
-                }
-            }
-            ?>
-
+                    if ($result->num_rows > 0) {
+                        while ($row = $result->fetch_object()) {
+                            echo '<option value="' . $row->id_city . '" data-uf="' . $row->uf . '" class="hide">' . $row->nome . '</option>';
+                        }
+                    }
+                    ?>
                 </select>
             </label>
 
@@ -115,20 +108,21 @@ v1.0.0
 </div>
 
 <script>
+    _qs('#userForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const _this = this,
+            _inputs = _this._qsa('inputs');
 
-    $(function(){
-        alert('ae');
+        console.dir(_inputs);
+
     });
 
-    $(function(){
-        
-    });
 
+    /*
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     function validateForm() {
         const form = document.getElementById('userForm');
-        // Get all input fields
         const fields = form.querySelectorAll('input');
         let isValid = true;
 
@@ -142,9 +136,11 @@ v1.0.0
     }
 
     document.getElementById('userForm').addEventListener('submit', function(event) {
-        if (!validateForm()) {
+        var validate = validateForm();
+        if (!validate) {
             event.preventDefault(); // Impede o envio do formulário se a validação falhar
             alert('Favor preencher todos os campos obrigatórios.');
         }
     });
+    */
 </script>
