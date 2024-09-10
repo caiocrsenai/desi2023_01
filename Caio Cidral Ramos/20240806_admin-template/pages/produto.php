@@ -44,11 +44,12 @@ if (!empty($_POST)) {
 if ($idProduct) {
     $sql = "SELECT * FROM product WHERE id = " . $idProduct;
     $result = $con->query($sql);
-
     if ($result->num_rows > 0) {
         $productInfos = $result->fetch_object();
     }
 }
+
+
 
 ?>
 <div class="container-box cb-form-max-width align-center flex-1">
@@ -64,7 +65,17 @@ if ($idProduct) {
 
             <label>
                 <div class="lbl">Categoria</div>
-                <input type="text" name="id_category" value="<?php echo $productInfos ? $productInfos->id_category : '' ?>" required>
+                <select name="id_category" required>
+                    <option value=''>Selecione</option>
+                    <?php
+                        $sql = "SELECT id, name FROM category";
+                        $categorias = $con->query($sql);
+                        while ($row = $categorias->fetch_object()) {
+                            $selected = ($productInfos ? $productInfos->id_category : '') == $row->id ? 'selected' : '';
+                            echo '<option '.  $selected .' value="' . $row->id . '">' . $row->name . '</option>';
+                        }
+                    ?>
+                </select>
             </label>
 
             <label>
