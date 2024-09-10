@@ -2,20 +2,20 @@
 if (!empty($_GET['id'])) {
     $idProduct = $_GET['id'];
 
-    $sql = "DELETE FROM product WHERE product.id = " . $idProduct . ";";
+    $sql = 'DELETE FROM product WHERE product.id = ' . $idProduct . ';';
 
     $result = $con->query($sql);
-
     if ($con->affected_rows > 0) {
         echo "<script>alert('Produto excluido com sucesso!')</script>";
     }
 }
-
 ?>
+
+
 
 <div class="container-box flex-1">
     <div class="cb-header">
-        <div class="cb-title">Vendas</div>
+        <div class="cb-title">Produtos</div>
     </div>
     <div class="cb-body">
         <div class="table-container">
@@ -31,7 +31,7 @@ if (!empty($_GET['id'])) {
                 </thead>
                 <tbody>
                     <?php
-                    $sql = "SELECT * FROM product";
+                    $sql = "SELECT product.id_category,product.id,product.name,product.codebar,product.price,category.name AS category_name FROM `product` INNER JOIN category ON category.id = product.id_category;";
                     $result = $con->query($sql);
 
                     if ($result->num_rows > 0) {
@@ -39,7 +39,7 @@ if (!empty($_GET['id'])) {
                     ?>
                             <tr>
                                 <td><?php echo $row->name; ?></td>
-                                <td><?php echo $row->id_category; ?></td>
+                                <td><?php echo $row->category_name; ?></td>
                                 <td><?php echo $row->price; ?></td>
                                 <td>
                                     <a href="?page=produto&id=<?php echo $row->id; ?>" class="btn-status color-blue">
@@ -47,7 +47,7 @@ if (!empty($_GET['id'])) {
                                     </a>
                                 </td>
                                 <td>
-                                    <div class="delete-product btn-status color-red" data-id="<?php echo $row->id; ?>">
+                                    <div class="delete-product btn-status color-red" data-id="<?php echo $row->id; ?> " data-name="<?php echo $row->name; ?>">
                                         <i class="fa-regular fa-trash-can"></i>
                                     </div>
                                 </td>
@@ -66,14 +66,15 @@ if (!empty($_GET['id'])) {
     _qsa('.delete-product').forEach(function(_element) {
 
         _element.addEventListener('click', function(e) {
-            const _this = this,
-                dataId = _this.getAttribute('data-id');
+            const _this = this;
+            dataId = _this.getAttribute('data-id');
+            dataName = _this.getAttribute('data-name');
 
-            if (confirm('Você deseja realmente excuir o produto?')) {
-                alert('Excluir produto: ' + dataId);
-                window.location.href = '?page=produto&id=' + dataId;
+            if (confirm('Você deseja realmente excluir o produto ' + dataName + '?')) {
+                // alert('Excluir produto: ' + dataName);
+                window.location.href = '?page=produtos&id=' + dataId;
             }
-
         });
+
     });
 </script>
