@@ -37,7 +37,7 @@ if (!empty($_POST)) {
         if ($idProduct) {
             $action = "alterado";
         }
-        echo "<script>alert('Produto " . $_POST['name'] . " ". $action." com sucesso!'); window.location.href = '?page=produtos'</script>";
+        echo "<script>alert('Produto " . $_POST['name'] . " " . $action . " com sucesso!'); window.location.href = '?page=produtos'</script>";
     }
 }
 
@@ -59,12 +59,26 @@ if ($idProduct) {
         <form method="POST" action="" id="productForm" name="productForm" novalidate>
             <label>
                 <div class="lbl">Nome</div>
-                <input type="text" name="name" value="<?php echo $productInfos ? $productInfos->name : '' ?>"required>
+                <input type="text" name="name" value="<?php echo $productInfos ? $productInfos->name : '' ?>" required>
             </label>
 
             <label>
                 <div class="lbl">Categoria</div>
-                <input type="text" name="id_category" value="<?php echo $productInfos ? $productInfos->id_category : '' ?>"required>
+                <select name="id_category">
+                    <option selected disabled style="display: none;" value="">Selecione a categoria</option>
+                    <?php
+
+                    $sql = "SELECT id, name FROM category";
+                    $result = $con->query($sql);
+
+                    while ($row = $result->fetch_object()) {
+                        $selected = ($productInfos ? $productInfos->id_category : '') == $row->id ? 'selected' : '';
+                        echo '<option value="' . $row->id . '"
+                            ' . ($productInfos ? ($productInfos->id_category == $row->id ? 'selected' : '') : '') . '>
+                            ' . $row->name . '</option>';
+                    }
+                    ?>
+                </select>
             </label>
 
             <label>
@@ -74,7 +88,7 @@ if ($idProduct) {
 
             <label>
                 <div class="lbl">Preco</div>
-                <input type="number" min="0.00" max="10000.00" step="0.10" name="price" value="<?php echo $productInfos ? $productInfos->price : '' ?>"/>
+                <input type="number" min="0.00" max="10000.00" step="0.10" name="price" value="<?php echo $productInfos ? $productInfos->price : '' ?>" />
             </label>
 
             <div class="form-actions">
