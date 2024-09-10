@@ -16,7 +16,6 @@ if (!empty($_POST)) {
         price = '" . $_POST['price'] . "'
         WHERE product.id = " . $idProduct . "
         ";
-        
     } else {
         $sql = "INSERT INTO product 
         (name, id_category, codebar, price) 
@@ -66,7 +65,21 @@ if ($idProduct) {
 
             <label>
                 <div class="lbl">Categoria</div>
-                <input type="text" name="id_category" value="<?php echo $productInfos ? $productInfos->id_category : '' ?>" required>
+                <select name='id_category' required>
+                    <option value='row->id'>Selecione</option>
+
+                    <?php
+                    $sql = 'SELECT * FROM category';
+                    $result = $con->query($sql);
+
+                    if ($result->num_rows > 0) {
+                        while ($row = $result->fetch_object()) {
+                            echo '<option value="' . $row->id . '" ' . ($productInfos ? ($productInfos->id_category == $row->id ? 'selected' : '') : '') . '> ' . $row->name . '</option>';
+                        }
+                    }
+                    ?>
+
+                </select>
             </label>
 
             <label>
