@@ -4,7 +4,10 @@ $userInfos = false;
 
 if (!empty($_GET['id'])) {
     $idUser = $_GET['id'];
+<<<<<<< Updated upstream
  
+=======
+>>>>>>> Stashed changes
 }
 
 if (!empty($_POST)) {
@@ -43,12 +46,22 @@ if (!empty($_POST)) {
 
     $result = $con->query($sql);
 
+<<<<<<< Updated upstream
     if ($result) {      
         $action = 'cadastrado';
         if ($idUser){
             $action = "alterado";   
         }
         echo "<script>alert('Usuário " . $_POST['username'] . " " .$action. " com sucesso!')</script>";
+=======
+    if ($result) {
+        $action = "cadastrado";
+        if($idUser){
+            $action = "alterado";
+        }
+
+        echo "<script>alert('Usuário " . $_POST['username'] . " " . $action . " com sucesso!')</script>";
+>>>>>>> Stashed changes
     }
 }
 

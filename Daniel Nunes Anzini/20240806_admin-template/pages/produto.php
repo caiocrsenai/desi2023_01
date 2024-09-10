@@ -4,12 +4,16 @@ $productInfos = false;
 
 if (!empty($_GET['id'])) {
     $idProduct = $_GET['id'];
+<<<<<<< Updated upstream
  
+=======
+>>>>>>> Stashed changes
 }
 
 if (!empty($_POST)) {
 
     if ($idProduct) {
+<<<<<<< Updated upstream
         $sql =  "
         UPDATE product SET 
         name = '" . $_POST['name'] . "', 
@@ -27,18 +31,46 @@ if (!empty($_POST)) {
         '". $_POST ['id_category'] ."',
         '". $_POST ['codebar'] ."',
         '". $_POST ['price'] ."'
+=======
+        $sql = "UPDATE product SET 
+        name = '" . $_POST['name'] . "', 
+        id_category = '" . $_POST['id_category'] . "', 
+        codebar = '" . $_POST['codebar'] . "', 
+        price = '" . $_POST['price'] . "' 
+        WHERE product.id = ". $idProduct ."
+        ";
+    } else {
+        $sql = "INSERT INTO product 
+        (name, id_category, codebar, price) 
+        VALUES 
+        (
+            '" . $_POST['name'] . "',
+            '" . $_POST['id_category'] . "',
+            '" . $_POST['codebar'] . "',
+            '" . $_POST['price'] . "'
+>>>>>>> Stashed changes
         )
         ";
     }
 
     $result = $con->query($sql);
 
+<<<<<<< Updated upstream
     if ($result) {      
         $action = 'cadastrado';
         if ($idProduct){
             $action = "alterado";   
         }
         echo "<script>alert('Produto " . $_POST['name'] . " " .$action. " com sucesso!')</script>";
+=======
+    if ($result) {
+        $action = "cadastrado";
+        if ($idProduct) {
+            $action = "alterado";
+        }
+
+        echo "<script>alert('Produto " . $_POST['name'] . " " . $action . " com sucesso!')</script>";
+>>>>>>> Stashed changes
     }
 }
 
@@ -60,6 +92,7 @@ if ($idProduct) {
         <form method="POST" action="" id="productForm" name="productForm" novalidate>
             <label>
                 <div class="lbl">Nome</div>
+<<<<<<< Updated upstream
                 <input type="text" name="name" value="<?php echo $productInfos ? $productInfos->name : '' ?>"required>
             </label>
 
@@ -67,6 +100,31 @@ if ($idProduct) {
                 <div class="lbl">Categoria</div>
                 <input type="text" name="id_category" value="<?php echo $productInfos ? $productInfos->id_category : '' ?>" required>
             </label>
+=======
+                <input type="text" name="name" value="<?php echo $productInfos ? $productInfos->name : '' ?>" required>
+            </label>
+
+           <label>
+                <div class="lbl">Categoria</div>
+                <select name='id_category' required>
+                    <option value=''>Selecione</option>
+
+                    <?php
+                    $sql = "SELECT * FROM category";
+                    $result = $con->query($sql);
+
+                    if ($result->num_rows > 0) {
+                        while ($row = $result->fetch_object()) {
+                            ?> <option value='<?php echo $row->id; ?>'><?php echo $row->name; ?></option>
+
+                            <?php
+
+                        }
+                    }
+                    ?>
+                </select>
+             </label>
+>>>>>>> Stashed changes
 
             <label>
                 <div class="lbl">Código de Barras (EAN-13)</div>

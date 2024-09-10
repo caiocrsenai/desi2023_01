@@ -48,4 +48,8 @@ include_once('includes/connect.php');
 
 </body>
 
+<<<<<<< Updated upstream
 </html>
+=======
+</html>
+>>>>>>> Stashed changes

@@ -23,13 +23,33 @@
             <li>
                 <a href="?page=produto">
                     <i class="fa-solid fa-file-import"></i>
+<<<<<<< Updated upstream
                     Produto 
+=======
+                    Produto
+>>>>>>> Stashed changes
                 </a>
             </li>
             <li>
                 <a href="?page=produtos">
                     <i class="fa-solid fa-file-import"></i>
+<<<<<<< Updated upstream
                     Produtos 
+=======
+                    Produtos
+                </a>
+            </li>
+            <li>
+                <a href="?page=categoria">
+                    <i class="fa-solid fa-file-import"></i>
+                    Categoria
+                </a>
+            </li>
+            <li>
+                <a href="?page=categorias">
+                    <i class="fa-solid fa-file-import"></i>
+                    Categorias
+>>>>>>> Stashed changes
                 </a>
             </li>
         </ul>
