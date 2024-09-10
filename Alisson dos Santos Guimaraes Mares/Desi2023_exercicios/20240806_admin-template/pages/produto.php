@@ -66,7 +66,19 @@ if ($idProduct) {
 
             <label>
                 <div class="lbl">Categoria</div>
-                <input type="text" name="id_category" value="<?php echo $productInfos ?  $productInfos->id_category : '' ?>" required>
+                <select name="category">
+                    <option selected disabled style="display: none;" value="">Selecione a categoria</option>
+                    <?php
+                    $sql = "SELECT * FROM category";
+                    $result = $con->query($sql);
+
+                    if ($result->num_rows > 0) {
+                        while ($row = $result->fetch_object()) {
+                            echo '<option value="' . $row->id_category . '" ' . ($categoryInfos ? ($categoryInfos->id_category == $row->id_category ? 'selected' : '') : '') . ' >' . $row->name . '</option>';
+                        }
+                    }
+                    ?>
+                </select>
             </label>
 
             <label>
