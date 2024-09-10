@@ -32,7 +32,10 @@ if (!empty($_GET['id'])) {
                 <tbody>
 
                     <?php
-                    $sql = "SELECT * FROM product";
+                    $sql = "SELECT  pro.name, pro.id, pro.price, cat.name As cat_name
+                    From product AS pro
+                    JOIN category AS cat ON cat.id = pro.id_category";
+
                     $result = $con->query($sql);
 
                     if ($result->num_rows > 0) {
@@ -40,7 +43,7 @@ if (!empty($_GET['id'])) {
                     ?>
                             <tr>
                                 <td><?php echo $row->name; ?></td>
-                                <td><?php echo $row->id_category; ?></td>
+                                <td><?php echo $row->cat_name; ?></td>
                                 <td><?php echo $row->price; ?></td>
                                 <td>
                                     <a href="?page=produto&id=<?php echo $row->id; ?>" class="btn-status color-blue">
