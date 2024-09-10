@@ -72,14 +72,17 @@ if ($idProduct) {
                     <?php
                     $sql = "SELECT * FROM category";
                     $result = $con->query($sql);
-
-
-
                     if ($result->num_rows > 0) {
                         while ($row = $result->fetch_object()) {
+                            //$selected = ($row->id == $productInfos->id_category) ? 'selected' : '';
+                            if($row->id == $productInfos->id_category){
+                                $selected = 'selected';
+                            }else{
+                                $selected = '';
+                            }
                     ?>
 
-                            <option value='<?php echo $row->id; ?>'><?php echo $row->name; ?></option>
+                            <option value='<?php echo $row->id; ?>' <?php echo $selected; ?>><?php echo $row->name; ?></option>
 
                     <?php
                         }
