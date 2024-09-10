@@ -18,7 +18,7 @@ if (!empty($_POST)) {
         id_category = '" . $_POST['id_category'] . "', 
         codebar = '" . $_POST['codebar'] . "', 
         price = '" . $_POST['price'] . "' 
-        WHERE product.id = ". $idProduct ."
+        WHERE product.id = " . $idProduct . "
         ";
     } else {
         $sql = "
@@ -69,17 +69,30 @@ if ($idProduct) {
 
             <label>
                 <div class="lbl">Categoria</div>
-                <input type="text" name="id_category" value="<?php echo $productInfos ? $productInfos->id_category : '' ?>" required>
+                <select name="id_category" required>
+                    <option value="id_category">Selecione</option>
+                    <?php
+                    $sql = "SELECT * FROM category";
+                    $result = $con->query($sql);
+                    if ($result->num_rows > 0) {
+                        while ($row = $result->fetch_object()) {
+                    ?>
+                            <option value='<?php echo $row->id; ?>'><?php echo $row->name; ?></option>
+                    <?php
+                        }
+                    }
+                    ?>
+                </select>
             </label>
-
             <label>
-                <div class="lbl">Codigo de barra (EAN-13)</div>
+                <div class="lbl">Codigo de barra (EAN-13)
+                </div>
                 <input type="text" name="codebar" value="<?php echo $productInfos ? $productInfos->codebar : '' ?>" maxLenght="13" required>
             </label>
 
             <label>
                 <div class="lbl">Preço</div>
-                <input type="number" min="0.00" max="10000.00" step="0.01" name="price"value="<?php echo $productInfos ? $productInfos->price : '' ?>" required>
+                <input type="number" min="0.00" max="10000.00" step="0.01" name="price" value="<?php echo $productInfos ? $productInfos->price : '' ?>" required>
             </label>
 
             <div class="form-actions">
