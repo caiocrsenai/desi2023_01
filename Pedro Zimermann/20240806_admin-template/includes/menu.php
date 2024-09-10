@@ -1,37 +1,49 @@
 <nav class="main-menu">
     <div class="main-menu-inside">
-        <div class="title">Dashboard</div>
+        <h1 class="title">Dashboard</h1>
         <ul>
             <li>
                 <a href="?page=inicial">
-                    <i class="fa-brands fa-playstation"></i>
+                    <i class="fa-solid fa-house"></i>
                     Inicial
                 </a>
             </li>
             <li>
                 <a href="?page=usuario">
-                    <i class="fa-solid fa-gauge"></i>
+                    <i class="fa-solid fa-user"></i>
                     Usuário
                 </a>
             </li>
             <li>
                 <a href="?page=usuarios">
-                    <i class="fa-solid fa-user-plus"></i>
+                    <i class="fa-solid fa-users"></i>
                     Usuários
                 </a>
             </li>
             <li>
                 <a href="?page=produto">
-                    <i class="fa-solid fa-file-import"></i>
+                    <i class="fa-solid fa-box-open"></i>
                     Produto
                 </a>
             </li>
             <li>
                 <a href="?page=produtos">
-                    <i class="fa-solid fa-file-import"></i>
+                    <i class="fa-solid fa-boxes-stacked"></i>
                     Produtos
                 </a>
             </li>
+            <li>
+                <a href="?page=categoria">
+                    <i class="fa-solid fa-cube"></i> Categoria
+                </a>
+            </li>
+            <li>
+                <a href="?page=categorias">
+                    <i class="fa-solid fa-list"></i>
+                    Categorias
+                </a>
+            </li>
+
         </ul>
     </div>
 </nav>
