@@ -38,6 +38,7 @@ if (!empty($_GET['id'])) {
 
                     if ($result->num_rows > 0) {
                         while ($row = $result->fetch_object()) {
+                            
                     ?>
                             <tr>
                                 <td><?php echo $row->name; ?></td>

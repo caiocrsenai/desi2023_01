@@ -10,13 +10,13 @@
             </li>
             <li>
                 <a href="?page=usuario">
-                    <i class="fa-solid fa-gauge"></i>
+                <i class="fa-regular fa-user"></i>
                     Usuário
                 </a>
             </li>
             <li>
                 <a href="?page=usuarios">
-                    <i class="fa-solid fa-gauge"></i>
+                <i class="fa-solid fa-mug-hot"></i>
                     Usuários
                 </a>
             </li>
@@ -30,21 +30,21 @@
 
             <li>
                 <a href="?page=produtos">
-                    <i class="fa-solid fa-thin fa-headphones"></i>
+                <i class="fa-brands fa-avianex"></i>
                     Produtos
                 </a>
             </li>
 
             <li>
                 <a href="?page=categoria">
-                    <i class="fa-solid fa-thin fa-headphones"></i>
+                    <i class="fa-brands fa-github"></i>
                     Categoria
                 </a>
             </li>
 
             <li>
                 <a href="?page=categorias">
-                    <i class="fa-solid fa-thin fa-headphones"></i>
+                <i class="fa-solid fa-film"></i>
                     CategoriasD
                 </a>
             </li>
