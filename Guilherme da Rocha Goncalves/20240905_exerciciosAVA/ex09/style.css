@@ -1,0 +1,27 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Garante que o body ocupe pelo menos a altura da tela */
+}
+
+.content {
+    flex: 1; /* Faz o conteúdo principal crescer e ocupar o espaço disponível */
+    padding: 20px;
+}
+
+footer {
+    background-color: #333; /* Fundo cinza escuro */
+    color: #fff; /* Texto branco */
+    text-align: center; /* Texto centralizado */
+    padding: 10px; /* Espaçamento interno */
+    position: fixed; /* Fixa o rodapé na parte inferior */
+    bottom: 0; /* Alinha o rodapé à parte inferior da página */
+    width: 100%; /* Ocupa toda a largura da página */
+}
