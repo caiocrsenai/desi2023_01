@@ -81,8 +81,6 @@ if ($idProduct) {
                         }
                     }
                     ?>
-
-
                 </select>
             </label>
 
