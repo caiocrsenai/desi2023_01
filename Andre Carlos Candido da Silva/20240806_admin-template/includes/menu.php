@@ -4,14 +4,14 @@
         <ul>
             <li>
                 <a href="?page=inicial">
-                <i class="fa-brands fa-playstation"></i>
+                    <i class="fa-brands fa-playstation"></i>
                     Inicial
                 </a>
             </li>
             <li>
                 <a href="?page=usuario">
                     <i class="fa-solid fa-gauge"></i>
-                    usuario
+                    Usuário
                 </a>
             </li>
             <li>
@@ -23,25 +23,37 @@
             <li>
                 <a href="?page=produto">
                     <i class="fa-solid fa-file-import"></i>
-                    produto
+                    Produto
                 </a>
             </li>
             <li>
                 <a href="?page=produtos">
                     <i class="fa-solid fa-file-import"></i>
-                    produtos
+                    Produtos
                 </a>
             </li>
             <li>
                 <a href="?page=categoria">
                     <i class="fa-solid fa-file-import"></i>
-                    categoria
+                    Categoria
                 </a>
             </li>
             <li>
                 <a href="?page=categorias">
                     <i class="fa-solid fa-file-import"></i>
-                    categorias
+                    Categorias
+                </a>
+            </li>
+            <li>
+                <a href="?page=estoque">
+                    <i class="fa-solid fa-file-import"></i>
+                    estoque
+                </a>
+            </li>
+            <li>
+                <a href="?page=estoques">
+                    <i class="fa-solid fa-file-import"></i>
+                    estoques
                 </a>
             </li>
         </ul>
