@@ -5,17 +5,14 @@ if (!empty($_GET['id'])) {
     $sql = "DELETE FROM product WHERE product.id = " . $idProduct . ";";
 
     $result = $con->query($sql);
-
     if ($con->affected_rows > 0) {
-     echo "<script>alert('Produto excluido com sucesso!')</script>";
+        echo "<script>alert('Produto excluido com sucesso!')</script>";
     }
 }
 ?>
 
-
 <div class="container-box flex-1">
     <div class="cb-header">
-   
         <div class="cb-title">Produtos</div>
     </div>
     <div class="cb-body">
@@ -32,17 +29,18 @@ if (!empty($_GET['id'])) {
                 </thead>
                 <tbody>
                     <?php
-                    $sql = 'SELECT * FROM product';
+                    $sql = "SELECT pro.name, pro.id, pro.price, cat.name AS cat_name
+                            FROM product AS pro
+                            JOIN category AS cat ON cat.id = pro.id_category";
                     $result = $con->query($sql);
 
                     if ($result->num_rows > 0) {
                         while ($row = $result->fetch_object()) {
-                            ?>
+                    ?>
                             <tr>
-                                <td> <?php echo $row->name; ?> </td>
-                                <td> <?php echo $row->id_category; ?> </td>
-                                <td> <?php echo $row->price; ?> </td>
-
+                                <td><?php echo $row->name; ?></td>
+                                <td><?php echo $row->cat_name; ?></td>
+                                <td><?php echo $row->price; ?></td>
                                 <td>
                                     <a href="?page=produto&id=<?php echo $row->id; ?>" class="btn-status color-blue">
                                         <i class="fa-regular fa-pen-to-square"></i>
@@ -54,33 +52,26 @@ if (!empty($_GET['id'])) {
                                     </div>
                                 </td>
                             </tr>
-                            <?php
+                    <?php
                         }
                     }
-
                     ?>
-
                 </tbody>
             </table>
         </div>
     </div>
 </div>
-<script>
 
-    _qsa('.delete-product').forEach(function (_element) {
-        _element.addEventListener('click', function (e) {
+<script>
+    _qsa('.delete-product').forEach(function(_element) {
+        _element.addEventListener('click', function(e) {
             const _this = this,
                 dataId = _this.getAttribute('data-id');
 
-            if (confirm('Você deseja realmente excluir o Produto?')) {
-                //alert('Excluir usuario : ' + dataId);
+            if (confirm('Você deseja realmente excluir o produto?')) {
+                //alert('Excluir usuario: ' + dataId);
                 window.location.href = '?page=produtos&id=' + dataId;
             }
         });
     });
-
-
-
-
-
 </script>

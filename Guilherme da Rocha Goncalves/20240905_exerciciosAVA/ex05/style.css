@@ -1,0 +1,12 @@
+input[type="submit"] {
+    background-color: blue; /* Fundo azul para o botão */
+    color: white; /* Texto branco para o botão */
+    border: none; /* Remove a borda padrão */
+    padding: 10px 20px; /* Adiciona padding ao botão */
+    cursor: pointer; /* Altera o cursor para uma mão ao passar sobre o botão */
+    font-size: 16px; /* Ajusta o tamanho da fonte */
+}
+
+input[type="submit"]:hover {
+    background-color: darkblue; /* Altera a cor do fundo quando o mouse passa sobre o botão */
+}
