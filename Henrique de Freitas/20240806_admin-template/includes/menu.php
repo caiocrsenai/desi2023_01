@@ -10,7 +10,7 @@
             </li>
             <li>
                 <a href="?page=usuario">
-                    <i class="fa-solid fa-gauge"></i>
+                <i class="fa-solid fa-user-plus"></i>
                     Usuário
                 </a>
             </li>
@@ -22,30 +22,45 @@
             </li>
             <li>
                 <a href="?page=produto">
-                    <i class="fa-solid fa-file-import"></i>
+                <i class="fa-solid fa-box"></i>
                     Produto
                 </a>
             </li>
             <li>
                 <a href="?page=produtos">
-                    <i class="fa-solid fa-file-import"></i>
+                <i class="fa-solid fa-box"></i>
                     Produtos
                 </a>
             </li>
 
             <li>
                 <a href="?page=categorias">
-                    <i class="fa-solid fa-file-import"></i>
+                <i class="fa-regular fa-folder-open"></i>
                     Categorias
                 </a>
             </li>
 
             <li>
                 <a href="?page=categoria">
-                    <i class="fa-solid fa-file-import"></i>
+                <i class="fa-regular fa-folder-open"></i>
                     Categoria
                 </a>
             </li>
+
+            <li>
+                <a href="?page=estoques">
+                <i class="fa-solid fa-boxes-stacked"></i>
+                    Estoques
+                </a>
+            </li>
+
+            <li>
+                <a href="?page=estoque">
+                <i class="fa-solid fa-boxes-stacked"></i>
+                    Estoque
+                </a>
+            </li>
+
 
         </ul>
     </div>
