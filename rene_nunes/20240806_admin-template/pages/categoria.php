@@ -52,7 +52,7 @@ if ($idCategory) {
         <div class="cb-title">Categoria</div>
     </div>
     <div class="cb-body">
-        <form method="POST" action="" id="productForm" name="productForm" novalidate>
+        <form method="POST" action="" id="categoryForm" name="categoryForm" novalidate>
             <label>
                 <div class="lbl">Nome</div>
                 <input type="text" name="name" value="<?php echo $categoryInfos ? $categoryInfos->name : '' ?>" required>
