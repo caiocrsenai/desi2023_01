@@ -85,9 +85,12 @@ if ($idStock) {
 </div>
 
 <script>
-    _qs('[name="id_product"]').addEventListener('change', function(e){
+    _qs('[name="id_product"]').addEventListener('change', function(e) {
         const _this = this;
 
         _qs('[name="name_product"]').value = _this.selectedOptions[0].innerText;
     });
-</script>   
+
+    const event = new CustomEvent('change');
+    _qs('[name="id_product"]').dispatchEvent(event);
+</script>
