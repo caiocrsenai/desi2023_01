@@ -81,9 +81,7 @@ if ($idProduct) {
                                 $selected = '';
                             }
                     ?>
-
                             <option value='<?php echo $row->id; ?>' <?php echo $selected; ?>><?php echo $row->name; ?></option>
-
                     <?php
                         }
                     }

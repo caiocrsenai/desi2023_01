@@ -49,6 +49,20 @@
                 </a>
             </li>
 
+            <li>
+                <a href="?page=estoque">
+                <i class="fa-solid fa-list"></i>
+                    Estoque
+                </a>
+            </li>
+
+            <li>
+                <a href="?page=estoques">
+                <i class="fa-solid fa-pen-to-square"></i>
+                    Estoques
+                </a>
+            </li>
+
         </ul>
     </div>
 </nav>
