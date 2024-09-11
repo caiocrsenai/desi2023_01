@@ -23,25 +23,37 @@
             <li>
                 <a href="?page=produto">
                     <i class="fa-solid fa-file-import"></i>
-                    Produto 
+                    Produto
                 </a>
             </li>
             <li>
                 <a href="?page=produtos">
                     <i class="fa-solid fa-file-import"></i>
-                    Produtos 
+                    Produtos
                 </a>
             </li>
             <li>
                 <a href="?page=categoria">
                     <i class="fa-solid fa-file-import"></i>
-                    Categoria 
+                    Categoria
                 </a>
             </li>
             <li>
                 <a href="?page=categorias">
                     <i class="fa-solid fa-file-import"></i>
-                    Categorias 
+                    Categorias
+                </a>
+            </li>
+            <li>
+                <a href="?page=estoque">
+                    <i class="fa-solid fa-file-import"></i>
+                    Estoque
+                </a>
+            </li>
+            <li>
+                <a href="?page=estoques">
+                    <i class="fa-solid fa-file-import"></i>
+                    Estoques
                 </a>
             </li>
         </ul>

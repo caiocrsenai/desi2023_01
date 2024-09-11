@@ -1,68 +1,68 @@
 <?php
-$idCategory = false;
-$categoryInfos = false;
+$idStock = false;
+$stockInfos = false;
 
 if (!empty($_GET['id'])) {
-    $idCategory = $_GET['id'];
+    $idStock = $_GET['id'];
 }
 
 if (!empty($_POST)) {
 
-    if ($idCategory) {
+    if ($idStock) {
         $sql = "UPDATE category SET 
-        name = '" . $_POST['name'] . "',
+        name = '" . $_POST['name'] . "', 
         description = '" . $_POST['description'] . "' 
-        WHERE category.id = " . $idCategory . "";
+        WHERE category.id = ".$idStock."";
     } else {
         $sql = "INSERT INTO category 
-        ( name, description) 
+        (id, name, description, timestamp) 
         VALUES 
-        ( 
-        '" . $_POST['name'] . "', 
-        '" . $_POST['description'] . "')
-        ";
+        (
+            NULL, 
+            '" . $_POST['name'] . "', 
+            '" . $_POST['description'] . "', 
+            current_timestamp()
+        )";
     }
 
     $result = $con->query($sql);
 
     if ($result) {
-        $action = 'cadastrada';
-
-        if ($idCategory) {
-            $action = "alterada";
+        $action = "cadastrado";
+        if ($idStock) {
+            $action = "alterado";
         }
 
-        echo "<script>alert('Categoria " . $_POST['name'] . " " . $action . " com sucesso!')</script>";
+        echo "<script>alert('Estoque " . $_POST['id_product'] . " " . $action . " com sucesso!')</script>";
     }
 }
 
-if ($idCategory) {
-    $sql = "SELECT * FROM category WHERE id = " . $idCategory;
+if ($idStock) {
+    $sql = "SELECT * FROM category WHERE id = " . $idStock;
     $result = $con->query($sql);
 
     if ($result->num_rows > 0) {
-        $categoryInfos = $result->fetch_object();
+        $stockInfos = $result->fetch_object();
     }
 }
 
 ?>
-
 <div class="container-box cb-form-max-width align-center flex-1">
     <div class="cb-header">
         <div class="cb-title">Categoria</div>
     </div>
     <div class="cb-body">
-        <form method="POST" action="" id="productForm" name="productForm" novalidate>
+        <form method="POST" action="" id="categoryForm" name="categoryForm" novalidate>
             <label>
                 <div class="lbl">Nome</div>
-                <input type="text" name="name" value="<?php echo $categoryInfos ? $categoryInfos->name : '' ?>" required>
+                <input type="text" name="name" value="<?php echo $stockInfos ? $stockInfos->name : '' ?>" required>
             </label>
 
             <label>
                 <div class="lbl">Descrição</div>
-                <textarea  maxlength="150" type="text" name="description" class="description" value="<?php echo $categoryInfos ? $categoryInfos->description : '' ?>" required></textarea>
+                <input type="text" name="description" value="<?php echo $stockInfos ? $stockInfos->description : '' ?>" required>
             </label>
-            
+
             <div class="form-actions">
                 <button type="submit">Enviar</button>
             </div>

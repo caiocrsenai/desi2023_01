@@ -19,7 +19,7 @@ if (!empty($_POST)) {
         cep = '" . $_POST['cep'] . "', 
         id_city = '" . $_POST['id_city'] . "', 
         id_state = '" . $_POST['id_state'] . "' 
-        WHERE user.id = " .$idUser. "
+        WHERE user.id = " . $idUser . "
         ";
     } else {
         $sql = "
@@ -43,13 +43,12 @@ if (!empty($_POST)) {
     $result = $con->query($sql);
 
     if ($result) {
-        $action = 'cadastrado';
-
+        $action = "cadastrado";
         if($idUser){
-            $action = "alterado"; 
+            $action = "alterado";
         }
 
-        echo "<script>alert('Usuário " . $_POST['username'] ." " .$action ." com sucesso!')</script>";
+        echo "<script>alert('Usuário " . $_POST['username'] . " " . $action . " com sucesso!')</script>";
     }
 }
 
@@ -65,7 +64,7 @@ if ($idUser) {
 ?>
 <div class="container-box cb-form-max-width align-center flex-1">
     <div class="cb-header">
-        <div class="cb-title">Usuário</div>
+        <div class="cb-title">Formulário</div>
     </div>
     <div class="cb-body">
         <form method="POST" action="" id="userForm" name="userForm" novalidate>
