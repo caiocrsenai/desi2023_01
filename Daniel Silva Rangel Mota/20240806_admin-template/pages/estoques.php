@@ -35,8 +35,8 @@ if (!empty($_GET['id'])) {
                         while ($row = $result->fetch_object()) {
                     ?>
                             <tr>
-                                <td><?php echo $row->id_product ?></td>
-                                <td><?php echo $row->quantity ?></td>
+                                <td><?php echo $row->id_product; ?></td>
+                                <td><?php echo $row->quantity; ?></td>
                                 <td>
                                     <a href="?page=estoque&id=<?php echo $row->id ?>" class="btn-status color-blue">
                                         <i class="fa-regular fa-pen-to-square"></i>
