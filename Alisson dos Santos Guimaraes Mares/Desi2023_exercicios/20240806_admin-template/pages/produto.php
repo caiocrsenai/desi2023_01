@@ -52,6 +52,7 @@ if ($idProduct) {
     }
 }
 
+
 ?>
 
 <div class="container-box cb-form-max-width align-center flex-1">
@@ -66,7 +67,7 @@ if ($idProduct) {
 
             <label>
                 <div class="lbl">Categoria</div>
-                <select name="category">
+                <select name="id_category">
                     <option selected disabled style="display: none;" value="">Selecione a categoria</option>
                     <?php
                     $sql = "SELECT * FROM category";
@@ -74,7 +75,7 @@ if ($idProduct) {
 
                     if ($result->num_rows > 0) {
                         while ($row = $result->fetch_object()) {
-                            echo '<option value="' . $row->id_category . '" ' . ($categoryInfos ? ($categoryInfos->id_category == $row->id_category ? 'selected' : '') : '') . ' >' . $row->name . '</option>';
+                            echo '<option value="' . $row->id . '" ' . ($productInfos ? ($productInfos->id_category == $row->id ? 'selected' : '') : '') . ' >' . $row->name . '</option>';
                         }
                     }
                     ?>
