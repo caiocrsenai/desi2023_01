@@ -12,7 +12,7 @@ if (!empty($_POST)) {
         $sql = "
         UPDATE category SET 
         name = '" . $_POST['name'] . "', 
-        description = '" . $_POST['description'] . "', 
+        description = '" . $_POST['description'] . "'
         WHERE category.id = ". $idCategory ."
         ";
     } else {
