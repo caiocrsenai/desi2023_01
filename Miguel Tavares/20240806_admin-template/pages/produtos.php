@@ -1,19 +1,19 @@
 <?php
 if (!empty($_GET['id'])) {
-    $idUser = $_GET['id'];
+    $idProduct = $_GET['id'];
 
-    $sql = "DELETE FROM user WHERE user.id = " . $idUser . ";";
+    $sql = "DELETE FROM product WHERE product.id = " . $idProduct . ";";
 
     $result = $con->query($sql);
     if ($con->affected_rows > 0) {
-        echo "<script>alert('Usuário excluido com sucesso!')</script>";
+        echo "<script>alert('Produto excluido com sucesso!')</script>";
     }
 }
 ?>
 
 <div class="container-box flex-1">
     <div class="cb-header">
-        <div class="cb-title">Usuários</div>
+        <div class="cb-title">Produtos</div>
     </div>
     <div class="cb-body">
         <div class="table-container">
@@ -21,15 +21,15 @@ if (!empty($_GET['id'])) {
                 <thead>
                     <tr>
                         <th>Nome</th>
-                        <th>Email</th>
-                        <th>Usuario</th>
+                        <th>Categoria</th>
+                        <th>Preço</th>
                         <th width="10px">Alterar</th>
                         <th width="10px">Excluir</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
-                    $sql = "SELECT * FROM user";
+                    $sql = "SELECT * FROM product";
                     $result = $con->query($sql);
 
                     if ($result->num_rows > 0) {
@@ -37,15 +37,15 @@ if (!empty($_GET['id'])) {
                     ?>
                             <tr>
                                 <td><?php echo $row->name; ?></td>
-                                <td><?php echo $row->email; ?></td>
-                                <td><?php echo $row->username; ?></td>
+                                <td><?php echo $row->id_category; ?></td>
+                                <td><?php echo $row->price; ?></td>
                                 <td>
-                                    <a href="?page=usuario&id=<?php echo $row->id; ?>" class="btn-status color-blue">
+                                    <a href="?page=produto&id=<?php echo $row->id; ?>" class="btn-status color-blue">
                                         <i class="fa-regular fa-pen-to-square"></i>
                                     </a>
                                 </td>
                                 <td>
-                                    <div class="delete-user btn-status color-red" data-id="<?php echo $row->id; ?>">
+                                    <div class="delete-product btn-status color-red" data-id="<?php echo $row->id; ?>">
                                         <i class="fa-regular fa-trash-can"></i>
                                     </div>
                                 </td>
@@ -61,14 +61,14 @@ if (!empty($_GET['id'])) {
 </div>
 
 <script>
-    _qsa('.delete-user').forEach(function(_element) {
+    _qsa('.delete-product').forEach(function(_element) {
         _element.addEventListener('click', function(e) {
             const _this = this,
                 dataId = _this.getAttribute('data-id');
 
-            if (confirm('Você deseja realmente excluir o usuário?')) {
+            if (confirm('Você deseja realmente excluir o produto?')) {
                 //alert('Excluir usuario: ' + dataId);
-                window.location.href = '?page=usuarios&id=' + dataId;
+                window.location.href = '?page=produtos&id=' + dataId;
             }
         });
     });
