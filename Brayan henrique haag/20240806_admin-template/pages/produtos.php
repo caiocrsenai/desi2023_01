@@ -36,7 +36,7 @@ if (!empty($_GET['id'])) {
 
                     if ($result->num_rows > 0) {
                         while ($row = $result->fetch_object()) {
-                            ?>
+                    ?>
                             <tr>
                                 <td><?php echo $row->name; ?></td>
                                 <td><?php echo $row->cat_name; ?></td>
@@ -52,7 +52,7 @@ if (!empty($_GET['id'])) {
                                     </div>
                                 </td>
                             </tr>
-                            <?php
+                    <?php
                         }
                     }
                     ?>
@@ -63,8 +63,8 @@ if (!empty($_GET['id'])) {
 </div>
 
 <script>
-    _qsa('.delete-product').forEach(function (_element) {
-        _element.addEventListener('click', function (e) {
+    _qsa('.delete-product').forEach(function(_element) {
+        _element.addEventListener('click', function(e) {
             const _this = this,
                 dataId = _this.getAttribute('data-id');
 

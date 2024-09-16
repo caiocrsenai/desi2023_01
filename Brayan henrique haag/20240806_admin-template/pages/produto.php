@@ -14,7 +14,7 @@ if (!empty($_POST)) {
         id_category = '" . $_POST['id_category'] . "', 
         codebar = '" . $_POST['codebar'] . "', 
         price = '" . $_POST['price'] . "' 
-        WHERE product.id = " . $idProduct . "
+        WHERE product.id = ". $idProduct ."
         ";
     } else {
         $sql = "INSERT INTO product 
@@ -44,11 +44,12 @@ if (!empty($_POST)) {
 if ($idProduct) {
     $sql = "SELECT * FROM product WHERE id = " . $idProduct;
     $result = $con->query($sql);
-
     if ($result->num_rows > 0) {
         $productInfos = $result->fetch_object();
     }
 }
+
+
 
 ?>
 <div class="container-box cb-form-max-width align-center flex-1">
@@ -64,33 +65,27 @@ if ($idProduct) {
 
             <label>
                 <div class="lbl">Categoria</div>
-                <select nome="id_category">
-                    <option selected disable style="display: none;" value="">selecione a categoria</option>
+                <select name="id_category" required>
+                    <option value=''>Selecione</option>
                     <?php
-
-                    $sql = "SELECT id, name FROM category";
-                    $result = $con->query($sql);
-
-                    while ($row = $result->fetch_object()) {
-                        $selected = ($productInfos ? $productInfos->id_category : '') == $row->id ? 'selected' : '';
-                        echo '<option value="' . $row->id . '"
-                          ' . ($productInfos ? ($productInfos->id == $row->id ? 'selected ' : '') : '') . '>
-                          ' . $row->name . '</option>';
-                    }
+                        $sql = "SELECT id, name FROM category";
+                        $categorias = $con->query($sql);
+                        while ($row = $categorias->fetch_object()) {
+                            $selected = ($productInfos ? $productInfos->id_category : '') == $row->id ? 'selected' : '';
+                            echo '<option '.  $selected .' value="' . $row->id . '">' . $row->name . '</option>';
+                        }
                     ?>
                 </select>
             </label>
 
             <label>
                 <div class="lbl">Código de Barras (EAN-13)</div>
-                <input type="text" name="codebar" value="<?php echo $productInfos ? $productInfos->codebar : '' ?>"
-                    maxlength="13">
+                <input type="text" name="codebar" value="<?php echo $productInfos ? $productInfos->codebar : '' ?>" maxlength="13">
             </label>
 
             <label>
                 <div class="lbl">Preco</div>
-                <input type="number" min="0.00" max="10000.00" step="0.10" name="price"
-                    value="<?php echo $productInfos ? $productInfos->price : '' ?>" />
+                <input type="number" min="0.00" max="10000.00" step="0.10" name="price" value="<?php echo $productInfos ? $productInfos->price : '' ?>" />
             </label>
 
             <div class="form-actions">

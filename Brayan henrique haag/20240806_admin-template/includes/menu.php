@@ -44,18 +44,6 @@
                     Categorias
                 </a>
             </li>
-            <li>
-                <a href="?page=estoque">
-                    <i class="fa-solid fa-file-import"></i>
-                    estoque
-                </a>
-            </li>
-            <li>
-                <a href="?page=estoques">
-                    <i class="fa-solid fa-file-import"></i>
-                    estoques
-                </a>
-            </li>
         </ul>
     </div>
 </nav>
