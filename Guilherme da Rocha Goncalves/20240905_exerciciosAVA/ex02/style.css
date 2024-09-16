@@ -1,0 +1,8 @@
+ul {
+    list-style-type: none; /* Remove os marcadores padrão da lista */
+    padding: 0; /* Remove o padding padrão do ul */
+}
+
+li {
+    color: green;
+}
