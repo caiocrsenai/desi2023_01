@@ -16,7 +16,6 @@ body {
 
 .flex-1 {
 	flex: 1;
-
 }
 
 .hide {
@@ -251,7 +250,7 @@ body {
 	&.color-green {
 		background-color: #9bfbae;
 		border-color: #248737;
-	}			
+	}
 
 	&.color-yellow {
 		background-color: #f2fb9b;
@@ -315,8 +314,6 @@ body {
 				font-weight: 500;
 			}
 		}
-
-		
 
 		table {
 			width: 100%;
@@ -392,7 +389,7 @@ body {
 				outline: 0;
 				color-scheme: dark;
 
-				&.error{
+				&.error {
 					border-color: #d86060;
 				}
 			}
