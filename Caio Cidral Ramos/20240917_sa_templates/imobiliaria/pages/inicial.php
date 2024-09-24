@@ -11,7 +11,7 @@
 
         <div class="properties-container">
             <?php for ($i = 0; $i < 10; $i++): ?>
-                <div class="propertie">
+                <a href="?page=imovel" class="propertie">
                     <div class="image" style="background-image: url(https://images.anageimoveis.com.br/vista.imobi/fotos/27959/i8955BLLt192xYuKXYC5H_2795966e3fb1f77281.jpg);"></div>
                     <div class="infos-container">
                         <div class="type">Apartamento padrão</div>
@@ -34,7 +34,7 @@
                             </ul>
                         </div>
                     </div>
-                </div>
+                </a>
             <?php endfor; ?>
         </div>
 
