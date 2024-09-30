@@ -1,5 +1,4 @@
 <?php
-
 if (!empty($_GET['id'])) {
     $idProduct = $_GET['id'];
 
@@ -10,7 +9,6 @@ if (!empty($_GET['id'])) {
         echo "<script>alert('Produto excluido com sucesso!')</script>";
     }
 }
-
 ?>
 
 <div class="container-box flex-1">
@@ -26,29 +24,31 @@ if (!empty($_GET['id'])) {
                         <th>Categoria</th>
                         <th>Preço</th>
                         <th width="10px">Alterar</th>
-                        <th whidth="10px">Excluir</th>
+                        <th width="10px">Excluir</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
-                    $sql = "SELECT * FROM product";
+                    $sql = "SELECT pro.name, pro.id, pro.price, cat.name AS cat_name
+                            FROM product AS pro
+                            JOIN category AS cat ON cat.id = pro.id_category";
                     $result = $con->query($sql);
 
                     if ($result->num_rows > 0) {
                         while ($row = $result->fetch_object()) {
                     ?>
                             <tr>
-                                <td> <?php echo $row->name ?> </td>
-                                <td> <?php echo $row->id_category ?> </td>
-                                <td> <?php echo $row->price ?> </td>
+                                <td><?php echo $row->name; ?></td>
+                                <td><?php echo $row->cat_name; ?></td>
+                                <td><?php echo $row->price; ?></td>
                                 <td>
-                                    <a href="?page=produto&id=<?php echo $row->id ?> " class="btn-status color-blue">
+                                    <a href="?page=produto&id=<?php echo $row->id; ?>" class="btn-status color-blue">
                                         <i class="fa-regular fa-pen-to-square"></i>
                                     </a>
                                 </td>
                                 <td>
-                                    <div class="delete-product btn-status color-red" data-id="<?php echo $row->id ?>  ">
-                                        <i class="fa-solid fa-circle-minus"></i>
+                                    <div class="delete-product btn-status color-red" data-id="<?php echo $row->id; ?>">
+                                        <i class="fa-regular fa-trash-can"></i>
                                     </div>
                                 </td>
                             </tr>
@@ -68,8 +68,8 @@ if (!empty($_GET['id'])) {
             const _this = this,
                 dataId = _this.getAttribute('data-id');
 
-            if (confirm('Voce realmente deseja excluir esse Produto')) {
-                //alert('Exclui usuario:' + dataId);
+            if (confirm('Você deseja realmente excluir o produto?')) {
+                //alert('Excluir usuario: ' + dataId);
                 window.location.href = '?page=produtos&id=' + dataId;
             }
         });

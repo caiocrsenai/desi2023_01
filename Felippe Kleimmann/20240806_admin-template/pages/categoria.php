@@ -12,16 +12,16 @@ if (!empty($_POST)) {
         $sql = "UPDATE category SET 
         name = '" . $_POST['name'] . "', 
         description = '" . $_POST['description'] . "' 
-        WHERE category.id = " . $idCategory . "";
+        WHERE category.id = ".$idCategory."";
     } else {
         $sql = "INSERT INTO category 
         (id, name, description, timestamp) 
         VALUES 
         (
-        NULL, 
-        '" . $_POST['name'] . "', 
-        '" . $_POST['description'] . "', 
-        current_timestamp()
+            NULL, 
+            '" . $_POST['name'] . "', 
+            '" . $_POST['description'] . "', 
+            current_timestamp()
         )";
     }
 
@@ -30,15 +30,14 @@ if (!empty($_POST)) {
     if ($result) {
         $action = "cadastrado";
         if ($idCategory) {
-            $action = 'alterado';
+            $action = "alterado";
         }
 
-        echo "<script>alert('Produto " . $_POST['name'] . " " . $action . " com sucesso!')</script>";
+        echo "<script>alert('Categoria " . $_POST['name'] . " " . $action . " com sucesso!')</script>";
     }
 }
 
 if ($idCategory) {
-
     $sql = "SELECT * FROM category WHERE id = " . $idCategory;
     $result = $con->query($sql);
 
@@ -48,7 +47,6 @@ if ($idCategory) {
 }
 
 ?>
-
 <div class="container-box cb-form-max-width align-center flex-1">
     <div class="cb-header">
         <div class="cb-title">Categoria</div>

@@ -14,18 +14,19 @@ if (!empty($_POST)) {
         id_category = '" . $_POST['id_category'] . "', 
         codebar = '" . $_POST['codebar'] . "', 
         price = '" . $_POST['price'] . "' 
-        WHERE product.id = " . $idProduct . "
+        WHERE product.id = ". $idProduct ."
         ";
     } else {
         $sql = "INSERT INTO product 
         (name, id_category, codebar, price) 
         VALUES 
         (
-          '" . $_POST['name'] . "', 
-          '" . $_POST['id_category'] . "', 
-          '" . $_POST['codebar'] . "', 
-          '" . $_POST['price'] . "'
-         )";
+            '" . $_POST['name'] . "',
+            '" . $_POST['id_category'] . "',
+            '" . $_POST['codebar'] . "',
+            '" . $_POST['price'] . "'
+        )
+        ";
     }
 
     $result = $con->query($sql);
@@ -33,7 +34,7 @@ if (!empty($_POST)) {
     if ($result) {
         $action = "cadastrado";
         if ($idProduct) {
-            $action = 'alterado';
+            $action = "alterado";
         }
 
         echo "<script>alert('Produto " . $_POST['name'] . " " . $action . " com sucesso!')</script>";
@@ -41,17 +42,16 @@ if (!empty($_POST)) {
 }
 
 if ($idProduct) {
-
     $sql = "SELECT * FROM product WHERE id = " . $idProduct;
     $result = $con->query($sql);
-
     if ($result->num_rows > 0) {
         $productInfos = $result->fetch_object();
     }
 }
 
-?>
 
+
+?>
 <div class="container-box cb-form-max-width align-center flex-1">
     <div class="cb-header">
         <div class="cb-title">Produtos</div>
@@ -65,7 +65,17 @@ if ($idProduct) {
 
             <label>
                 <div class="lbl">Categoria</div>
-                <input type="text" name="id_category" value="<?php echo $productInfos ? $productInfos->id_category : '' ?>" required>
+                <select name="id_category" required>
+                    <option value=''>Selecione</option>
+                    <?php
+                        $sql = "SELECT id, name FROM category";
+                        $categorias = $con->query($sql);
+                        while ($row = $categorias->fetch_object()) {
+                            $selected = ($productInfos ? $productInfos->id_category : '') == $row->id ? 'selected' : '';
+                            echo '<option '.  $selected .' value="' . $row->id . '">' . $row->name . '</option>';
+                        }
+                    ?>
+                </select>
             </label>
 
             <label>

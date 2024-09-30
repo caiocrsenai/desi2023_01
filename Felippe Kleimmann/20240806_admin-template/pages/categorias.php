@@ -1,5 +1,4 @@
 <?php
-
 if (!empty($_GET['id'])) {
     $idCategory = $_GET['id'];
 
@@ -10,12 +9,11 @@ if (!empty($_GET['id'])) {
         echo "<script>alert('Categoria excluido com sucesso!')</script>";
     }
 }
-
 ?>
 
 <div class="container-box flex-1">
     <div class="cb-header">
-        <div class="cb-title">Categorias</div>
+        <div class="cb-title">Produtos</div>
     </div>
     <div class="cb-body">
         <div class="table-container">
@@ -25,7 +23,7 @@ if (!empty($_GET['id'])) {
                         <th>Nome</th>
                         <th>Descrição</th>
                         <th width="10px">Alterar</th>
-                        <th whidth="10px">Excluir</th>
+                        <th width="10px">Excluir</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -37,17 +35,16 @@ if (!empty($_GET['id'])) {
                         while ($row = $result->fetch_object()) {
                     ?>
                             <tr>
-                                <td> <?php echo $row->name ?> </td>
-                                <td> <?php echo $row->description ?> </td>
-                          =
+                                <td><?php echo $row->name; ?></td>
+                                <td><?php echo $row->description; ?></td>
                                 <td>
-                                    <a href="?page=categoria&id=<?php echo $row->id ?>" class="btn-status color-blue">
+                                    <a href="?page=categoria&id=<?php echo $row->id; ?>" class="btn-status color-blue">
                                         <i class="fa-regular fa-pen-to-square"></i>
                                     </a>
                                 </td>
                                 <td>
-                                    <div class="delete-category btn-status color-red" data-id="<?php echo $row->id ?>">
-                                        <i class="fa-solid fa-circle-minus"></i>
+                                    <div class="delete-product btn-status color-red" data-id="<?php echo $row->id; ?>">
+                                        <i class="fa-regular fa-trash-can"></i>
                                     </div>
                                 </td>
                             </tr>
@@ -62,13 +59,13 @@ if (!empty($_GET['id'])) {
 </div>
 
 <script>
-    _qsa('.delete-category').forEach(function(_element) {
+    _qsa('.delete-product').forEach(function(_element) {
         _element.addEventListener('click', function(e) {
             const _this = this,
                 dataId = _this.getAttribute('data-id');
 
-            if (confirm('Voce realmente deseja excluir essa categoria?')) {
-                //alert('Exclui usuario:' + dataId);
+            if (confirm('Você deseja realmente excluir o produto?')) {
+                //alert('Excluir usuario: ' + dataId);
                 window.location.href = '?page=categorias&id=' + dataId;
             }
         });

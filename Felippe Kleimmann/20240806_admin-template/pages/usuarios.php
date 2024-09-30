@@ -1,5 +1,4 @@
 <?php
-
 if (!empty($_GET['id'])) {
     $idUser = $_GET['id'];
 
@@ -10,12 +9,11 @@ if (!empty($_GET['id'])) {
         echo "<script>alert('Usuário excluido com sucesso!')</script>";
     }
 }
-
 ?>
 
 <div class="container-box flex-1">
     <div class="cb-header">
-        <div class="cb-title">Vendas</div>
+        <div class="cb-title">Usuários</div>
     </div>
     <div class="cb-body">
         <div class="table-container">
@@ -24,9 +22,9 @@ if (!empty($_GET['id'])) {
                     <tr>
                         <th>Nome</th>
                         <th>Email</th>
-                        <th>Usuarios</th>
+                        <th>Usuario</th>
                         <th width="10px">Alterar</th>
-                        <th whidth="10px">Excluir</th>
+                        <th width="10px">Excluir</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -38,17 +36,17 @@ if (!empty($_GET['id'])) {
                         while ($row = $result->fetch_object()) {
                     ?>
                             <tr>
-                                <td> <?php echo $row->name ?> </td>
-                                <td> <?php echo $row->email ?> </td>
-                                <td> <?php echo $row->username ?> </td>
+                                <td><?php echo $row->name; ?></td>
+                                <td><?php echo $row->email; ?></td>
+                                <td><?php echo $row->username; ?></td>
                                 <td>
-                                    <a href="?page=usuario&id=<?php echo $row->id ?> " class="btn-status color-blue">
+                                    <a href="?page=usuario&id=<?php echo $row->id; ?>" class="btn-status color-blue">
                                         <i class="fa-regular fa-pen-to-square"></i>
                                     </a>
                                 </td>
                                 <td>
-                                    <div class="delete-user btn-status color-red" data-id="<?php echo $row->id ?>  ">
-                                        <i class="fa-solid fa-circle-minus"></i>
+                                    <div class="delete-user btn-status color-red" data-id="<?php echo $row->id; ?>">
+                                        <i class="fa-regular fa-trash-can"></i>
                                     </div>
                                 </td>
                             </tr>
@@ -68,8 +66,8 @@ if (!empty($_GET['id'])) {
             const _this = this,
                 dataId = _this.getAttribute('data-id');
 
-            if (confirm('Voce realmente deseja excluir esse Usuario?')) {
-                //alert('Exclui usuario:' + dataId);
+            if (confirm('Você deseja realmente excluir o usuário?')) {
+                //alert('Excluir usuario: ' + dataId);
                 window.location.href = '?page=usuarios&id=' + dataId;
             }
         });

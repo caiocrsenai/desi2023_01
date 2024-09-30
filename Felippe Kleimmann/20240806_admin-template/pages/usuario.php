@@ -9,7 +9,8 @@ if (!empty($_GET['id'])) {
 if (!empty($_POST)) {
 
     if ($idUser) {
-        $sql = "UPDATE user SET
+        $sql = "
+        UPDATE user SET 
         pass = '" . $_POST['pass'] . "', 
         username = '" . $_POST['username'] . "', 
         email = '" . $_POST['email'] . "', 
@@ -18,8 +19,8 @@ if (!empty($_POST)) {
         cep = '" . $_POST['cep'] . "', 
         id_city = '" . $_POST['id_city'] . "', 
         id_state = '" . $_POST['id_state'] . "' 
-        WHERE 
-        user.id = " . $idUser . "";
+        WHERE user.id = " . $idUser . "
+        ";
     } else {
         $sql = "
         INSERT INTO user
@@ -43,8 +44,8 @@ if (!empty($_POST)) {
 
     if ($result) {
         $action = "cadastrado";
-        if ($idUser) {
-            $action = 'alterado';
+        if($idUser){
+            $action = "alterado";
         }
 
         echo "<script>alert('Usuário " . $_POST['username'] . " " . $action . " com sucesso!')</script>";
@@ -52,7 +53,6 @@ if (!empty($_POST)) {
 }
 
 if ($idUser) {
-
     $sql = "SELECT * FROM user WHERE id = " . $idUser;
     $result = $con->query($sql);
 
@@ -68,7 +68,6 @@ if ($idUser) {
     </div>
     <div class="cb-body">
         <form method="POST" action="" id="userForm" name="userForm" novalidate>
-
             <!-- <label>
                 <div class="lbl">Foto</div>
                 <input type="file" name="photo">
@@ -114,7 +113,7 @@ if ($idUser) {
 
                     if ($result->num_rows > 0) {
                         while ($row = $result->fetch_object()) {
-                            echo '<option value="' . $row->id_state . '" ' . ($userInfos ? ($userInfos->id_state == $row->id_state ? 'selected' : '') : '') . '> ' . $row->nome . '>' . $row->nome . ' (' . $row->uf . ')</option>';
+                            echo '<option value="' . $row->id_state . '" ' . ($userInfos ? ($userInfos->id_state == $row->id_state ? 'selected' : '') : '') . '>' . $row->nome . ' (' . $row->uf . ')</option>';
                         }
                     }
                     ?>
@@ -124,7 +123,7 @@ if ($idUser) {
             <label>
                 <div class="lbl">Cidade</div>
                 <select name="id_city">
-                    <option selected disabled style="display: none;" value="">Selecione o cidade</option>
+                    <option selected disabled style="display: none;" value="">Selecione a cidade</option>
                     <?php
                     $sql = "SELECT * FROM city";
                     $result = $con->query($sql);
@@ -133,8 +132,8 @@ if ($idUser) {
                         while ($row = $result->fetch_object()) {
                             echo '<option 
                             value="' . $row->id_city . '" 
-                            data-uf="' . $row->uf . '"
-                            class="hide" ' . ($userInfos ? ($userInfos->id_city == $row->id_city ? 'selected' : '') : '') . '> ' . $row->nome . '</option>';
+                            data-uf="' . $row->uf . '" 
+                            class="hide" ' . ($userInfos ? ($userInfos->id_city == $row->id_city ? 'selected' : '') : '') . '>' . $row->nome . '</option>';
                         }
                     }
                     ?>
@@ -168,14 +167,14 @@ if ($idUser) {
         });
 
         if (sendForm == true) {
-            this.submit();
+            _this.submit();
         }
     });
 
     _qs('[name="id_state"]').addEventListener('change', function(event) {
         const _this = this,
             idState = _this.value,
-            _city = _qs('[name= "id_city"]');
+            _city = _qs('[name="id_city"]');
 
         _city._qsa('option').forEach(function(_optCity) {
             const optCityIdState = _optCity.getAttribute('data-uf');
@@ -195,6 +194,7 @@ if ($idUser) {
         if (tagName == 'select') {
             event = 'change';
         }
+
         _element.addEventListener(event, function(event) {
             const _this = this,
                 val = _element.value;
