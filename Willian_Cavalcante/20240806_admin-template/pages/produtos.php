@@ -22,14 +22,16 @@ if (!empty($_GET['id'])) {
                     <tr>
                         <th>Nome</th>
                         <th>Categoria</th>
-                        <th>Preços</th>
+                        <th>Preço</th>
                         <th width="10px">Alterar</th>
                         <th width="10px">Excluir</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
-                    $sql = "SELECT * FROM product";
+                    $sql = "SELECT pro.name, pro.id, pro.price, cat.name AS cat_name
+                            FROM product AS pro
+                            JOIN category AS cat ON cat.id = pro.id_category";
                     $result = $con->query($sql);
 
                     if ($result->num_rows > 0) {
@@ -37,7 +39,7 @@ if (!empty($_GET['id'])) {
                     ?>
                             <tr>
                                 <td><?php echo $row->name; ?></td>
-                                <td><?php echo $row->id_category; ?></td>
+                                <td><?php echo $row->cat_name; ?></td>
                                 <td><?php echo $row->price; ?></td>
                                 <td>
                                     <a href="?page=produto&id=<?php echo $row->id; ?>" class="btn-status color-blue">
@@ -66,7 +68,7 @@ if (!empty($_GET['id'])) {
             const _this = this,
                 dataId = _this.getAttribute('data-id');
 
-            if (confirm('Você deseja realmente excluir o Produto?')) {
+            if (confirm('Você deseja realmente excluir o produto?')) {
                 //alert('Excluir usuario: ' + dataId);
                 window.location.href = '?page=produtos&id=' + dataId;
             }
