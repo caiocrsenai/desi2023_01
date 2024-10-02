@@ -1,14 +1,14 @@
 <?php
-$idUser = false;
+$idItem = false;
 $pageObjInfos = false;
 
 if (!empty($_GET['id'])) {
-    $idUser = $_GET['id'];
+    $idItem = $_GET['id'];
 }
 
 if (!empty($_POST)) {
 
-    if ($idUser) {
+    if ($idItem) {
         $sql = "
         UPDATE produtos SET 
         name = '" . $_POST['name'] . "', 
@@ -16,7 +16,7 @@ if (!empty($_POST)) {
         price = '" . $_POST['price'] . "', 
         quantity = '" . $_POST['quantity'] . "', 
         supplier_id = '" . $_POST['supplier_id'] . "', 
-        WHERE user.id = " . $idUser . "
+        WHERE user.id = " . $idItem . "
         ";
     } else {
         $sql = "
@@ -37,7 +37,7 @@ if (!empty($_POST)) {
 
     if ($result) {
         $action = "cadastrado";
-        if($idUser){
+        if($idItem){
             $action = "alterado";
         }
 
@@ -45,8 +45,8 @@ if (!empty($_POST)) {
     }
 }
 
-if ($idUser) {
-    $sql = "SELECT * FROM user WHERE id = " . $idUser;
+if ($idItem) {
+    $sql = "SELECT * FROM produtos WHERE id = " . $idItem;
     $result = $con->query($sql);
 
     if ($result->num_rows > 0) {
@@ -73,7 +73,7 @@ if ($idUser) {
 
             <label>
                 <div class="lbl">Descriçao</div>
-                <textarea type="text" name="description" value="<?php echo $pageObjInfos ? $pageObjInfos->description : '' ?>" required></textarea>
+                <textarea type="text" name="description" required><?php echo $pageObjInfos ? $pageObjInfos->description : '' ?></textarea>
             </label>
 
             <label>

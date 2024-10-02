@@ -29,16 +29,15 @@ if (!empty($_GET['id'])) {
         <div class="table-container">
             <table>
                 <thead>
-                <a href="?page=cadastrar-produto">Adicionar Produto</a>
+                    <a href="?page=cadastrar-produto">Adicionar Produto</a>
                     <tr>
                         <th>ID</th>
                         <th>Nome</th>
                         <th>Descrição</th>
                         <th>Preço</th>
                         <th>Quantidade</th>
-                        <th>Excluir</th>
+                        <th width="10px">Editar</th>
                         <th width="10px">Excluir</th>
-                        <th width="10px">Excluiraa</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -47,11 +46,8 @@ if (!empty($_GET['id'])) {
                     $result = $con->query($sql);
 
                     if ($result->num_rows > 0) {
-                        while ($row = $result->fetch_object()) 
-                        
-                        {
+                        while ($produto = $result->fetch_assoc()) {
                     ?>
-                     <?php foreach ($produtos as $produto): ?>
                             <tr>
                                 <td><?= $produto['id'] ?></td>
                                 <td><?= $produto['name'] ?></td>
@@ -59,17 +55,16 @@ if (!empty($_GET['id'])) {
                                 <td><?= $produto['price'] ?></td>
                                 <td><?= $produto['quantity'] ?></td>
                                 <td>
-                                    <a href="?page=lista&id=<?php echo $row->id; ?>" onclick="return confirm('Tem certeza que deseja excluir este produto?')" class="btn-status color-blue">
+                                    <a href="?page=cadastrar-produto&id=<?php echo $produto['id']; ?>" class="btn-status color-blue">
                                         <i class="fa-regular fa-pen-to-square"></i>
                                     </a>
                                 </td>
                                 <td>
-                                    <div class="delete-user btn-status color-red" data-id="<?php echo $row->id; ?>">
+                                    <a class="delete-user btn-status color-red" href="?page=lista&id=<?php echo $produto['id']; ?>" data-id="<?php echo $produto['id']; ?>">
                                         <i class="fa-regular fa-trash-can"></i>
-                                    </div>
+                                    </a>
                                 </td>
                             </tr>
-                            <?php endforeach; ?>
                     <?php
                         }
                     }
