@@ -1,19 +1,19 @@
 <?php
 if (!empty($_GET['id'])) {
     $idCategory = $_GET['id'];
-
-    $sql = "DELETE FROM category WHERE category.id = ". $idCategory .";";
+    $sql = "DELETE FROM category WHERE category.id = ".$idCategory .";";
 
     $result = $con->query($sql);
+
     if ($con->affected_rows > 0) {
-        echo "<script>alert('Categoria excluido com sucesso!')</script>";
+        echo "<script>alert('Categoria deletado com sucesso!'</script>";
     }
 }
 ?>
 
 <div class="container-box flex-1">
     <div class="cb-header">
-        <div class="cb-title">Categoria</div>
+        <div class="cb-title">Categorias</div>
     </div>
     <div class="cb-body">
         <div class="table-container">
@@ -22,8 +22,8 @@ if (!empty($_GET['id'])) {
                     <tr>
                         <th>Nome</th>
                         <th>Descrição</th>
-                        <th width="10px">Alterar</th>
-                        <th width="10px">Excluir</th>
+                        <th width='10px'>Alterar</th>
+                        <th width='10px'>Excluir</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -35,16 +35,16 @@ if (!empty($_GET['id'])) {
                         while ($row = $result->fetch_object()) {
                     ?>
                             <tr>
-                                <td><?php echo $row->name; ?></td>
-                                <td><?php echo $row->description; ?></td>
+                                <td><?php echo $row->name ?></td>
+                                <td><?php echo $row->description ?></td>
                                 <td>
-                                    <a href="?page=categoria&id=<?php echo $row->id; ?>" class="btn-status color-blue">
+                                    <a href="?page=categoria&id=<?php echo $row->id ?>" class="btn-status color-blue">
                                         <i class="fa-regular fa-pen-to-square"></i>
                                     </a>
                                 </td>
                                 <td>
-                                    <div class="delete-category btn-status color-red" data-id="<?php echo $row->id; ?>">
-                                        <i class="fa-regular fa-trash-can"></i>
+                                    <div class="delete-category btn-status color-red" data-id="<?php echo $row->id ?>">
+                                        <i class="fa-solid fa-trash"></i>
                                     </div>
                                 </td>
                             </tr>
@@ -52,7 +52,6 @@ if (!empty($_GET['id'])) {
                         }
                     }
                     ?>
-
                 </tbody>
             </table>
         </div>
@@ -60,16 +59,18 @@ if (!empty($_GET['id'])) {
 </div>
 
 <script>
-    _qsa('.delete-category ').forEach(function(_element) {
+    _qsa('.delete-category').forEach(function(_element) {
         _element.addEventListener('click', function(e) {
             const _this = this,
-                dataId = _this.getAttribute('data-id')
+                dataId = _this.getAttribute('data-id');
 
             if (confirm('Você deseja realmente excluir a categoria?')) {
-                // alert('Excluir produto: ' + dataId);
+                // alert('Deletar Usuario: ' + dataId);
                 window.location.href = '?page=categorias&id=' + dataId;
             }
 
         });
+
+
     });
 </script>

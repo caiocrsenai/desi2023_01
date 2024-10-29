@@ -1,27 +1,30 @@
 <?php
-
-$idStock = false;
+$idStock  = false;
 $stockInfos = false;
+
 if (!empty($_GET['id'])) {
     $idStock = $_GET['id'];
 }
 
+//var_dump($_POST);
 if (!empty($_POST)) {
 
     if ($idStock) {
-        $sql = "
-        UPDATE stock SET 
-        id_product = '" . $_POST['id_product'] . "', 
-        quantity = '" . $_POST['quantity'] . "'
-        WHERE stock.id = ". $idStock ."
-        ";
+        $sql = "UPDATE stock SET
+         id_product = '" . $_POST['id_product'] . "',
+          quantity = '" . $_POST['quantity'] . "' 
+          WHERE stock.id = " . $idStock . "
+          ";
     } else {
-        $sql = "INSERT INTO stock (id_product, quantity)
-        VALUES 
-        (
-            '" . $_POST['id_product'] . "', 
-            '" . $_POST['quantity'] . "'
-        )";
+        $sql = "INSERT INTO stock 
+        (id, id_product, quantity, timestamp)
+        VALUES
+    (
+        NULL,
+        '" . $_POST['id_product'] . "', 
+        '" . $_POST['quantity'] . "',
+        current_timestamp()
+    )";
     }
 
     $result = $con->query($sql);
@@ -31,17 +34,12 @@ if (!empty($_POST)) {
         if ($idStock) {
             $action = "alterado";
         }
-
-        $sqlNameProduct = "SELECT name FROM product WHERE id = " . $_POST['id_product'];
-        $resultNameProduct = $con->query($sqlNameProduct);
-        $nameProductInfos = $resultNameProduct->fetch_object();
-
-        echo "<script>alert('Estoque de " . $nameProductInfos->name . " " . $action . " com sucesso!')</script>";
+        echo "<script>alert('Estoque " . $_POST['id_product'] . " " . $action . " com sucesso!')</script>";
     }
 }
 
 if ($idStock) {
-    $sql = "SELECT * FROM stock WHERE id = " . $idStock;
+    $sql = "SELECT * FROM stock where id = " . $idStock;
     $result = $con->query($sql);
 
     if ($result->num_rows > 0) {
@@ -52,20 +50,32 @@ if ($idStock) {
 ?>
 <div class="container-box cb-form-max-width align-center flex-1">
     <div class="cb-header">
-        <div class="cb-title">Estoques</div>
+
+        <div class="cb-title">Estoque</div>
     </div>
     <div class="cb-body">
-        <form method="POST" action="" id="stockForm" name="Form" novalidate>
+        <form method="POST" action="" id="stockForm" novalidate>
             <label>
                 <div class="lbl">Produto</div>
-                <select name="id_product">
-                    <option selected disabled style="display: none;" value="">Selecione o produto</option>
+                <select name='id_product' required>
+                    <option value=''>Selecione</option>
+
                     <?php
                     $sql = "SELECT * FROM product";
                     $result = $con->query($sql);
                     if ($result->num_rows > 0) {
                         while ($row = $result->fetch_object()) {
-                            echo '<option value="' . $row->id  . '" ' . ($stockInfos ? ($stockInfos->id_product == $row->id ? 'selected' : '') : '') . '>' . $row->name  . '</option>:';
+                            //$selected = ($row->id == $productInfos->id_category) ? 'selected' : '';
+                            if ($row->id == $stockInfos->id_product) {
+                                $selected = 'selected';
+                            } else {
+                                $selected = '';
+                            }
+                    ?>
+
+                            <option value='<?php echo $row->id; ?>' <?php echo $selected; ?>><?php echo $row->name; ?></option>
+
+                    <?php
                         }
                     }
                     ?>
@@ -74,11 +84,10 @@ if ($idStock) {
 
             <label>
                 <div class="lbl">Quantidade</div>
-                <input type="text" name="quantity" value="<?php echo $stockInfos ? $stockInfos->quantity : '' ?>">
+                <input type="text" name="quantity" value="<?php echo $stockInfos  ? $stockInfos->quantity : '' ?>" required>
             </label>
+
             <div class="form-actions">
                 <button type="submit">Enviar</button>
             </div>
-        </form>
     </div>
-</div>

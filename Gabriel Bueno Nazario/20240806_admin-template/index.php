@@ -2,7 +2,7 @@
 include_once('includes/connect.php');
 ?>
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 
 <head>
 	<meta charset="UTF-8">
@@ -15,10 +15,9 @@ include_once('includes/connect.php');
 		rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="assets/vendors/fontawesome-free-6.6.0-web/css/all.min.css">
 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
-
+	
 	<script src="assets/js/jquery-3.7.1.min.js"></script>
 	<script src="assets/js/_qs.js"></script>
-	
 </head>
 
 <body>

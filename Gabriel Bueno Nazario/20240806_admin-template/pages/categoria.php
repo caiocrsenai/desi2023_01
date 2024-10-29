@@ -1,28 +1,30 @@
 <?php
-
-$idCategory = false;
+$idCategory  = false;
 $categoryInfos = false;
+
 if (!empty($_GET['id'])) {
     $idCategory = $_GET['id'];
 }
 
+//var_dump($_POST);
 if (!empty($_POST)) {
 
     if ($idCategory) {
-        $sql = "
-        UPDATE category SET 
-        name = '" . $_POST['name'] . "', 
-        description = '" . $_POST['description'] . "'
-        WHERE category.id = ". $idCategory ."
-        ";
+        $sql = "UPDATE category SET
+         name = '" . $_POST['name'] . "',
+          description = '" . $_POST['description'] . "' 
+          WHERE category.id = " . $idCategory . "
+          ";
     } else {
         $sql = "INSERT INTO category 
-        (name, description)
-        VALUES 
-        (
-            '" . $_POST['name'] . "', 
-            '" . $_POST['description'] . "'
-        )";
+        (id, name, description, timestamp) 
+        VALUES
+    (
+        NULL,
+        '" . $_POST['name'] . "', 
+        '" . $_POST['description'] . "',
+        current_timestamp()
+    )";
     }
 
     $result = $con->query($sql);
@@ -32,13 +34,12 @@ if (!empty($_POST)) {
         if ($idCategory) {
             $action = "alterado";
         }
-
         echo "<script>alert('Categoria " . $_POST['name'] . " " . $action . " com sucesso!')</script>";
     }
 }
 
 if ($idCategory) {
-    $sql = "SELECT * FROM category WHERE id = " . $idCategory;
+    $sql = "SELECT * FROM category where id = " . $idCategory;
     $result = $con->query($sql);
 
     if ($result->num_rows > 0) {
@@ -49,23 +50,21 @@ if ($idCategory) {
 ?>
 <div class="container-box cb-form-max-width align-center flex-1">
     <div class="cb-header">
+
         <div class="cb-title">Categoria</div>
     </div>
     <div class="cb-body">
-        <form method="POST" action="" id="categoryForm" name="Form" novalidate>
+        <form method="POST" action="" id="categoryForm" novalidate>
             <label>
-                <div class="lbl">Nome</div>
-                <input type="text" name="name" value="<?php echo $categoryInfos ? $categoryInfos->name : '' ?>" required>
+                <div class="lbl">name</div>
+                <input type="text" name="name" value="<?php echo $categoryInfos  ? $categoryInfos->name : '' ?>" required>
             </label>
-
             <label>
-                <div class="lbl">Descrição</div>
-                <input type="text" name="description" value="<?php echo $categoryInfos ? $categoryInfos->description : '' ?>" required>
+                <div class="lbl">descrição</div>
+                <input type="text" name="description" value="<?php echo $categoryInfos  ? $categoryInfos->description : '' ?>" required>
             </label>
 
             <div class="form-actions">
                 <button type="submit">Enviar</button>
             </div>
-        </form>
-    </div>
 </div>

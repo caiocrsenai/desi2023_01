@@ -18,7 +18,7 @@ body {
 	flex: 1;
 }
 
-.hide {
+.hide{
 	display: none;
 }
 
@@ -315,6 +315,8 @@ body {
 			}
 		}
 
+		
+
 		table {
 			width: 100%;
 			border-spacing: 0;
@@ -389,8 +391,9 @@ body {
 				outline: 0;
 				color-scheme: dark;
 
-				&.error {
+				&.error{
 					border-color: #d86060;
+					
 				}
 			}
 		}
@@ -407,7 +410,7 @@ body {
 				min-width: 80px;
 				font-size: 14px;
 				height: 40px;
-				padding-left: 15px;
+				padding-left: 15px;	
 				padding-right: 15px;
 				border-radius: 10px;
 				background-color: #3e79f7;

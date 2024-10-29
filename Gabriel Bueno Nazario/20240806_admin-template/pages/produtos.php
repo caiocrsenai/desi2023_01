@@ -1,8 +1,9 @@
 <?php
+
 if (!empty($_GET['id'])) {
     $idProduct = $_GET['id'];
 
-    $sql = "DELETE FROM product WHERE product.id = ". $idProduct .";";
+    $sql = "DELETE FROM product WHERE product.id = " . $idProduct . ";";
 
     $result = $con->query($sql);
     if ($con->affected_rows > 0) {
@@ -28,14 +29,16 @@ if (!empty($_GET['id'])) {
                     </tr>
                 </thead>
                 <tbody>
+
                     <?php
                     $sql = "SELECT pro.name, pro.id, pro.price, cat.name AS cat_name
-                    FROM product AS pro
-                    JOIN category AS cat ON cat.id = pro.id_category";
+                            FROM product AS pro
+                            JOIN category As cat ON cat.id = pro.id_category"; 
                     $result = $con->query($sql);
 
                     if ($result->num_rows > 0) {
                         while ($row = $result->fetch_object()) {
+                            
                     ?>
                             <tr>
                                 <td><?php echo $row->name; ?></td>
@@ -55,7 +58,9 @@ if (!empty($_GET['id'])) {
                     <?php
                         }
                     }
+
                     ?>
+
 
                 </tbody>
             </table>
@@ -64,16 +69,18 @@ if (!empty($_GET['id'])) {
 </div>
 
 <script>
-    _qsa('.delete-product ').forEach(function(_element) {
+    _qsa('.delete-product').forEach(function(_element) {
+
         _element.addEventListener('click', function(e) {
             const _this = this,
-                dataId = _this.getAttribute('data-id')
+                dataId = _this.getAttribute('data-id');
 
             if (confirm('Você deseja realmente excluir o produto?')) {
-                // alert('Excluir produto: ' + dataId);
+                //alert('Excluir usuario: ' + dataId);
                 window.location.href = '?page=produtos&id=' + dataId;
             }
 
         });
+
     });
 </script>

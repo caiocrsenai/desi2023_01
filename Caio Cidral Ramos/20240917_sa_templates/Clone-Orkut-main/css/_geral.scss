@@ -1,0 +1,27 @@
+body {
+  background-color: $fundo;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+button {
+  cursor: pointer;
+  background: linear-gradient(
+    0deg,
+    rgba(185, 13, 146, 1) 0%,
+    rgba(206, 86, 179, 1) 72%
+  );
+  box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.3);
+  padding: 10px 20px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: white;
+  border-radius: 20px;
+}
+.fonte-estilizada {
+  background: linear-gradient(
+    0deg,
+    rgba(185, 13, 146, 1) 0%,
+    rgba(206, 86, 179, 1) 72%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

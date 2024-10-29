@@ -2,23 +2,26 @@
 
 $idUser = false;
 $userInfos = false;
+
 if (!empty($_GET['id'])) {
     $idUser = $_GET['id'];
 }
 
+
+//var_dump($_POST);
 if (!empty($_POST)) {
 
     if ($idUser) {
         $sql = "
         UPDATE user SET 
         pass = '" . $_POST['pass'] . "', 
-        username = '" . $_POST['username'] . "', 
+        username = '" . $_POST['username'] . ".', 
         email = '" . $_POST['email'] . "', 
         name = '" . $_POST['name'] . "', 
         birthdate = '" . $_POST['birthdate'] . "', 
         cep = '" . $_POST['cep'] . "', 
-        id_city = '" . $_POST['id_city'] . "', 
-        id_state = '" . $_POST['id_state'] . "' 
+        id_city = '" . $_POST['id_city'] . "',
+        id_state = '" . $_POST['id_state'] . "'
         WHERE user.id = " . $idUser . "
         ";
     } else {
@@ -47,7 +50,7 @@ if (!empty($_POST)) {
         if ($idUser) {
             $action = "alterado";
         }
-        
+
         echo "<script>alert('Usuário " . $_POST['username'] . " " . $action . " com sucesso!')</script>";
     }
 }
@@ -55,7 +58,6 @@ if (!empty($_POST)) {
 if ($idUser) {
     $sql = "SELECT * FROM user WHERE id = " . $idUser;
     $result = $con->query($sql);
-
     if ($result->num_rows > 0) {
         $userInfos = $result->fetch_object();
     }
@@ -70,7 +72,7 @@ if ($idUser) {
         <form method="POST" action="" id="userForm" name="userForm" novalidate>
             <!-- <label>
                 <div class="lbl">Foto</div>
-                <input type="file" name="photo" value="<?php echo $userInfos ? $userInfos->photo : '' ?>">
+                <input type="file" name="photo">
             </label> -->
 
             <label>
@@ -103,40 +105,43 @@ if ($idUser) {
                 <input type="text" name="cep" value="<?php echo $userInfos ? $userInfos->cep : '' ?>" required>
             </label>
 
+            <pre>
+
+            </pre>
+
             <label>
                 <div class="lbl">Estado</div>
                 <select name="id_state">
-                    <option selected disabled style="display: none;" value="">Selecione o estado</option>
+                    <option selected disabled Style="display: nome;" value="">Selecione o estado</option>
                     <?php
                     $sql = "SELECT * FROM state";
                     $result = $con->query($sql);
 
                     if ($result->num_rows > 0) {
                         while ($row = $result->fetch_object()) {
-                            echo '<option value="' . $row->id_state  . '" ' . ($userInfos ? ($userInfos->id_state == $row->id_state ? 'selected' : '') : '') . '>' . $row->nome  . '(' . $row->uf . ')</option>:';
+                            echo '<option value="' . $row->id_state . '"  data-uf="' . $row->uf . '" class="hide"' . ($userInfos ? ($userInfos->id_state == $row->id_state ? 'selected' : '') : '') . '>' . $row->nome . ' (' . $row->uf . ') </option>';
                         }
                     }
                     ?>
+
                 </select>
             </label>
 
             <label>
                 <div class="lbl">Cidade</div>
                 <select name="id_city">
-                    <option selected disabled style="display: none;" value="">Selecione o cidade</option>
+                    <option selected disabled Style="display: nome;" value="">Selecione a cidade</option>
                     <?php
                     $sql = "SELECT * FROM city";
                     $result = $con->query($sql);
 
                     if ($result->num_rows > 0) {
                         while ($row = $result->fetch_object()) {
-                            echo '<option 
-                            value="' . $row->id_city  . '" 
-                            data-uf="' . $row->uf  . '" 
-                            class="hide" ' . ($userInfos ? ($userInfos->id_city == $row->id_city ? 'selected' : '') : '') . '>' . $row->nome  . '</option>';
+                            echo '<option value="' . $row->id_city . '" data-uf="' . $row->uf . '" class="hide"' . ($userInfos ? ($userInfos->id_city == $row->id_city ? 'selected' : '') : '') . '>' . $row->nome . ' </option>';
                         }
                     }
                     ?>
+
                 </select>
             </label>
 
@@ -148,40 +153,45 @@ if ($idUser) {
     </div>
 </div>
 
+
+
 <script>
-    _qs('#userForm').addEventListener('submit', function(event) {
+    _qs("#userForm").addEventListener('submit', function(event) {
         event.preventDefault();
         const _this = this,
-            _element = _this._qsa('input, select');
+            _elements = _this._qsa('input, select');
         let sendForm = true;
 
-        _element.forEach(function(_element) {
+
+        /*console.dir(_elements);
+        console.dir('----------');*/
+
+        _elements.forEach(function(_element) {
             const val = _element.value;
 
-            if (val == '') {
+            if (val == "") {
                 sendForm = false;
                 _element.classList.add('error');
             } else {
                 _element.classList.remove('error');
             }
         });
-
         if (sendForm == true) {
             _this.submit();
         }
-
     });
+
 
     _qs('[name="id_state"]').addEventListener('change', function(event) {
         const _this = this,
-            idState = this.value,
+            idState = _this.value,
             _city = _qs('[name="id_city"]');
 
         _city._qsa('option').forEach(function(_optCity) {
             const optCityIdState = _optCity.getAttribute('data-uf');
-            console.dir(optCityIdState);
 
             if (optCityIdState == idState) {
+                console.dir(_optCity)
                 _optCity.classList.remove('hide');
             } else {
                 _optCity.classList.add('hide');
@@ -189,42 +199,47 @@ if ($idUser) {
         });
     });
 
-    _qs('#userForm')._qsa('input, select').forEach(function(_element) {
+
+
+    _qs("#userForm")._qsa('input, select').forEach(function(_element) {
+
         const tagName = _element.tagName.toLowerCase();
         let event = 'keyup';
 
         if (tagName == 'select') {
-            event = 'charge';
+            event = 'change';
         }
 
         _element.addEventListener(event, function(event) {
             const _this = this,
                 val = _element.value;
 
-            _this.classList.remove('error');
+            _element.classList.remove('error');
         });
     });
 
-    /*const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    function validateForm() {
-        const form = document.getElementById('userForm');
-        const fields = form.querySelectorAll('input');
-        let isValid = true;
+    /* const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-        let mailField = document.querySelector('#email');
-        if (!emailPattern.test(mailField.value)) {
-            alert('Este email está inadequado.');
-            isValid = false;
-        }
+     function validateForm() {
+         const form = document.getElementById('userForm');
+         // Get all input fields
+         const fields = form.querySelectorAll('input');
+         let isValid = true;
 
-        return isValid;
-    }
+         let mailField = document.querySelector('#email');
+         if (!emailPattern.test(mailField.value)) {
+             alert('Este email está inadequado.');
+             isValid = false;
+         }
 
-    document.getElementById('userForm').addEventListener('submit', function(event) {
-        if (!validateForm()) {
-            event.preventDefault();
-            alert('Favor preencher todos os campos obrigatórios.');
-        }
-    });*/
+         return isValid;
+     }
+
+     document.getElementById('userForm').addEventListener('submit', function(event) {
+         if (!validateForm()) {
+             event.preventDefault(); // Impede o envio do formulário se a validação falhar
+             alert('Favor preencher todos os campos obrigatórios.');
+         }
+     });*/
 </script>
