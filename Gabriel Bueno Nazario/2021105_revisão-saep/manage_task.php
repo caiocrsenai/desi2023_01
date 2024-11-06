@@ -35,9 +35,25 @@ include_once('connect.php');
             </div>
             <div class="content">
                 <h3>Fazendo</h3>
+
+                <div class="item">
+                    <strong>Descrição:</strong> texto<br>
+                    <strong>Setor:</strong> texto<br>
+                    <strong>Prioridade:</strong> texto<br>
+                    <strong>Vinculado a:</strong> texto<br>
+                </div>
+                
             </div>
             <div class="content">
                 <h3>Pronto</h3>
+
+                <div class="item">
+                    <strong>Descrição:</strong> texto<br>
+                    <strong>Setor:</strong> texto<br>
+                    <strong>Prioridade:</strong> texto<br>
+                    <strong>Vinculado a:</strong> texto<br>
+                </div>
+
             </div>
         </div>
     </section>
