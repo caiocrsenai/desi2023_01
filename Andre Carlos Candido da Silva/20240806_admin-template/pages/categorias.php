@@ -67,7 +67,7 @@ if (!empty($_GET['id'])) {
             if (confirm('Você deseja realmente excluir o produto?')) {
                 //alert('Excluir usuario: ' + dataId);
                 window.location.href = '?page=categorias&id=' + dataId;
-            }
+            } S
         });
     });
 </script>
