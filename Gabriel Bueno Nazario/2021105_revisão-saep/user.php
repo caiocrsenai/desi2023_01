@@ -1,5 +1,19 @@
-<?php 
+<?php
 include_once('connect.php');
+
+
+if (!empty($_POST)) {
+    $sql = "INSERT INTO user 
+    (name, email) 
+    VALUES 
+    ('" . $_POST['name'] . "', '" . $_POST['email'] . "')";
+
+    $result = $con->query($sql);
+
+    if ($result) {
+        echo "<script>alert('Usuário cadastrado com sucesso!')</script>";
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -14,28 +28,22 @@ include_once('connect.php');
 
 <body>
 
-    <header>
-        <h1 class="title">Gerenciamento de Tarefas</h1>
-
-        <nav class="menu">
-            <a href="user.php">Cadastro de usuários</a>
-            <a href="task.php">Cadastro de tarefas</a>
-            <a href="manage_task.php">Gerenciamento de tarefas</a>
-        </nav>
-    </header>
+    <?php
+    include_once('header.php');
+    ?>
 
     <section>
-        <form>
+        <form action="" method="POST">
             <h2>Cadastro de Usuário</h2>
 
             <label>
                 <div>Nome:</div>
-                <input type="text" name="name">
+                <input type="text" name="name" required>
             </label>
 
             <label>
                 <div>Email:</div>
-                <input type="email" name="email">
+                <input type="email" name="email" required>
             </label>
 
             <div>
