@@ -58,7 +58,7 @@ if ($idCategory) {
             <label>
                 <div class="lbl">name</div>
                 <input type="text" name="name" value="<?php echo $categoryInfos  ? $categoryInfos->name : '' ?>" required>
-            </label>
+            </label>6
             <label>
                 <div class="lbl">descrição</div>
                 <input type="text" name="description" value="<?php echo $categoryInfos  ? $categoryInfos->description : '' ?>" required>
